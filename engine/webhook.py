@@ -83,6 +83,7 @@ def telegram_webhook():
     
     if 'callback_query' in update:
         query = update['callback_query']
+        query_id = query.get('id')
         data = query.get('data', '')
         message = query.get('message', {})
         text = message.get('text', '')
@@ -106,13 +107,17 @@ def telegram_webhook():
                 create_markdown_post(headline, framing, quote, source_name, source_url, category)
                 
                 # Acknowledge the callback so the button stops loading
-                # Also we could edit the original message to remove the buttons
+                if query_id:
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
+                
                 return jsonify({"ok": True})
             except Exception as e:
                 print(f"Error parsing approved message: {e}")
                 
-        elif data.startswith('reject|'):
+        elif data == 'reject' or data.startswith('reject|'):
             print("Article rejected.")
+            if query_id:
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
             return jsonify({"ok": True})
 
     return jsonify({"ok": True})
