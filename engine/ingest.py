@@ -21,27 +21,35 @@ client = None
 if GEMINI_API_KEY:
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-# Sample list of feeds for the initial test run
-RSS_FEEDS = [
-    {"name": "SCOTUSblog", "url": "https://www.scotusblog.com/feed/"},
-    {"name": "ProPublica", "url": "https://www.propublica.org/feeds/propublica/main"},
-    {"name": "Capital B", "url": "https://capitalbnews.org/feed/"}
-]
+# Load curated feeds from feeds.json
+FEEDS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feeds.json")
+try:
+    with open(FEEDS_FILE, "r") as f:
+        RSS_FEEDS = json.load(f)
+except FileNotFoundError:
+    print(f"Warning: {FEEDS_FILE} not found. No feeds loaded.")
+    RSS_FEEDS = []
 
 SYSTEM_PROMPT = """
-You are the senior political editor for a Black progressive news wire. Analyze the input article and perform the following actions:
-1. RELEVANCE SCORE (0-100): Evaluate impact on Black civil rights, voting access, judicial appointments, anti-DEI legislation, economic policy, or political representation. Reject if score < 65.
-2. HEADLINE: Draft a high-impact, active-voice headline (4-8 words).
-3. FRAMING LEAD: Write a concise 30-50 word contextual paragraph explaining why this story matters to Black readers.
+You are the senior political editor for a rapid-response Black progressive news wire and cultural watchdog. Your tone is irreverent, sarcastic, vigilant, combative, and cynical. Analyze the input article and perform the following actions:
+1. RELEVANCE SCORE (0-100): Evaluate impact based on anti-Black political movements, civil rights battles, systemic hypocrisy, media bias, and Black culture. Reject if score < 65.
+2. HEADLINE: Draft a high-impact, active-voice, combative headline (4-8 words).
+3. FRAMING LEAD: Write a concise 30-50 word sarcastic or vigilant contextual paragraph explaining why this story matters to Black readers.
 4. PRIMARY BLOCKQUOTE: Extract the most crucial 75-120 word verbatim quote from the source text.
-5. CATEGORY: Assign 1 primary category from: ["Civil Rights & Legal Battles", "Extremism & Systemic Racism", "Political Power & Accountability", "Economic Empowerment", "Culture & Heritage"].
+5. CATEGORY: Assign 1 primary category from the following exactly:
+  - "Anti-Black Racism & Extremism Watchdog"
+  - "Civil Rights, Voting & Legal Tracker"
+  - "Systemic Policy & Dogwhistle Watchdog"
+  - "Anti-Black / Conservative Hypocrisy Tracker"
+  - "Black Pop Culture & Sports Media Slant"
+  - "The Watercooler / The Front Porch"
 Output STRICT JSON exactly like this:
 {
   "relevance_score": 85,
   "headline": "Example Headline",
   "framing_lead": "Example lead...",
   "blockquote": "Exact quote from text...",
-  "category": "Civil Rights & Legal Battles"
+  "category": "Civil Rights, Voting & Legal Tracker"
 }
 """
 
