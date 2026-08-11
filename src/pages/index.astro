@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
@@ -70,7 +71,37 @@ const posts = rawPosts.map((post) => {
 			.feed-item a {
 				text-decoration: none;
 				color: inherit;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				gap: 1.5rem;
+			}
+			.feed-content {
+				flex: 1;
+				min-width: 0;
+			}
+			.feed-thumbnail {
+				width: 140px;
+				height: 140px;
+				flex-shrink: 0;
+				border-radius: var(--radius);
+				overflow: hidden;
+			}
+			.feed-thumbnail img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
 				display: block;
+			}
+			@media (max-width: 640px) {
+				.feed-item a {
+					flex-direction: column-reverse;
+					gap: 1rem;
+				}
+				.feed-thumbnail {
+					width: 100%;
+					height: 200px;
+				}
 			}
 			.meta {
 				display: flex;
@@ -129,13 +160,20 @@ const posts = rawPosts.map((post) => {
 						posts.map((post) => (
 							<li class="feed-item">
 								<a href={`/blog/${post.id}/`}>
-									<div class="meta">
-										{post.data.category && <span class="badge">{post.data.category}</span>}
-										<span class="date"><FormattedDate date={post.data.pubDate} /></span>
+									<div class="feed-content">
+										<div class="meta">
+											{post.data.category && <span class="badge">{post.data.category}</span>}
+											<span class="date"><FormattedDate date={post.data.pubDate} /></span>
+										</div>
+										<h3 class="title">{post.data.title}</h3>
+										{post.preview && <p class="description">{post.preview}</p>}
+										{post.data.source && <div class="source">{post.data.source}</div>}
 									</div>
-									<h3 class="title">{post.data.title}</h3>
-									{post.preview && <p class="description">{post.preview}</p>}
-									{post.data.source && <div class="source">{post.data.source}</div>}
+									{post.data.heroImage && (
+										<div class="feed-thumbnail">
+											<Image src={post.data.heroImage} alt="" />
+										</div>
+									)}
 								</a>
 							</li>
 						))

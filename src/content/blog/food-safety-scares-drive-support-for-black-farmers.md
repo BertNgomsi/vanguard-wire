@@ -4,6 +4,7 @@ pubDate: 2026-08-11T20:30:19.060191
 category: "Economic Empowerment"
 source: "Capital B"
 sourceUrl: "https://capitalbnews.org/black-farmers-cyclospora-safety/"
+heroImage: "../../assets/blog-placeholder-2.jpg"
 ---
 
 As corporate food supply chains face recurring safety outbreaks, Black families are turning to local Black agricultural producers for secure food access. Investing in Black growers builds economic self-reliance and safeguards community health against systemic food system failures.

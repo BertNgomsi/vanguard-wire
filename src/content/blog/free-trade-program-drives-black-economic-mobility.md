@@ -4,6 +4,7 @@ pubDate: 2026-08-11T20:30:29.909705
 category: "Economic Empowerment"
 source: "Capital B"
 sourceUrl: "https://capitalbnews.org/udc-trade-school-black-students/"
+heroImage: "../../assets/blog-placeholder-1.jpg"
 ---
 
 As soaring higher education costs and student debt disproportionately burden Black families, tuition-free workforce programs offer a vital pathway to economic mobility. By equipping Black students with high-paying trade skills without debt, initiatives like UDC's build sustainable wealth and financial independence.
