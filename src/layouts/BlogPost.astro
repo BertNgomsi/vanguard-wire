@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, category, source, sourceUrl, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || title} />
+		<style>
+			article {
+				background: var(--bg-secondary);
+				border: 1px solid var(--border-color);
+				border-radius: var(--radius);
+				overflow: hidden;
+				box-shadow: var(--shadow-md);
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				border-radius: 0;
+			}
+			.prose {
+				padding: 2.5rem 3rem;
+				color: var(--text-primary);
+			}
+			.title {
+				margin-bottom: 2rem;
+				text-align: left;
+				line-height: 1.2;
+			}
+			.title h1 {
+				margin: 0 0 1rem 0;
+				font-size: 2.5rem;
+			}
+			.meta-bar {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 1rem;
+				margin-bottom: 1.5rem;
+			}
+			.date {
+				color: var(--text-muted);
+				font-size: 0.875rem;
+			}
+			.source-action {
+				margin: 2rem 0;
+				display: flex;
+				justify-content: flex-start;
+			}
+			@media (max-width: 720px) {
+				.prose {
+					padding: 1.5rem;
+				}
+				.title h1 {
+					font-size: 2rem;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				{heroImage && (
+					<div class="hero-image">
+						<Image width={1020} height={510} src={heroImage} alt="" />
+					</div>
+				)}
+				<div class="prose">
+					<div class="title">
+						<div class="meta-bar">
+							{category && <span class="badge red">{category}</span>}
+							<span class="date"><FormattedDate date={pubDate} /></span>
+						</div>
+						<h1>{title}</h1>
+					</div>
+					
+					{sourceUrl && (
+						<div class="source-action">
+							<a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+								Read Full Source on {source || "Original Site"} &rarr;
+							</a>
+						</div>
+					)}
+					
+					<hr />
+					
+					<slot />
+					
+					{sourceUrl && (
+						<div style="margin-top: 3rem; text-align: center;">
+							<hr />
+							<a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+								Read Full Source on {source || "Original Site"} &rarr;
+							</a>
+						</div>
+					)}
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

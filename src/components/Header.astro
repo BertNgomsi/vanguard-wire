@@ -1,0 +1,66 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header class="glass">
+	<nav>
+		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<div class="internal-links">
+			<HeaderLink href="/">Wire Feed</HeaderLink>
+			<!-- Removed the boilerplate 'About' and 'Blog' to keep it focused -->
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background: var(--bg-glass);
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 50;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.5em;
+		letter-spacing: -0.05em;
+	}
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+		color: var(--text-primary);
+	}
+	h2 a:hover {
+		color: var(--accent-blue);
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1200px;
+		margin: 0 auto;
+		height: 70px;
+	}
+	nav a {
+		padding: 1em 0.5em;
+		color: var(--text-secondary);
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+		font-weight: 600;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent-blue);
+		color: var(--text-primary);
+	}
+	nav a:hover {
+		color: var(--text-primary);
+	}
+	.internal-links {
+		display: flex;
+		gap: 1.5rem;
+	}
+</style>
