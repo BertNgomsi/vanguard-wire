@@ -32,6 +32,8 @@ body {
 	padding: 0;
 	text-align: left;
 	background-color: var(--bg-primary);
+	background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+	background-size: 4px 4px;
 	color: var(--text-primary);
 	font-size: 18px;
 	line-height: 1.6;
@@ -133,14 +135,15 @@ img {
 .badge {
 	display: inline-block;
 	padding: 0.25rem 0.75rem;
-	font-size: 0.75rem;
+	font-size: 0.85rem;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	border-radius: var(--radius);
-	background: var(--bg-secondary);
-	color: var(--text-primary);
+	background: var(--accent-yellow);
+	color: #000000;
 	border: 1px solid var(--accent-yellow);
+	font-family: 'Anton', sans-serif;
 }
 
 .badge.red {

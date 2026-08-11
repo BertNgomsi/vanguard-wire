@@ -1,7 +1,7 @@
 import os
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 from google import genai
 from flask import Flask, request, jsonify
@@ -21,14 +21,14 @@ if GEMINI_API_KEY:
 
 import base64
 
-def create_markdown_post(headline, framing, quote, source_name, source_url, category):
+def create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date=None):
     """Generates an Astro-compatible Markdown file and pushes it to GitHub via API."""
     if not GITHUB_TOKEN:
         print("ERROR: GITHUB_TOKEN is missing. Cannot push to GitHub.")
         return None
         
     slug = re.sub(r'[^a-z0-9]+', '-', headline.lower()).strip('-')
-    timestamp = datetime.now().isoformat()
+    timestamp = pub_date if pub_date else datetime.now().isoformat()
     
     filename = f"{slug}.md"
     
@@ -76,6 +76,61 @@ sourceUrl: "{source_url}"
         print(response.json())
         return None
 
+def get_next_queue_slot():
+    """Calculates the next available publishing window."""
+    state_file = 'queue_state.json'
+    last_queued_str = None
+    if os.path.exists(state_file):
+        try:
+            with open(state_file, 'r') as f:
+                state = json.load(f)
+                last_queued_str = state.get("last_queued_timestamp")
+        except:
+            pass
+            
+    now = datetime.now()
+    
+    if last_queued_str:
+        try:
+            last_queued = datetime.fromisoformat(last_queued_str)
+        except ValueError:
+            last_queued = now
+    else:
+        last_queued = now
+        
+    base_time = max(now, last_queued)
+    
+    # Define slots in HH:MM format
+    slots = [(8, 30), (9, 30), (10, 30), (12, 0), (13, 30), (15, 0), (16, 30)]
+    
+    next_slot = None
+    for hour, minute in slots:
+        candidate = base_time.replace(hour=hour, minute=minute, second=0, microsecond=0)
+        if candidate > base_time:
+            next_slot = candidate
+            break
+            
+    if not next_slot:
+        next_day = base_time + timedelta(days=1)
+        next_slot = next_day.replace(hour=slots[0][0], minute=slots[0][1], second=0, microsecond=0)
+
+    # Skip weekends
+    while next_slot.weekday() >= 5:
+        next_slot += timedelta(days=1)
+        next_slot = next_slot.replace(hour=slots[0][0], minute=slots[0][1], second=0, microsecond=0)
+
+    # Avoid late Friday (after 2:00 PM) -> push to Monday
+    if next_slot.weekday() == 4 and next_slot.hour >= 14:
+        next_slot += timedelta(days=3)
+        next_slot = next_slot.replace(hour=slots[0][0], minute=slots[0][1], second=0, microsecond=0)
+        
+    next_slot_iso = next_slot.isoformat()
+    
+    with open(state_file, 'w') as f:
+        json.dump({"last_queued_timestamp": next_slot_iso}, f)
+        
+    return next_slot_iso
+
 @app.route(f'/webhook/{TELEGRAM_BOT_TOKEN}', methods=['POST'])
 def telegram_webhook():
     """Listens for inline keyboard button presses from Telegram."""
@@ -90,10 +145,10 @@ def telegram_webhook():
         chat_id = message.get('chat', {}).get('id')
         message_id = message.get('message_id')
         
-        # Format of callback data: "approve" or "reject"
-        if data == 'approve':
+        # Format of callback data: "approve_queue", "approve_now", or "reject"
+        if data in ('approve_queue', 'approve_now'):
             source_url = re.search(r'\nURL: (.*)$', text).group(1).strip()
-            print(f"Approved article from: {source_url}")
+            print(f"Approved article from: {source_url} (Action: {data})")
             
             # Very basic extraction from the Telegram message text
             # In a production app, you might store the draft JSON in a DB 
@@ -106,14 +161,20 @@ def telegram_webhook():
                 quote = quote_raw.group(1)
                 source_name = quote_raw.group(2)
                 
-                create_markdown_post(headline, framing, quote, source_name, source_url, category)
+                pub_date = None
+                status_msg = "✅ [PUBLISHED NOW]"
+                if data == 'approve_queue':
+                    pub_date = get_next_queue_slot()
+                    status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
+                
+                create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date)
                 
                 # Acknowledge the callback so the button stops loading
                 if query_id:
                     requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
                 
                 if chat_id and message_id:
-                    new_text = f"✅ [APPROVED]\n\n{text}"
+                    new_text = f"{status_msg}\n\n{text}"
                     requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
                         "chat_id": chat_id,
                         "message_id": message_id,
@@ -182,7 +243,8 @@ def telegram_webhook():
                     # Send updated text to Telegram
                     reply_markup = {
                         "inline_keyboard": [
-                            [{"text": "🟢 Approve", "callback_data": "approve"}, {"text": "🔴 Reject", "callback_data": "reject"}],
+                            [{"text": "🟢 Approve & Queue", "callback_data": "approve_queue"}, {"text": "🚨 Publish NOW", "callback_data": "approve_now"}],
+                            [{"text": "🔴 Reject", "callback_data": "reject"}],
                             [{"text": "✏️ Edit Headline", "callback_data": "edit_headline"}, {"text": "✏️ Edit Framing", "callback_data": "edit_framing"}]
                         ]
                     }

@@ -113,7 +113,8 @@ def send_to_telegram(draft):
     # Inline keyboard for 1-click approval
     reply_markup = {
         "inline_keyboard": [
-            [{"text": "🟢 Approve", "callback_data": "approve"}, {"text": "🔴 Reject", "callback_data": "reject"}],
+            [{"text": "🟢 Approve & Queue", "callback_data": "approve_queue"}, {"text": "🚨 Publish NOW", "callback_data": "approve_now"}],
+            [{"text": "🔴 Reject", "callback_data": "reject"}],
             [{"text": "✏️ Edit Headline", "callback_data": "edit_headline"}, {"text": "✏️ Edit Framing", "callback_data": "edit_framing"}]
         ]
     }

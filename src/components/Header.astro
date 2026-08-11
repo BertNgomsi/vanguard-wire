@@ -3,12 +3,14 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header class="glass">
+<header class="solid">
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Wire Feed</HeaderLink>
-			<!-- Removed the boilerplate 'About' and 'Blog' to keep it focused -->
+			<HeaderLink href="/category/civil-rights">Civil Rights</HeaderLink>
+			<HeaderLink href="/category/extremism">Extremism</HeaderLink>
+			<HeaderLink href="/category/accountability">Accountability</HeaderLink>
 		</div>
 	</nav>
 </header>
@@ -16,7 +18,8 @@ import { SITE_TITLE } from '../consts';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: var(--bg-glass);
+		background: #000000;
+		border-bottom: 4px solid var(--accent-yellow);
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -49,12 +52,15 @@ import { SITE_TITLE } from '../consts';
 		color: var(--text-secondary);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
-		font-weight: 600;
+		font-family: 'Anton', sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-size: 1.1rem;
 	}
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent-yellow);
-		color: var(--text-primary);
+		color: var(--accent-yellow);
 	}
 	nav a:hover {
 		color: var(--text-primary);

@@ -16,11 +16,11 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 		<BaseHead title={title} description={description || title} />
 		<style>
 			article {
-				background: var(--bg-secondary);
-				border: 1px solid var(--border-color);
+				background: var(--bg-primary);
+				border: 2px solid var(--border-color);
 				border-radius: var(--radius);
 				overflow: hidden;
-				box-shadow: var(--shadow-md);
+				box-shadow: none;
 			}
 			.hero-image {
 				width: 100%;
@@ -42,7 +42,11 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 			}
 			.title h1 {
 				margin: 0 0 1rem 0;
-				font-size: 2.5rem;
+				font-size: 3rem;
+				line-height: 1;
+				font-family: 'Anton', sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.02em;
 			}
 			.meta-bar {
 				display: flex;
@@ -54,6 +58,19 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 			.date {
 				color: var(--text-muted);
 				font-size: 0.875rem;
+				font-family: 'Anton', sans-serif;
+				letter-spacing: 0.05em;
+			}
+			.docket-info {
+				font-family: 'Anton', sans-serif;
+				text-transform: uppercase;
+				color: var(--text-secondary);
+				border-bottom: 2px solid var(--border-color);
+				padding-bottom: 1rem;
+				margin-bottom: 2rem;
+				display: flex;
+				justify-content: space-between;
+				font-size: 0.9rem;
 			}
 			.source-action {
 				margin: 2rem 0;
@@ -81,9 +98,13 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 					</div>
 				)}
 				<div class="prose">
+					<div class="docket-info">
+						<span>RECORD ID: {title.replace(/\s+/g, '-').substring(0,10).toUpperCase()}-{pubDate.getFullYear()}</span>
+						<span>STATUS: PUBLIC RECORD</span>
+					</div>
 					<div class="title">
 						<div class="meta-bar">
-							{category && <span class="badge red">{category}</span>}
+							{category && <span class="badge">{category}</span>}
 							<span class="date"><FormattedDate date={pubDate} /></span>
 						</div>
 						<h1>{title}</h1>
