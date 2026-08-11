@@ -99,13 +99,14 @@ def send_to_telegram(draft):
     text += f"Category: [{draft.get('category', '?')}]\n"
     text += f"Headline: {draft.get('headline', '?')}\n\n"
     text += f"Framing: {draft.get('framing_lead', '?')}\n\n"
-    text += f"Quote: \"{draft.get('blockquote', '?')}\" — {draft.get('source_name', '?')}"
+    text += f"Quote: \"{draft.get('blockquote', '?')}\" — {draft.get('source_name', '?')}\n"
+    text += f"URL: {draft.get('source_url', '')}"
 
     # Inline keyboard for 1-click approval
     reply_markup = {
         "inline_keyboard": [[
-            {"text": "🟢 Approve", "callback_data": f"approve|{draft.get('source_url', '')}"},
-            {"text": "🔴 Reject", "callback_data": f"reject|{draft.get('source_url', '')}"}
+            {"text": "🟢 Approve", "callback_data": "approve"},
+            {"text": "🔴 Reject", "callback_data": "reject"}
         ]]
     }
 
@@ -117,7 +118,8 @@ def send_to_telegram(draft):
     }
 
     try:
-        requests.post(url, json=payload)
+        response = requests.post(url, json=payload)
+        response.raise_for_status()
         print("Successfully sent draft to Telegram.")
     except Exception as e:
         print(f"Error sending to Telegram: {e}")

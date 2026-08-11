@@ -87,9 +87,9 @@ def telegram_webhook():
         message = query.get('message', {})
         text = message.get('text', '')
         
-        # Format of callback data: "approve|http://source.url" or "reject|http://..."
-        if data.startswith('approve|'):
-            source_url = data.split('|', 1)[1]
+        # Format of callback data: "approve" or "reject"
+        if data == 'approve':
+            source_url = re.search(r'\nURL: (.*)$', text).group(1).strip()
             print(f"Approved article from: {source_url}")
             
             # Very basic extraction from the Telegram message text
@@ -99,7 +99,7 @@ def telegram_webhook():
                 category = re.search(r'Category: \[(.*?)\]', text).group(1)
                 headline = re.search(r'Headline: (.*?)\n', text).group(1)
                 framing = re.search(r'Framing: (.*?)\n\n', text, re.DOTALL).group(1)
-                quote_raw = re.search(r'Quote: "(.*?)" — (.*)', text, re.DOTALL)
+                quote_raw = re.search(r'Quote: "(.*?)" — (.*?)\nURL:', text, re.DOTALL)
                 quote = quote_raw.group(1)
                 source_name = quote_raw.group(2)
                 
