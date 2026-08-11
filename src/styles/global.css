@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap');
 
 :root {
-	--bg-primary: #000000;
-	--bg-secondary: #111111;
-	--bg-glass: rgba(0, 0, 0, 0.85);
+	--bg-primary: #ffffff;
+	--bg-secondary: #f4f4f5;
+	--bg-glass: rgba(255, 255, 255, 0.85);
 	
-	--text-primary: #f8fafc;
-	--text-secondary: #94a3b8;
-	--text-muted: #64748b;
+	--text-primary: #09090b;
+	--text-secondary: #3f3f46;
+	--text-muted: #71717a;
 	
 	--accent-yellow: #FFFF00;
 	--accent-yellow-hover: #eab308;
 	
-	--border-color: #262626;
-	--border-glass: rgba(255, 255, 255, 0.1);
+	--border-color: #e4e4e7;
+	--border-glass: rgba(0, 0, 0, 0.1);
 	
 	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -69,7 +69,7 @@ a {
 }
 
 a:hover {
-	color: var(--text-primary);
+	color: #000000; /* Use hard black for links on hover over yellow */
 }
 
 p {
@@ -109,7 +109,7 @@ blockquote::before {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(255, 255, 0, 0.05); /* Subtle yellow highlight over the quote background */
+	background: rgba(255, 255, 0, 0.1); /* Slightly stronger yellow tint for light mode */
 	pointer-events: none;
 }
 
@@ -170,8 +170,8 @@ img {
 }
 
 .btn-primary:hover {
-	background: var(--text-primary);
-	color: #000;
+	background: #000000;
+	color: #ffffff;
 	transform: translateY(-2px);
 	box-shadow: var(--shadow-glow);
 }
