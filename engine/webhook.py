@@ -138,6 +138,72 @@ def telegram_webhook():
                 })
                 
             return jsonify({"ok": True})
+            
+        elif data.startswith('edit_'):
+            field = data.split('_')[1]
+            if query_id:
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
+                
+            if chat_id and message_id:
+                # Prompt the user for the new text
+                prompt_text = f"✏️ Please reply to this message with the new {field}.\n\n[Action: edit_{field}]\n[Context ID: {message_id}]\n---\n{text}"
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={
+                    "chat_id": chat_id,
+                    "text": prompt_text,
+                    "reply_markup": {"force_reply": True, "selective": True}
+                })
+            return jsonify({"ok": True})
+
+    elif 'message' in update and 'reply_to_message' in update['message']:
+        message = update['message']
+        reply = message['reply_to_message']
+        text = message.get('text', '')
+        reply_text = reply.get('text', '')
+        chat_id = message.get('chat', {}).get('id')
+        
+        # Check if this is a reply to an edit prompt
+        if "[Action: edit_" in reply_text and "[Context ID:" in reply_text:
+            try:
+                field = re.search(r'\[Action: edit_(.*?)\]', reply_text).group(1)
+                original_msg_id_match = re.search(r'\[Context ID: (\d+)\]', reply_text)
+                if original_msg_id_match:
+                    original_msg_id = int(original_msg_id_match.group(1))
+                    
+                    # Extract original draft text
+                    original_draft = reply_text.split('---\n', 1)[1] if '---\n' in reply_text else ''
+                    
+                    # Perform replacement
+                    new_draft = original_draft
+                    if field == 'headline':
+                        new_draft = re.sub(r'Headline: (.*?)\n', f'Headline: {text}\n', original_draft)
+                    elif field == 'framing':
+                        new_draft = re.sub(r'Framing: (.*?)\n\n', f'Framing: {text}\n\n', original_draft, flags=re.DOTALL)
+                        
+                    # Send updated text to Telegram
+                    reply_markup = {
+                        "inline_keyboard": [
+                            [{"text": "🟢 Approve", "callback_data": "approve"}, {"text": "🔴 Reject", "callback_data": "reject"}],
+                            [{"text": "✏️ Edit Headline", "callback_data": "edit_headline"}, {"text": "✏️ Edit Framing", "callback_data": "edit_framing"}]
+                        ]
+                    }
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+                        "chat_id": chat_id,
+                        "message_id": original_msg_id,
+                        "text": new_draft,
+                        "reply_markup": reply_markup
+                    })
+                    
+                    # Delete prompt and reply messages
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/deleteMessage", json={
+                        "chat_id": chat_id,
+                        "message_id": reply['message_id']
+                    })
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/deleteMessage", json={
+                        "chat_id": chat_id,
+                        "message_id": message['message_id']
+                    })
+            except Exception as e:
+                print(f"Error handling edit reply: {e}")
 
     return jsonify({"ok": True})
 
