@@ -32,6 +32,9 @@ def create_markdown_post(headline, framing, quote, source_name, source_url, cate
     
     filename = f"{slug}.md"
     
+    import random
+    image_num = random.randint(1, 5)
+    
     # Astro Frontmatter
     md_content = f"""---
 title: "{headline}"
@@ -39,6 +42,7 @@ pubDate: {timestamp}
 category: "{category}"
 source: "{source_name}"
 sourceUrl: "{source_url}"
+heroImage: "../../assets/blog-placeholder-{image_num}.jpg"
 ---
 
 {framing}
