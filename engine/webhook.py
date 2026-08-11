@@ -87,6 +87,8 @@ def telegram_webhook():
         data = query.get('data', '')
         message = query.get('message', {})
         text = message.get('text', '')
+        chat_id = message.get('chat', {}).get('id')
+        message_id = message.get('message_id')
         
         # Format of callback data: "approve" or "reject"
         if data == 'approve':
@@ -110,6 +112,14 @@ def telegram_webhook():
                 if query_id:
                     requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
                 
+                if chat_id and message_id:
+                    new_text = f"✅ [APPROVED]\n\n{text}"
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+                        "chat_id": chat_id,
+                        "message_id": message_id,
+                        "text": new_text
+                    })
+                
                 return jsonify({"ok": True})
             except Exception as e:
                 print(f"Error parsing approved message: {e}")
@@ -118,6 +128,15 @@ def telegram_webhook():
             print("Article rejected.")
             if query_id:
                 requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
+                
+            if chat_id and message_id:
+                new_text = f"❌ [REJECTED]\n\n{text}"
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+                    "chat_id": chat_id,
+                    "message_id": message_id,
+                    "text": new_text
+                })
+                
             return jsonify({"ok": True})
 
     return jsonify({"ok": True})
