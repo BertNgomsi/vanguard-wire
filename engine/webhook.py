@@ -19,19 +19,18 @@ client = None
 if GEMINI_API_KEY:
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-# Astro content directory
-ASTRO_CONTENT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src', 'content', 'blog'))
+import base64
 
 def create_markdown_post(headline, framing, quote, source_name, source_url, category):
-    """Generates an Astro-compatible Markdown file for the approved post."""
-    if not os.path.exists(ASTRO_CONTENT_DIR):
-        os.makedirs(ASTRO_CONTENT_DIR, exist_ok=True)
+    """Generates an Astro-compatible Markdown file and pushes it to GitHub via API."""
+    if not GITHUB_TOKEN:
+        print("ERROR: GITHUB_TOKEN is missing. Cannot push to GitHub.")
+        return None
         
     slug = re.sub(r'[^a-z0-9]+', '-', headline.lower()).strip('-')
     timestamp = datetime.now().isoformat()
     
     filename = f"{slug}.md"
-    filepath = os.path.join(ASTRO_CONTENT_DIR, filename)
     
     # Astro Frontmatter
     md_content = f"""---
@@ -49,11 +48,33 @@ sourceUrl: "{source_url}"
 > — [{source_name}]({source_url})
 """
     
-    with open(filepath, 'w') as f:
-        f.write(md_content)
+    # Push to GitHub API
+    repo_owner = "BertNgomsi"
+    repo_name = "vanguard-wire"
+    file_path = f"src/content/blog/{filename}"
+    api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}"
     
-    print(f"Created new post: {filepath}")
-    return filepath
+    headers = {
+        "Authorization": f"Bearer {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    
+    encoded_content = base64.b64encode(md_content.encode('utf-8')).decode('utf-8')
+    
+    payload = {
+        "message": f"Auto-publish approved article: {headline}",
+        "content": encoded_content
+    }
+    
+    response = requests.put(api_url, headers=headers, json=payload)
+    
+    if response.status_code in [200, 201]:
+        print(f"Successfully pushed {filename} to GitHub!")
+        return file_path
+    else:
+        print(f"Failed to push to GitHub. Status: {response.status_code}")
+        print(response.json())
+        return None
 
 @app.route(f'/webhook/{TELEGRAM_BOT_TOKEN}', methods=['POST'])
 def telegram_webhook():
