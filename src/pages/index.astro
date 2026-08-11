@@ -6,9 +6,17 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const rawPosts = await getCollection('blog');
+const posts = rawPosts.map((post) => {
+	let preview = post.data.description;
+	if (!preview && post.body) {
+		preview = post.body.replace(/^#+.*$/gm, '').replace(/[*_>`\[\]]/g, '').trim().split('\n').filter(line => line.trim().length > 0)[0];
+		if (preview && preview.length > 160) {
+			preview = preview.substring(0, 160) + '...';
+		}
+	}
+	return { ...post, preview };
+}).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
@@ -126,7 +134,7 @@ const posts = (await getCollection('blog')).sort(
 										<span class="date"><FormattedDate date={post.data.pubDate} /></span>
 									</div>
 									<h3 class="title">{post.data.title}</h3>
-									{post.data.description && <p class="description">{post.data.description}</p>}
+									{post.preview && <p class="description">{post.preview}</p>}
 									{post.data.source && <div class="source">{post.data.source}</div>}
 								</a>
 							</li>
