@@ -21,7 +21,7 @@ if GEMINI_API_KEY:
 
 import base64
 
-def create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date=None):
+def create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date=None, tip_cta=""):
     """Generates an Astro-compatible Markdown file and pushes it to GitHub via API."""
     if not GITHUB_TOKEN:
         print("ERROR: GITHUB_TOKEN is missing. Cannot push to GitHub.")
@@ -42,6 +42,7 @@ pubDate: {timestamp}
 category: "{category}"
 source: "{source_name}"
 sourceUrl: "{source_url}"
+tipCta: "{tip_cta}"
 heroImage: "../../assets/blog-placeholder-{image_num}.jpg"
 ---
 
@@ -161,9 +162,10 @@ def telegram_webhook():
                 category = re.search(r'Category: \[(.*?)\]', text).group(1)
                 headline = re.search(r'Headline: (.*?)\n', text).group(1)
                 framing = re.search(r'Framing: (.*?)\n\n', text, re.DOTALL).group(1)
-                quote_raw = re.search(r'Quote: "(.*?)" — (.*?)\nURL:', text, re.DOTALL)
+                quote_raw = re.search(r'Quote: "(.*?)" — (.*?)\nTip CTA: (.*?)\nURL:', text, re.DOTALL)
                 quote = quote_raw.group(1)
                 source_name = quote_raw.group(2)
+                tip_cta = quote_raw.group(3).strip() if len(quote_raw.groups()) > 2 else ""
                 
                 pub_date = None
                 status_msg = "✅ [PUBLISHED NOW]"
@@ -171,7 +173,7 @@ def telegram_webhook():
                     pub_date = get_next_queue_slot()
                     status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
                 
-                create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date)
+                create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date, tip_cta)
                 
                 # Acknowledge the callback so the button stops loading
                 if query_id:

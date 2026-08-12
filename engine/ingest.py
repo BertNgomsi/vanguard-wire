@@ -43,13 +43,15 @@ You are the senior political editor for a rapid-response Black progressive news 
   - "Anti-Black / Conservative Hypocrisy Tracker"
   - "Black Pop Culture & Sports Media Slant"
   - "The Watercooler / The Front Porch"
+6. TIP CTA: Generate a custom, emotional 10-15 word call-to-action for a donation Tip Jar, based specifically on the article's topic. (e.g. "Help us keep exposing corporate greed. Chip in $5")
 Output STRICT JSON exactly like this:
 {
   "relevance_score": 85,
   "headline": "Example Headline",
   "framing_lead": "Example lead...",
   "blockquote": "Exact quote from text...",
-  "category": "Civil Rights, Voting & Legal Tracker"
+  "category": "Civil Rights, Voting & Legal Tracker",
+  "tip_cta": "Help us keep holding them accountable. Chip in $5."
 }
 """
 
@@ -108,6 +110,7 @@ def send_to_telegram(draft):
     text += f"Headline: {draft.get('headline', '?')}\n\n"
     text += f"Framing: {draft.get('framing_lead', '?')}\n\n"
     text += f"Quote: \"{draft.get('blockquote', '?')}\" — {draft.get('source_name', '?')}\n"
+    text += f"Tip CTA: {draft.get('tip_cta', '?')}\n"
     text += f"URL: {draft.get('source_url', '')}"
 
     # Inline keyboard for 1-click approval
@@ -133,9 +136,31 @@ def send_to_telegram(draft):
     except Exception as e:
         print(f"Error sending to Telegram: {e}")
 
+def send_summary_to_telegram(scanned, selected):
+    """Send a final summary of the ingestion run to Telegram."""
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        return
+
+    text = f"✅ *Hourly Ingestion Complete*\n\nScanned: {scanned} articles\nSelected: {selected} articles."
+    
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": text,
+        "parse_mode": "Markdown"
+    }
+
+    try:
+        requests.post(url, json=payload)
+    except Exception as e:
+        print(f"Error sending summary to Telegram: {e}")
+
 def main():
     print("Starting Antigravity Ingestion Cycle...")
     articles = fetch_feeds()
+    
+    scanned_count = len(articles)
+    selected_count = 0
     
     for article in articles:
         print(f"Processing: {article['title']}")
@@ -144,10 +169,13 @@ def main():
         if draft and draft.get('relevance_score', 0) >= 65:
             print(f"-> Selected: Score {draft['relevance_score']}")
             send_to_telegram(draft)
+            selected_count += 1
             # Sleep briefly to avoid rate limits
             time.sleep(2)
         else:
             print("-> Rejected or low relevance.")
+            
+    send_summary_to_telegram(scanned_count, selected_count)
 
 if __name__ == "__main__":
     main()
