@@ -15,7 +15,7 @@ The Vanguard Wire is a fully autonomous, AI-powered progressive news wire and cu
 ## 3. The Automation Pipeline (End-to-End)
 
 ### A. Ingestion (`engine/ingest.py`)
-*   **Trigger:** Runs hourly on the DigitalOcean server via a Linux `cron` job.
+*   **Trigger:** Runs hourly via a GitHub Actions workflow (`.github/workflows/ingest.yml`).
 *   **Process:** 
     1. Scrapes progressive RSS feeds defined in `engine/feeds.json`.
     2. Sends the article to Gemini with a highly specific system prompt (instructing it to adopt an irreverent, sarcastic, vigilant watchdog persona).

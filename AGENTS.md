@@ -81,7 +81,7 @@ If `webhook.py` is modified, the production systemd service must be restarted (`
 ## Backend Server & Webhook Architecture
 The project includes a Python backend (located in `engine/`) that acts as an RSS scraper and Telegram webhook server.
 - **Server:** Runs on an Ubuntu VPS.
-- **Ingestion:** `ingest.py` is scheduled via an hourly cron job (`0 * * * *`). It scrapes RSS feeds, passes them to Gemini for summarization, and sends draft alerts to a Telegram chat with inline Approve/Reject buttons.
+- **Ingestion:** `ingest.py` is executed hourly via a GitHub Actions workflow (`.github/workflows/ingest.yml`). It scrapes RSS feeds, passes them to Gemini for summarization, and sends draft alerts to a Telegram chat with inline Approve/Reject buttons. At the end of every run, it sends a final status summary to Telegram, and the workflow is configured to send failure alerts if it crashes.
 - **Webhook Service:** `webhook.py` runs as a systemd background service (`vanguard-webhook.service`) on port `5001`. It receives callback queries from Telegram.
 - **Telegram UX Edge Cases:** Clicking Approve/Reject in Telegram sends an immediate `answerCallbackQuery` (to stop the button loading animation) and an `editMessageText` request to remove the buttons and mark the message as `✅ [APPROVED]` or `❌ [REJECTED]`. This prevents duplicate approvals.
 - **GitHub Integration:** Approved articles are pushed directly to the `BertNgomsi/vanguard-wire` GitHub repository under `src/content/blog/` via the GitHub API.
