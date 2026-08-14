@@ -113,3 +113,12 @@ The Vanguard Wire relies on automated social media distribution to amplify its j
 - **Platforms to Avoid for Link Automation:** Instagram (Feed) and TikTok/YouTube Shorts, as they do not support native clickable links in captions for simple text/link news drops.
 - **Automation Pipeline:** The CMS/publishing engine (via RSS feed, webhooks, or native plugins) is connected to an automation tool (e.g., Zapier, Make, Buffer) to automatically format and push the article title, a short summary, and the URL to the target platforms immediately upon publication.
 - **Social Brand Voice:** Authoritative, forward-looking, sharp, and reliable. The social copy emphasizes cutting through the noise and providing critical context.
+
+## Design & UI/UX Guidelines
+The Vanguard Wire employs a raw, high-contrast visual identity that prioritizes reading experience, SEO, and monetization. Future design changes should adhere to these principles:
+- **Above the Fold Priority:** Article headlines and meta information (date/category) must sit completely above the hero image so they render immediately without scrolling.
+- **Typography:** The layout uses **Oswald** (uppercase, bold) for UI elements and headers to create a hard-hitting, "wire" feel, paired strictly with **Inter** for body copy to ensure high readability.
+- **Subtle Attribution:** Outbound links to original sources should be handled via subtle, inline text attribution (e.g., "The *Washington Post* reports:") rather than massive outbound buttons, mimicking trusted progressive curation models.
+- **Sticky Monetization:** Affiliate widgets in the sidebar (`<aside>`) should utilize `position: sticky` so they remain visible as the user scrolls through long articles on desktop.
+- **Micro-interactions:** Interactive elements (hero images, buttons) should feature premium hover states (like subtle zoom transforms and box-shadow glows) to make the site feel dynamic.
+- **Performance/LCP:** Above-the-fold hero images must always be optimized with `loading="eager"` and `fetchpriority="high"`.
