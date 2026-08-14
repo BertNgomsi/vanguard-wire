@@ -116,6 +116,8 @@ The Vanguard Wire relies on automated social media distribution to amplify its j
 
 ## Design & UI/UX Guidelines
 The Vanguard Wire employs a raw, high-contrast visual identity that prioritizes reading experience, SEO, and monetization. Future design changes should adhere to these principles:
+- **Blog Roll Feed Layout:** The homepage feed uses a single-column, high-density layout (minimal padding, no card borders) rather than a grid, maximizing visual impact and content density while minimizing scroll fatigue.
+- **Consistent Image Sizing:** All feed images use strict CSS aspect ratios (`aspect-ratio: 16/9; object-fit: cover;`) to ensure perfect visual consistency regardless of the original photo dimensions.
 - **Above the Fold Priority:** Article headlines and meta information (date/category) must sit completely above the hero image so they render immediately without scrolling.
 - **Typography:** The layout uses **Oswald** (uppercase, bold) for UI elements and headers to create a hard-hitting, "wire" feel, paired strictly with **Inter** for body copy to ensure high readability.
 - **Subtle Attribution:** Outbound links to original sources should be handled via subtle, inline text attribution (e.g., "The *Washington Post* reports:") rather than massive outbound buttons, mimicking trusted progressive curation models.
