@@ -81,6 +81,7 @@ p {
 	margin-bottom: 1.8em;
 	font-size: 1.125rem;
 	line-height: 1.8;
+	font-family: 'Inter', sans-serif;
 }
 
 hr {
@@ -172,8 +173,8 @@ img {
 .btn-primary:hover {
 	background: #000000;
 	color: #ffffff;
-	transform: translateY(-2px);
-	box-shadow: var(--shadow-glow);
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-glow), 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 720px) {

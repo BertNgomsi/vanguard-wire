@@ -26,12 +26,17 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 			}
 			.hero-image {
 				width: 100%;
+				overflow: hidden;
 			}
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
 				width: 100%;
 				border-radius: 0;
+				transition: transform 0.3s ease;
+			}
+			.hero-image:hover img {
+				transform: scale(1.02);
 			}
 			.prose {
 				padding: 2.5rem 3rem;
@@ -63,21 +68,28 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 				font-family: 'Oswald', sans-serif;
 				letter-spacing: 0.05em;
 			}
-			.docket-info {
-				font-family: 'Oswald', sans-serif;
-				text-transform: uppercase;
-				color: var(--text-secondary);
-				border-bottom: 2px solid var(--border-color);
-				padding-bottom: 1rem;
-				margin-bottom: 2rem;
-				display: flex;
-				justify-content: space-between;
-				font-size: 0.9rem;
+			.article-header {
+				padding: 2.5rem 3rem 1.5rem 3rem;
 			}
-			.source-action {
-				margin: 2rem 0;
-				display: flex;
-				justify-content: flex-start;
+			.sidebar {
+				position: sticky;
+				top: 2rem;
+				height: fit-content;
+			}
+			.source-attribution {
+				font-size: 1.25rem;
+				margin-bottom: 1rem;
+				color: var(--text-primary);
+			}
+			.source-attribution a {
+				color: var(--text-primary);
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 4px;
+				transition: color 0.2s ease;
+			}
+			.source-attribution a:hover {
+				color: #555;
 			}
 			.content-wrapper {
 				display: grid;
@@ -91,7 +103,7 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 				}
 			}
 			@media (max-width: 720px) {
-				.prose {
+				.article-header, .prose {
 					padding: 1.5rem;
 				}
 				.title h1 {
@@ -106,47 +118,31 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 		<main>
 			<div class="content-wrapper">
 				<article>
-					{heroImage && (
-					<div class="hero-image">
-						<Image width={1020} height={510} src={heroImage} alt="" />
-					</div>
-				)}
-				<div class="prose">
-					<div class="docket-info">
-						<span>RECORD ID: {title.replace(/\s+/g, '-').substring(0,10).toUpperCase()}-{pubDate.getFullYear()}</span>
-						<span>STATUS: PUBLIC RECORD</span>
-					</div>
-					<div class="title">
+					<div class="article-header">
 						<div class="meta-bar">
 							{category && <span class="badge">{category}</span>}
 							<span class="date"><FormattedDate date={pubDate} /></span>
 						</div>
-						<h1>{title}</h1>
+						<div class="title">
+							<h1>{title}</h1>
+						</div>
 					</div>
-					
-					{sourceUrl && (
-						<div class="source-action">
-							<a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
-								Read Full Source on {source || "Original Site"} &rarr;
-							</a>
-						</div>
+
+					{heroImage && (
+					<div class="hero-image">
+						<Image width={1020} height={510} src={heroImage} alt={title} loading="eager" fetchpriority="high" />
+					</div>
 					)}
-					
-					<hr />
-					
-					<slot />
-					
-					<TipJar tipCta={tipCta} />
-					
-					{sourceUrl && (
-						<div style="margin-top: 3rem; text-align: center;">
-							<hr />
-							<a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
-								Read Full Source on {source || "Original Site"} &rarr;
-							</a>
-						</div>
-					)}
-				</div>
+
+					<div class="prose">
+						{sourceUrl && (
+							<p class="source-attribution">The <em>{source || "Original Site"}</em> <a href={sourceUrl} target="_blank" rel="noopener noreferrer">reports</a>:</p>
+						)}
+						
+						<slot />
+						
+						<TipJar tipCta={tipCta} />
+					</div>
 				</article>
 				<aside class="sidebar">
 					<SidebarAffiliate category={category} />

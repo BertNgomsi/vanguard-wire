@@ -1,0 +1,68 @@
+---
+interface Props {
+  tipCta?: string;
+}
+const { tipCta = "Help us keep exposing corporate greed. Chip in $5." } = Astro.props;
+---
+<div class="tip-jar">
+  <div class="tip-content">
+    <p class="tip-text">{tipCta}</p>
+    <a href="#" class="btn-donate">DONATE</a>
+  </div>
+</div>
+
+<style>
+  .tip-jar {
+    border: 4px solid var(--text-primary);
+    background-color: var(--bg-primary);
+    padding: 1.5rem;
+    margin: 3rem 0;
+    box-shadow: 6px 6px 0px 0px var(--text-primary); /* Brutalist shadow */
+  }
+  .tip-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .tip-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .btn-donate {
+    display: inline-block;
+    background-color: var(--accent-yellow);
+    color: var(--text-primary);
+    border: 3px solid var(--text-primary);
+    padding: 0.75rem 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0px 0px var(--text-primary);
+  }
+  .btn-donate:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px var(--text-primary);
+  }
+  .btn-donate:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--text-primary);
+  }
+  
+  @media (max-width: 600px) {
+    .tip-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
+</style>
