@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import SidebarAffiliate from '../components/SidebarAffiliate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const rawPosts = await getCollection('blog');
@@ -12,8 +13,8 @@ const posts = rawPosts.map((post) => {
 	let preview = post.data.description;
 	if (!preview && post.body) {
 		preview = post.body.replace(/^#+.*$/gm, '').replace(/[*_>`\[\]]/g, '').trim().split('\n').filter(line => line.trim().length > 0)[0];
-		if (preview && preview.length > 160) {
-			preview = preview.substring(0, 160) + '...';
+		if (preview && preview.length > 250) {
+			preview = preview.substring(0, 250) + '...';
 		}
 	}
 	return { ...post, preview };
@@ -26,124 +27,141 @@ const posts = rawPosts.map((post) => {
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			.hero-tagline {
-				margin-bottom: 1.5rem;
+				margin-bottom: 2rem;
 				border-bottom: 2px solid var(--border-color);
 				padding-bottom: 1.5rem;
+				text-align: center;
 			}
 			.hero-tagline h1 {
-				font-size: 3.5rem;
-				line-height: 1.4;
+				font-size: 3rem;
+				line-height: 1.2;
 				margin-bottom: 0.5rem;
+				font-family: 'Oswald', sans-serif;
+				text-transform: uppercase;
 			}
 			.highlight {
 				background-color: var(--accent-yellow);
 				color: #000;
 				padding: 0 0.5rem;
-				box-decoration-break: clone;
-				-webkit-box-decoration-break: clone;
 			}
 			.hero-tagline p {
-				font-size: 1.25rem;
+				font-size: 1.2rem;
 				color: var(--text-secondary);
-				max-width: 600px;
+				margin: 0 auto;
 			}
-			.feed {
+
+			.content-wrapper {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-				gap: 1.5rem;
-				list-style-type: none;
-				margin: 0;
+				grid-template-columns: 1fr 300px;
+				gap: 3rem;
+				align-items: start;
+			}
+			
+			@media (max-width: 960px) {
+				.content-wrapper { grid-template-columns: 1fr; }
+			}
+			
+			/* New Feed Styles */
+			.feed {
+				list-style: none;
 				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 2.5rem;
 			}
 			.feed-item {
-				background: var(--bg-primary);
-				border: 2px solid var(--border-color);
-				border-radius: var(--radius);
-				padding: 1.25rem;
-				transition: all 0.2s ease;
-				position: relative;
+				padding-bottom: 2.5rem;
+				border-bottom: 2px solid var(--border-color);
 			}
-			.feed-item:hover {
-				transform: translate(4px, -4px);
-				box-shadow: -4px 4px 0 var(--accent-yellow);
-				border-color: var(--accent-yellow);
+			.feed-item:last-child {
+				border-bottom: none;
 			}
-			.feed-item a {
+			
+			.feed-title {
+				font-family: 'Oswald', sans-serif;
+				font-size: 2.5rem;
+				font-weight: 700;
+				line-height: 1.15;
+				margin: 0 0 0.75rem 0;
+				text-transform: uppercase;
+			}
+			.feed-title a {
+				color: var(--text-primary);
 				text-decoration: none;
-				color: inherit;
+				transition: color 0.2s;
+			}
+			.feed-title a:hover {
+				color: #555;
+			}
+			
+			.meta-bar {
 				display: flex;
-				justify-content: space-between;
-				align-items: flex-start;
+				align-items: center;
+				flex-wrap: wrap;
 				gap: 1rem;
+				margin-bottom: 1rem;
 			}
-			.feed-content {
-				flex: 1;
-				min-width: 0;
-			}
-			.feed-thumbnail {
-				width: 120px;
-				height: 120px;
-				flex-shrink: 0;
-				border-radius: 4px;
+			
+			.feed-image {
+				width: 100%;
+				margin-bottom: 1rem;
 				overflow: hidden;
+				display: block;
+				aspect-ratio: 16 / 9;
+				background-color: var(--border-color);
 			}
-			.feed-thumbnail img {
+			.feed-image img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 				display: block;
+				transition: transform 0.3s ease;
 			}
-			@media (max-width: 640px) {
-				.feed-item a {
-					flex-direction: column-reverse;
-					gap: 1rem;
-				}
-				.feed-thumbnail {
-					width: 100%;
-					height: 200px;
-				}
+			.feed-image:hover img {
+				transform: scale(1.02);
 			}
-			.meta {
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-				margin-bottom: 0.75rem;
-				font-size: 0.875rem;
-			}
-			.date {
-				color: var(--text-muted);
-				font-family: 'Oswald', sans-serif;
-				letter-spacing: 0.05em;
-			}
-			.title {
-				margin: 0 0 0.5rem 0;
+			
+			.feed-excerpt {
+				font-size: 1.15rem;
+				line-height: 1.7;
 				color: var(--text-primary);
-				font-size: 1.75rem;
-				line-height: 1.2;
-				transition: color 0.2s ease;
-			}
-			.feed-item:hover .title {
-				text-decoration: underline;
-			}
-			.description {
-				color: var(--text-secondary);
-				font-size: 1.05rem;
-				line-height: 1.5;
 				margin-bottom: 1rem;
+				font-family: 'Inter', sans-serif;
 			}
-			.source {
-				font-weight: 600;
-				color: var(--text-secondary);
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
+			
+			.source-attribution {
+				font-weight: 500;
+			}
+			.source-attribution a {
+				color: var(--text-primary);
+				text-decoration: underline;
+				text-underline-offset: 4px;
+				text-decoration-thickness: 1px;
+			}
+			
+			.btn-read-more {
+				display: inline-block;
+				background-color: var(--text-primary);
+				color: #ffffff;
 				font-family: 'Oswald', sans-serif;
+				font-weight: 700;
+				font-size: 1rem;
 				text-transform: uppercase;
-				letter-spacing: 0.05em;
+				padding: 0.4rem 1.25rem;
+				text-decoration: none;
+				transition: all 0.2s;
+				box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.1);
 			}
-			.source::before {
-				content: "→";
-				color: var(--accent-yellow);
+			.btn-read-more:hover {
+				transform: translateY(-2px);
+				box-shadow: 4px 6px 0px 0px rgba(0,0,0,0.2);
+			}
+			
+			.sidebar { position: sticky; top: 2rem; }
+			
+			@media (max-width: 720px) {
+				.feed-title { font-size: 2rem; }
 			}
 		</style>
 	</head>
@@ -151,35 +169,46 @@ const posts = rawPosts.map((post) => {
 		<Header />
 		<main>
 			<section class="hero-tagline">
-				<h1><span class="highlight">UNCOMPROMISING</span><br />INQUIRY.</h1>
+				<h1><span class="highlight">UNCOMPROMISING</span> INQUIRY.</h1>
 				<p>The definitive digital ledger for Black progressive politics, civil rights, and accountability.</p>
 			</section>
-			<section>
-				<ul class="feed">
-					{
-						posts.map((post) => (
-							<li class="feed-item">
-								<a href={`/blog/${post.id}/`}>
-									<div class="feed-content">
-										<div class="meta">
-											{post.data.category && <span class="badge">{post.data.category}</span>}
-											<span class="date"><FormattedDate date={post.data.pubDate} /></span>
-										</div>
-										<h3 class="title">{post.data.title}</h3>
-										{post.preview && <p class="description">{post.preview}</p>}
-										{post.data.source && <div class="source">{post.data.source}</div>}
+
+			<div class="content-wrapper">
+				<div class="feed-container">
+					<ul class="feed">
+						{
+							posts.map((post) => (
+								<li class="feed-item">
+									<h2 class="feed-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+									<div class="meta-bar">
+										{post.data.category && <span class="badge">{post.data.category}</span>}
+										<span class="date"><FormattedDate date={post.data.pubDate} /></span>
 									</div>
+									
 									{post.data.heroImage && (
-										<div class="feed-thumbnail">
-											<Image src={post.data.heroImage} alt="" />
-										</div>
+										<a href={`/blog/${post.id}/`} class="feed-image">
+											<Image width={1020} height={510} src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+										</a>
 									)}
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+									
+									<div class="feed-excerpt">
+										{post.data.source && post.data.sourceUrl && (
+											<span class="source-attribution">The <em>{post.data.source}</em> <a href={post.data.sourceUrl} target="_blank" rel="noopener noreferrer">reports</a>:</span>
+										)}
+										{post.preview}
+									</div>
+									
+									<a href={`/blog/${post.id}/`} class="btn-read-more">Read More &raquo;</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				
+				<aside class="sidebar">
+					<SidebarAffiliate />
+				</aside>
+			</div>
 		</main>
 		<Footer />
 	</body>
