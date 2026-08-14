@@ -10,7 +10,7 @@ import SidebarAffiliate from '../components/SidebarAffiliate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, category, source, sourceUrl, pubDate, updatedDate, heroImage, tipCta } = Astro.props;
+const { title, description, category, source, sourceUrl, pubDate, updatedDate, heroImage, unsplashImage, imageCreditName, imageCreditUsername, tipCta } = Astro.props;
 ---
 
 <html lang="en">
@@ -37,6 +37,21 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 			}
 			.hero-image:hover img {
 				transform: scale(1.02);
+			}
+			.image-credit {
+				font-size: 0.75rem;
+				color: var(--text-muted);
+				text-align: right;
+				padding: 0.5rem 1rem;
+				margin: 0;
+				background: var(--bg-primary);
+			}
+			.image-credit a {
+				color: var(--text-muted);
+				text-decoration: underline;
+			}
+			.image-credit a:hover {
+				color: var(--text-primary);
 			}
 			.prose {
 				padding: 2.5rem 3rem;
@@ -128,9 +143,20 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 						</div>
 					</div>
 
-					{heroImage && (
+					{heroImage && !unsplashImage && (
 					<div class="hero-image">
 						<Image width={1020} height={510} src={heroImage} alt={title} loading="eager" fetchpriority="high" />
+					</div>
+					)}
+					
+					{unsplashImage && (
+					<div class="hero-image">
+						<img src={unsplashImage} alt={title} width="1020" height="510" loading="eager" fetchpriority="high" />
+						{imageCreditName && (
+						<p class="image-credit">
+							Photo by <a href={`https://unsplash.com/@${imageCreditUsername}?utm_source=vanguard_wire&utm_medium=referral`}>{imageCreditName}</a> on <a href="https://unsplash.com/?utm_source=vanguard_wire&utm_medium=referral">Unsplash</a>
+						</p>
+						)}
 					</div>
 					)}
 

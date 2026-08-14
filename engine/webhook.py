@@ -14,6 +14,7 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 
 client = None
 if GEMINI_API_KEY:
@@ -21,7 +22,7 @@ if GEMINI_API_KEY:
 
 import base64
 
-def create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date=None, tip_cta=""):
+def create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date=None, tip_cta="", unsplash_img=None, image_credit_name="", image_credit_username=""):
     """Generates an Astro-compatible Markdown file and pushes it to GitHub via API."""
     if not GITHUB_TOKEN:
         print("ERROR: GITHUB_TOKEN is missing. Cannot push to GitHub.")
@@ -32,8 +33,14 @@ def create_markdown_post(headline, framing, quote, source_name, source_url, cate
     
     filename = f"{slug}.md"
     
-    import random
-    image_num = random.randint(1, 5)
+    # Optional Unsplash data
+    unsplash_yaml = ""
+    if unsplash_img:
+        unsplash_yaml = f'\nunsplashImage: "{unsplash_img}"\nimageCreditName: "{image_credit_name}"\nimageCreditUsername: "{image_credit_username}"'
+    else:
+        import random
+        image_num = random.randint(1, 5)
+        unsplash_yaml = f'\nheroImage: "../../assets/blog-placeholder-{image_num}.jpg"'
     
     # Astro Frontmatter
     md_content = f"""---
@@ -42,8 +49,7 @@ pubDate: {timestamp}
 category: "{category}"
 source: "{source_name}"
 sourceUrl: "{source_url}"
-tipCta: "{tip_cta}"
-heroImage: "../../assets/blog-placeholder-{image_num}.jpg"
+tipCta: "{tip_cta}"{unsplash_yaml}
 ---
 
 {framing}
@@ -135,6 +141,64 @@ def get_next_queue_slot():
         json.dump({"last_queued_timestamp": next_slot_iso}, f)
         
     return next_slot_iso
+def get_unsplash_image(headline, category):
+    """Uses Gemini to generate a search query, searches Unsplash, and uses Gemini to pick the best image."""
+    if not UNSPLASH_ACCESS_KEY or not client:
+        return None, "", ""
+        
+    try:
+        # 1. Generate search query
+        prompt = f"Extract the main subject or noun from this headline and category to search an image library. Return ONLY a 1-3 word search query.\nHeadline: {headline}\nCategory: {category}"
+        query_response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
+        query = query_response.text.strip()
+        print(f"Generated Unsplash Query: {query}")
+        
+        # 2. Search Unsplash
+        headers = {"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"}
+        search_url = f"https://api.unsplash.com/search/photos?query={query}&per_page=10"
+        search_res = requests.get(search_url, headers=headers)
+        
+        if search_res.status_code != 200:
+            print(f"Unsplash API Error: {search_res.status_code}")
+            return None, "", ""
+            
+        results = search_res.json().get('results', [])
+        if not results:
+            print("No Unsplash results found.")
+            return None, "", ""
+            
+        # 3. Use Gemini Vision to pick the best image
+        image_urls = [r['urls']['regular'] for r in results[:5]]  # Send top 5 to Gemini
+        vision_prompt = "You are an editorial assistant. Review these image URLs. Select the most comical, satirical, or entertaining image that relates to the subject. Return ONLY the integer index (0-4) of the winning image."
+        vision_contents = [vision_prompt] + image_urls
+        
+        vision_response = client.models.generate_content(model='gemini-3.6-flash', contents=vision_contents)
+        try:
+            winner_idx = int(re.search(r'\d+', vision_response.text).group())
+            if winner_idx < 0 or winner_idx >= len(results):
+                winner_idx = 0
+        except Exception:
+            winner_idx = 0
+            
+        winner = results[winner_idx]
+        print(f"Selected Unsplash Image ID: {winner['id']}")
+        
+        # 4. Trigger Unsplash Download Endpoint
+        download_location = winner.get('links', {}).get('download_location')
+        if download_location:
+            requests.get(download_location, headers=headers)
+            
+        # 5. Extract Details for Hotlinking
+        raw_url = winner['urls']['raw']
+        hotlink_url = f"{raw_url}&w=1020&h=510&fit=crop"
+        
+        credit_name = winner['user']['name']
+        credit_username = winner['user']['username']
+        
+        return hotlink_url, credit_name, credit_username
+    except Exception as e:
+        print(f"Error fetching Unsplash image: {e}")
+        return None, "", ""
 
 @app.route(f'/webhook/{TELEGRAM_BOT_TOKEN}', methods=['POST'])
 def telegram_webhook():
@@ -173,7 +237,9 @@ def telegram_webhook():
                     pub_date = get_next_queue_slot()
                     status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
                 
-                create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date, tip_cta)
+                unsplash_img, credit_name, credit_username = get_unsplash_image(headline, category)
+                
+                create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date, tip_cta, unsplash_img, credit_name, credit_username)
                 
                 # Acknowledge the callback so the button stops loading
                 if query_id:
