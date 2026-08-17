@@ -49,6 +49,7 @@ class DraftResponse(BaseModel):
     headline: str
     framing_lead: str
     blockquote: str
+    kicker: str
     category: str
     tip_cta: str
 
@@ -128,7 +129,10 @@ def send_to_telegram(draft, draft_id):
     text += f"Headline: {draft.get('headline', '?')}\n\n"
     text += f"Framing: {draft.get('framing_lead', '?')}\n\n"
     text += f"Quote: \"{draft.get('blockquote', '?')}\" — {draft.get('source_name', '?')}\n"
-    text += f"Tip CTA: {draft.get('tip_cta', '?')}\n"
+    if draft.get('kicker'):
+        text += f"Kicker: {draft.get('kicker')}\n"
+    if draft.get('tip_cta'):
+        text += f"Tip CTA: {draft.get('tip_cta')}\n"
     text += f"URL: {draft.get('source_url', '')}"
 
     # Inline keyboard for 1-click approval

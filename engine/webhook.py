@@ -26,7 +26,7 @@ if GEMINI_API_KEY:
 
 db.init_db()
 
-def create_markdown_post(headline, framing, quote, source_name, source_url, category, pub_date=None, tip_cta="", unsplash_img=None, image_credit_name="", image_credit_username=""):
+def create_markdown_post(headline, framing, quote, kicker, source_name, source_url, category, pub_date=None, tip_cta="", unsplash_img=None, image_credit_name="", image_credit_username=""):
     """Generates an Astro-compatible Markdown file and pushes it to GitHub via API with retries."""
     if not GITHUB_TOKEN:
         print("ERROR: GITHUB_TOKEN is missing. Cannot push to GitHub.")
@@ -58,6 +58,8 @@ tipCta: "{tip_cta}"{unsplash_yaml}
 > {quote}
 > 
 > — [{source_name}]({source_url})
+
+{kicker}
 """
     
     repo_owner = "BertNgomsi"
@@ -227,7 +229,7 @@ def telegram_webhook():
                     db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
                 
                 file_path = create_markdown_post(
-                    draft['headline'], draft['framing_lead'], draft['blockquote'],
+                    draft['headline'], draft['framing_lead'], draft['blockquote'], draft.get('kicker', ''),
                     draft['source_name'], draft['source_url'], draft['category'],
                     pub_date, draft['tip_cta'], unsplash_img, credit_name, credit_username
                 )
@@ -241,6 +243,8 @@ def telegram_webhook():
                     new_text += f"Headline: {draft['headline']}\n\n"
                     new_text += f"Framing: {draft['framing_lead']}\n\n"
                     new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
+                    if draft.get('kicker'):
+                        new_text += f"Kicker: {draft['kicker']}\n"
                     new_text += f"URL: {draft['source_url']}"
                     requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
                         "chat_id": chat_id, "message_id": message_id, "text": new_text
@@ -282,17 +286,16 @@ def telegram_webhook():
                 category = re.search(r'Category: \[(.*?)\]', clean_text).group(1)
                 headline = re.search(r'Headline: (.*?)\n', clean_text).group(1)
                 framing = re.search(r'Framing: (.*?)\n\n', clean_text, re.DOTALL).group(1)
-                quote_raw = re.search(r'Quote: "(.*?)" — (.*?)\nTip CTA: (.*?)\nURL:', clean_text, re.DOTALL)
                 
-                if quote_raw:
-                    quote = quote_raw.group(1)
-                    source_name = quote_raw.group(2)
-                    tip_cta = quote_raw.group(3).strip() if len(quote_raw.groups()) > 2 else ""
-                else:
-                    quote_raw2 = re.search(r'Quote: "(.*?)" — (.*?)\nURL:', clean_text, re.DOTALL)
-                    quote = quote_raw2.group(1)
-                    source_name = quote_raw2.group(2)
-                    tip_cta = ""
+                quote_match = re.search(r'Quote: "(.*?)" — (.*?)\n', clean_text)
+                quote = quote_match.group(1) if quote_match else ""
+                source_name = quote_match.group(2) if quote_match else ""
+                
+                kicker_match = re.search(r'Kicker: (.*?)\n', clean_text)
+                kicker = kicker_match.group(1) if kicker_match else ""
+                
+                tip_cta_match = re.search(r'Tip CTA: (.*?)\n', clean_text)
+                tip_cta = tip_cta_match.group(1) if tip_cta_match else ""
                 
                 source_url = re.search(r'\nURL: (.*)$', clean_text).group(1).strip()
                 
@@ -301,6 +304,7 @@ def telegram_webhook():
                     "headline": headline,
                     "framing_lead": framing,
                     "blockquote": quote,
+                    "kicker": kicker,
                     "source_name": source_name,
                     "source_url": source_url,
                     "tip_cta": tip_cta,
@@ -314,6 +318,8 @@ def telegram_webhook():
                 new_text += f"Headline: {headline}\n\n"
                 new_text += f"Framing: {framing}\n\n"
                 new_text += f"Quote: \"{quote}\" — {source_name}\n"
+                if kicker:
+                    new_text += f"Kicker: {kicker}\n"
                 if tip_cta:
                     new_text += f"Tip CTA: {tip_cta}\n"
                 new_text += f"URL: {source_url}"
@@ -349,6 +355,8 @@ def telegram_webhook():
                     new_draft_text += f"Headline: {draft['headline']}\n\n"
                     new_draft_text += f"Framing: {draft['framing_lead']}\n\n"
                     new_draft_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
+                    if draft.get('kicker'):
+                        new_draft_text += f"Kicker: {draft['kicker']}\n"
                     if draft.get('tip_cta'):
                         new_draft_text += f"Tip CTA: {draft['tip_cta']}\n"
                     new_draft_text += f"URL: {draft['source_url']}"

@@ -19,6 +19,7 @@ def init_db():
             headline TEXT,
             framing_lead TEXT,
             blockquote TEXT,
+            kicker TEXT,
             source_name TEXT,
             source_url TEXT,
             tip_cta TEXT,
@@ -30,6 +31,11 @@ def init_db():
             image_credit_username TEXT
         )
     ''')
+    try:
+        c.execute('ALTER TABLE drafts ADD COLUMN kicker TEXT')
+    except sqlite3.OperationalError:
+        pass # Column already exists
+        
     conn.commit()
     conn.close()
 
@@ -38,14 +44,15 @@ def insert_draft(draft):
     c = conn.cursor()
     c.execute('''
         INSERT INTO drafts (
-            category, headline, framing_lead, blockquote, 
+            category, headline, framing_lead, blockquote, kicker,
             source_name, source_url, tip_cta, relevance_score
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', (
         draft.get('category'),
         draft.get('headline'),
         draft.get('framing_lead'),
         draft.get('blockquote'),
+        draft.get('kicker', ''),
         draft.get('source_name'),
         draft.get('source_url'),
         draft.get('tip_cta'),
