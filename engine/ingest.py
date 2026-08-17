@@ -4,7 +4,11 @@ import json
 import feedparser
 import requests
 from google import genai
+from google.genai import types
+from pydantic import BaseModel
 from dotenv import load_dotenv
+
+import db
 
 # Load environment variables
 load_dotenv()
@@ -12,6 +16,7 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+APIFY_API_TOKEN = os.getenv("APIFY_API_TOKEN")
 
 if not GEMINI_API_KEY:
     print("Warning: GEMINI_API_KEY is not set.")
@@ -30,46 +35,59 @@ except FileNotFoundError:
     print(f"Warning: {FEEDS_FILE} not found. No feeds loaded.")
     RSS_FEEDS = []
 
-SYSTEM_PROMPT = """
-You are the senior political editor for a rapid-response Black progressive news wire and cultural watchdog. Your tone is irreverent, sarcastic, vigilant, combative, and cynical. Analyze the input article and perform the following actions:
-1. RELEVANCE SCORE (0-100): Evaluate impact based on anti-Black political movements, civil rights battles, systemic hypocrisy, media bias, and Black culture. Reject if score < 65.
-2. HEADLINE: Draft a high-impact, active-voice, combative headline (4-8 words).
-3. FRAMING LEAD: Write a concise 30-50 word sarcastic or vigilant contextual paragraph explaining why this story matters to Black readers.
-4. PRIMARY BLOCKQUOTE: Extract the most defining and impactful verbatim quote (75-120 words) from the source text. This quote MUST directly justify, elaborate on, or provide the crucial context for the active-voice headline you generated in step 2.
-5. CATEGORY: Assign 1 primary category from the following exactly:
-  - "Anti-Black Racism & Extremism Watchdog"
-  - "Civil Rights, Voting & Legal Tracker"
-  - "Systemic Policy & Dogwhistle Watchdog"
-  - "Anti-Black / Conservative Hypocrisy Tracker"
-  - "Black Pop Culture & Sports Media Slant"
-  - "The Watercooler / The Front Porch"
-6. TIP CTA: Generate a custom, emotional 10-15 word call-to-action for a donation Tip Jar, based specifically on the article's topic. (e.g. "Help us keep exposing corporate greed. Chip in $5")
-Output STRICT JSON exactly like this:
-{
-  "relevance_score": 85,
-  "headline": "Example Headline",
-  "framing_lead": "Example lead...",
-  "blockquote": "Exact quote from text...",
-  "category": "Civil Rights, Voting & Legal Tracker",
-  "tip_cta": "Help us keep holding them accountable. Chip in $5."
-}
-"""
+# Load external rubric
+RUBRIC_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rubric.md")
+try:
+    with open(RUBRIC_FILE, "r") as f:
+        SYSTEM_PROMPT = f.read()
+except FileNotFoundError:
+    print(f"Warning: {RUBRIC_FILE} not found. Using default prompt.")
+    SYSTEM_PROMPT = "Evaluate relevance and extract key information."
+
+class DraftResponse(BaseModel):
+    relevance_score: int
+    headline: str
+    framing_lead: str
+    blockquote: str
+    category: str
+    tip_cta: str
 
 def fetch_feeds():
-    """Fetch and parse RSS feeds."""
+    """Fetch and parse RSS feeds and Apify data."""
     entries = []
     for feed in RSS_FEEDS:
         try:
             print(f"Fetching {feed['name']}...")
-            parsed = feedparser.parse(feed["url"])
-            # Get latest 3 entries for testing
-            for entry in parsed.entries[:3]:
-                entries.append({
-                    "title": entry.title,
-                    "link": entry.link,
-                    "description": entry.get("description", ""),
-                    "source": feed["name"]
-                })
+            if feed.get("type") == "Apify":
+                if not APIFY_API_TOKEN:
+                    print("Skipping Apify: APIFY_API_TOKEN not set.")
+                    continue
+                apify_url = f"https://api.apify.com/v2/acts/kaitoeasyapi~twitter-x-data-tweet-scraper-pay-per-result-cheapest/run-sync-get-dataset-items?token={APIFY_API_TOKEN}"
+                payload = {
+                    "maxItems": 3,
+                    "queryType": "Latest",
+                    "lang": "en",
+                    "from": feed["from"]
+                }
+                res = requests.post(apify_url, json=payload, headers={'Content-Type': 'application/json'})
+                res.raise_for_status()
+                tweets = res.json()
+                for tweet in tweets:
+                    entries.append({
+                        "title": f"Tweet by {feed['name']}",
+                        "link": tweet.get("url", ""),
+                        "description": tweet.get("text", ""),
+                        "source": feed["name"]
+                    })
+            else:
+                parsed = feedparser.parse(feed["url"])
+                for entry in parsed.entries[:3]:
+                    entries.append({
+                        "title": entry.title,
+                        "link": entry.link,
+                        "description": entry.get("description", ""),
+                        "source": feed["name"]
+                    })
         except Exception as e:
             print(f"Error fetching {feed['name']}: {e}")
     return entries
@@ -83,15 +101,15 @@ def synthesize_content(article):
     prompt = f"{SYSTEM_PROMPT}\n\nArticle Title: {article['title']}\nArticle Excerpt: {article['description']}\nSource: {article['source']}"
     
     try:
-        response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
-        text_resp = response.text
-        # Strip markdown code blocks if present
-        if text_resp.startswith("```json"):
-            text_resp = text_resp[7:-3]
-        elif text_resp.startswith("```"):
-            text_resp = text_resp[3:-3]
-            
-        data = json.loads(text_resp.strip())
+        response = client.models.generate_content(
+            model='gemini-3.6-flash', 
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=DraftResponse,
+            )
+        )
+        data = json.loads(response.text)
         data['source_url'] = article['link']
         data['source_name'] = article['source']
         return data
@@ -99,7 +117,7 @@ def synthesize_content(article):
         print(f"Error calling Gemini: {e}")
         return None
 
-def send_to_telegram(draft):
+def send_to_telegram(draft, draft_id):
     """Send the formatted draft to Telegram for approval."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         print("Skipping Telegram. Bot token or chat ID not set.")
@@ -116,9 +134,9 @@ def send_to_telegram(draft):
     # Inline keyboard for 1-click approval
     reply_markup = {
         "inline_keyboard": [
-            [{"text": "🟢 Approve & Queue", "callback_data": "approve_queue"}, {"text": "🚨 Publish NOW", "callback_data": "approve_now"}],
-            [{"text": "🔴 Reject", "callback_data": "reject"}],
-            [{"text": "✏️ Edit Headline", "callback_data": "edit_headline"}, {"text": "✏️ Edit Framing", "callback_data": "edit_framing"}]
+            [{"text": "🟢 Approve & Queue", "callback_data": f"approve_queue|{draft_id}"}, {"text": "🚨 Publish NOW", "callback_data": f"approve_now|{draft_id}"}],
+            [{"text": "🔴 Reject", "callback_data": f"reject|{draft_id}"}],
+            [{"text": "✏️ Edit Headline", "callback_data": f"edit_headline|{draft_id}"}, {"text": "✏️ Edit Framing", "callback_data": f"edit_framing|{draft_id}"}]
         ]
     }
 
@@ -157,6 +175,7 @@ def send_summary_to_telegram(scanned, selected):
 
 def main():
     print("Starting Antigravity Ingestion Cycle...")
+    db.init_db()
     articles = fetch_feeds()
     
     scanned_count = len(articles)
@@ -168,7 +187,8 @@ def main():
         
         if draft and draft.get('relevance_score', 0) >= 65:
             print(f"-> Selected: Score {draft['relevance_score']}")
-            send_to_telegram(draft)
+            draft_id = db.insert_draft(draft)
+            send_to_telegram(draft, draft_id)
             selected_count += 1
             # Sleep briefly to avoid rate limits
             time.sleep(2)
