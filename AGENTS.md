@@ -23,11 +23,13 @@ We classify all ingested news into 6 precise categories:
 6. **The Watercooler / The Front Porch:** Community discussion, venting, news tips, and informal debate.
 
 ## System Architecture & Publishing Pipeline
-- **Target Feeds:** `engine/feeds.json` stores 80+ curated RSS feeds, APIs, and Nitter Twitter scrapers covering progressive watchdog sites, Black media, and conservative targets.
-- **Ingestion & AI (`engine/ingest.py`):** Automatically polls feeds, passing articles to Gemini Pro API for relevance scoring (must be >65), assigning one of the 6 taxonomy categories, extracting a 75-120 word primary quote, and writing a 30-50 word framing lead using an **"irreverent, sarcastic, vigilant, combative, and cynical"** tone.
-- **Human-in-the-Loop Approval:** Valid drafts are sent to the founder's smartphone via Telegram with an interactive [Approve] / [Reject] button.
-- **Webhook Listener (`engine/webhook.py`):** A Flask server (running on port 5001, exposed via ngrok) listens for Telegram callback queries. Upon approval, it formats the draft as an Astro Markdown (`.md`) file with frontmatter.
-- **Automated Deployment:** The webhook uses the GitHub API (`GITHUB_TOKEN`) to commit the `.md` file directly to `src/content/blog/`. This push instantly triggers a Cloudflare Pages static site build, taking the post live within 30 seconds.
+- **Target Feeds:** `engine/feeds.json` stores curated RSS feeds and X (Twitter) APIs via Apify.
+- **Ingestion & AI (`engine/ingest.py`):** Runs via a VPS cron job. Automatically polls feeds, passing articles to Gemini Pro for relevance scoring. The prompt is stored in `engine/rubric.md`. Output is forced into a strict Pydantic JSON schema containing the Headline, Framing Lead, Quote, Kicker, and CTA.
+- **State Management (`engine/db.py`):** Drafts are written to a local SQLite database (`vanguard.db`) to enable resilient state tracking and fallback mechanisms.
+- **Human-in-the-Loop Approval:** Valid drafts are sent to the founder's smartphone via Telegram with an interactive [Approve] / [Reject] button hooked to the unique `draft_id`.
+- **Webhook Listener (`engine/webhook.py`):** A Flask server (running on port 5001 via systemd on an Ubuntu VPS) listens for Telegram callback queries. Upon approval, it fetches a hero image from Unsplash and formats the draft as an Astro Markdown (`.md`) file.
+- **Automated Deployment:** The webhook uses the GitHub API (`GITHUB_TOKEN`) to commit the `.md` file directly to `src/content/blog/`, with built-in retries for `409 Conflict` errors. This push instantly triggers a Cloudflare Pages static site build, taking the post live within 30 seconds.
+- **Fault-Tolerance (`engine/retry_images.py`):** A background script runs every 2 hours to backfill Unsplash images for any articles that were published without one due to API timeouts.
 
 ---
 
@@ -61,9 +63,9 @@ Consult these guides before working on related tasks:
 The project features a highly automated editorial pipeline designed for rapid "newsjacking" and hybrid scheduling, managed entirely via a Telegram Bot. Future agents should understand this architecture before modifying backend scripts.
 
 ### 1. Ingestion & AI Synthesis (`engine/ingest.py`)
-- Curated RSS feeds are parsed and sent to Gemini Pro for synthesis.
-- Gemini scores relevance (rejects < 65) and generates an active-voice headline, framing lead, and blockquote.
-- Drafts are pushed to a Telegram chat as an alert.
+- Curated RSS feeds and Apify scrapers are parsed and sent to Gemini Pro for synthesis.
+- Gemini scores relevance (rejects < 65) and generates an active-voice headline, framing lead, blockquote, kicker, category, and Tip CTA, conforming strictly to the JSON schema.
+- Drafts are saved to SQLite (`vanguard.db`) and pushed to a Telegram chat as an alert.
 
 ### 2. Telegram Inline Editor
 - The Telegram alert contains inline buttons for moderation and editing.
@@ -81,7 +83,7 @@ If `webhook.py` is modified, the production systemd service must be restarted (`
 ## Backend Server & Webhook Architecture
 The project includes a Python backend (located in `engine/`) that acts as an RSS scraper and Telegram webhook server.
 - **Server:** Runs on an Ubuntu VPS.
-- **Ingestion:** `ingest.py` is executed hourly via a GitHub Actions workflow (`.github/workflows/ingest.yml`). It scrapes RSS feeds, passes them to Gemini for summarization, and sends draft alerts to a Telegram chat with inline Approve/Reject buttons. At the end of every run, it sends a final status summary to Telegram, and the workflow is configured to send failure alerts if it crashes.
+- **Ingestion:** `ingest.py` is executed hourly via a local crontab on the VPS. It scrapes RSS feeds, passes them to Gemini for summarization, stores them in SQLite, and sends draft alerts to a Telegram chat with inline Approve/Reject buttons.
 - **Webhook Service:** `webhook.py` runs as a systemd background service (`vanguard-webhook.service`) on port `5001`. It receives callback queries from Telegram.
 - **Telegram UX Edge Cases:** Clicking Approve/Reject in Telegram sends an immediate `answerCallbackQuery` (to stop the button loading animation) and an `editMessageText` request to remove the buttons and mark the message as `✅ [APPROVED]` or `❌ [REJECTED]`. This prevents duplicate approvals.
 - **GitHub Integration:** Approved articles are pushed directly to the `BertNgomsi/vanguard-wire` GitHub repository under `src/content/blog/` via the GitHub API.
@@ -95,10 +97,10 @@ The project includes a Python backend (located in `engine/`) that acts as an RSS
 
 The project uses a Telegram bot for approving and editing ingested news drafts before they are published to the Astro site.
 
-**Stateless Design & Editing:**
-- The bot is completely stateless and does not use a database to store drafts. 
-- All data (Category, Headline, Framing, Quote) is parsed directly from the text of the Telegram message.
-- Users can edit the "Headline" and "Framing" of a draft directly in Telegram. This is handled using Telegram's `ForceReply` feature: the bot replies asking for the new text and secretly embeds context (like `[Action: edit_headline]` and `[Context ID: <message_id>]`) in the prompt. When the user replies, the bot parses this context, uses regex to replace the specific field in the original message, updates the original message, and deletes the prompt/reply to keep the chat clean.
+**Stateful Design & Historical Recovery:**
+- The bot relies heavily on the `vanguard.db` (SQLite) database to store draft payloads and track publishing status.
+- When an inline button is clicked, it queries the database using the attached `draft_id`. 
+- **Historical Recovery:** If a user forwards an old, orphaned message back to the bot, it will use regex to extract the Headline, Framing, Quote, Kicker, and CTA from the message text, insert it back into the database as a new entry, and return fresh, active approval buttons so no content is ever lost.
 
 **Publishing & Queueing:**
 - Drafts can be published via two methods:
