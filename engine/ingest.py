@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 import db
-from webhook import get_unsplash_image
+from webhook import get_google_image
 
 # Load environment variables
 load_dotenv()
@@ -254,7 +254,7 @@ def main():
             print(f"-> Selected: Score {draft['relevance_score']}")
             
             # Fetch image and validate semantics
-            unsplash_img, credit_name, credit_username = get_unsplash_image(draft['headline'], draft['category'])
+            unsplash_img, credit_name, credit_username = get_google_image(draft['headline'], draft['category'])
             if unsplash_img and client:
                 print("Validating image semantics...")
                 prompt_text = f"Review the attached image. Does it semantically contradict the context of the article? For example, if the article is about an HBCU (Howard University) and the image shows a PWI (Michigan), or if the article is about a specific individual and the image clearly depicts someone else. Respond with ONLY 'WARNING' if there is a mismatch, or 'OK' if it is fine.\nHeadline: {draft['headline']}\nCategory: {draft['category']}\nExcerpt: {draft['framing_lead']}"
