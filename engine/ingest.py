@@ -74,33 +74,47 @@ def fetch_feeds():
                 res.raise_for_status()
                 tweets = res.json()
                 for tweet in tweets:
-                    entries.append({
-                        "title": f"Tweet by {feed['name']}",
-                        "link": tweet.get("url", ""),
-                        "description": tweet.get("text", ""),
-                        "source": feed["name"]
-                    })
+                    link = tweet.get("url", "")
+                    if link and not db.is_url_processed(link):
+                        db.mark_url_processed(link)
+                        entries.append({
+                            "title": f"Tweet by {feed['name']}",
+                            "link": link,
+                            "description": tweet.get("text", ""),
+                            "source": feed["name"]
+                        })
             else:
                 parsed = feedparser.parse(feed["url"])
-                for entry in parsed.entries[:3]:
-                    entries.append({
-                        "title": entry.title,
-                        "link": entry.link,
-                        "description": entry.get("description", ""),
-                        "source": feed["name"]
-                    })
+                for entry in parsed.entries[:5]: # Let's fetch 5 to give it more data for clustering
+                    link = entry.link
+                    if link and not db.is_url_processed(link):
+                        db.mark_url_processed(link)
+                        entries.append({
+                            "title": entry.title,
+                            "link": link,
+                            "description": entry.get("description", ""),
+                            "source": feed["name"]
+                        })
         except Exception as e:
             print(f"Error fetching {feed['name']}: {e}")
     return entries
 
-def synthesize_content(article):
-    """Pass article through Gemini Pro for synthesis."""
+def synthesize_cluster(cluster):
+    """Pass cluster of articles through Gemini Pro for synthesis."""
     if not client:
         print("Skipping AI synthesis: Gemini API key not found.")
         return None
         
-    prompt = f"{SYSTEM_PROMPT}\n\nArticle Title: {article['title']}\nArticle Excerpt: {article['description']}\nSource: {article['source']}"
+    combined_sources = " & ".join(list(dict.fromkeys([a['source'] for a in cluster])))
+    primary_url = cluster[0]['link']
     
+    prompt = f"{SYSTEM_PROMPT}\n\nWe have a cluster of {len(cluster)} articles about the same story. Synthesize them into ONE unified post."
+    if len(cluster) > 1:
+        prompt += "\nIMPORTANT: Since there are multiple sources, extract a quote from EACH source and weave them together in narrative order in the `blockquote` field. Separate each quote with a double newline, and cite the source inline at the end of each quote, like this:\n\"First quote here.\" — Source 1\n\n\"Second quote here.\" — Source 2\nDo NOT use markdown blockquote symbols (>), just plain text."
+    
+    for i, a in enumerate(cluster):
+        prompt += f"\n\nSource {i+1}: {a['source']}\nURL {i+1}: {a['link']}\nTitle: {a['title']}\nExcerpt: {a['description']}"
+        
     try:
         response = client.models.generate_content(
             model='gemini-3.6-flash', 
@@ -111,8 +125,8 @@ def synthesize_content(article):
             )
         )
         data = json.loads(response.text)
-        data['source_url'] = article['link']
-        data['source_name'] = article['source']
+        data['source_url'] = primary_url
+        data['source_name'] = combined_sources
         return data
     except Exception as e:
         print(f"Error calling Gemini: {e}")
@@ -177,17 +191,63 @@ def send_summary_to_telegram(scanned, selected):
     except Exception as e:
         print(f"Error sending summary to Telegram: {e}")
 
+def cluster_articles(articles):
+    if not articles:
+        return []
+    if len(articles) == 1:
+        return [[articles[0]]]
+        
+    print(f"Clustering {len(articles)} new articles...")
+    prompt = "You are an AI editor. Review the following news articles. Group them into clusters where the articles cover the exact same underlying event or story. Return a JSON array of arrays, where each inner array contains the integer indices of the articles in that cluster. If an article is unique, it should be in an array by itself."
+    for i, a in enumerate(articles):
+        prompt += f"\n\n[{i}] Source: {a['source']}\nTitle: {a['title']}\nDescription: {a['description']}"
+        
+    class ClusterResult(BaseModel):
+        clusters: list[list[int]]
+        
+    try:
+        response = client.models.generate_content(
+            model='gemini-3.6-flash',
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=ClusterResult,
+            )
+        )
+        data = json.loads(response.text)
+        cluster_indices = data.get("clusters", [])
+        
+        clustered_articles = []
+        for indices in cluster_indices:
+            cluster = []
+            for idx in indices:
+                if 0 <= idx < len(articles):
+                    cluster.append(articles[idx])
+            if cluster:
+                clustered_articles.append(cluster)
+        return clustered_articles
+    except Exception as e:
+        print(f"Clustering failed: {e}. Falling back to individual processing.")
+        return [[a] for a in articles]
+
 def main():
     print("Starting Antigravity Ingestion Cycle...")
     db.init_db()
-    articles = fetch_feeds()
+    new_articles = fetch_feeds()
     
-    scanned_count = len(articles)
+    scanned_count = len(new_articles)
     selected_count = 0
     
-    for article in articles:
-        print(f"Processing: {article['title']}")
-        draft = synthesize_content(article)
+    if not new_articles:
+        print("No new articles found.")
+        return
+        
+    clusters = cluster_articles(new_articles)
+    
+    for cluster in clusters:
+        titles = " | ".join([a['title'] for a in cluster])
+        print(f"Processing cluster of {len(cluster)} articles: {titles}")
+        draft = synthesize_cluster(cluster)
         
         if draft and draft.get('relevance_score', 0) >= 65:
             print(f"-> Selected: Score {draft['relevance_score']}")

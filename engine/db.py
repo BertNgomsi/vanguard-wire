@@ -36,8 +36,32 @@ def init_db():
     except sqlite3.OperationalError:
         pass # Column already exists
         
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS processed_urls (
+            url TEXT PRIMARY KEY,
+            processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+        
     conn.commit()
     conn.close()
+
+def mark_url_processed(url):
+    conn = get_connection()
+    c = conn.cursor()
+    try:
+        c.execute('INSERT OR IGNORE INTO processed_urls (url) VALUES (?)', (url,))
+        conn.commit()
+    finally:
+        conn.close()
+
+def is_url_processed(url):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute('SELECT 1 FROM processed_urls WHERE url = ?', (url,))
+    row = c.fetchone()
+    conn.close()
+    return row is not None
 
 def insert_draft(draft):
     conn = get_connection()
