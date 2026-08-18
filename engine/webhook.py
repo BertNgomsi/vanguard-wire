@@ -148,28 +148,31 @@ def get_next_queue_slot():
         
     return next_slot_iso
 
-def get_unsplash_image(headline, category):
-    """Uses Gemini to generate a search query, searches Unsplash, and picks image."""
-    if not UNSPLASH_ACCESS_KEY or not client:
+def get_google_image(headline, category):
+    """Uses Gemini to generate a search query, searches Google Custom Search, and picks image."""
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+    GOOGLE_CX = os.getenv("GOOGLE_CX")
+    if not GOOGLE_API_KEY or not GOOGLE_CX or not client:
         return None, "", ""
     try:
-        prompt = f"Extract the main subject or noun from this headline and category to search an image library. Return ONLY a 1-3 word search query.\nHeadline: {headline}\nCategory: {category}"
+        prompt = f"Extract the main subject, person, or event from this headline to search for a news photo. Return ONLY a 1-4 word search query (e.g., 'Jasmine Crockett' or 'Capitol Building').\nHeadline: {headline}\nCategory: {category}"
         query_response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
         query = query_response.text.strip()
-        print(f"Generated Unsplash Query: {query}")
+        print(f"Generated Google Search Query: {query}")
         
-        headers = {"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"}
-        search_url = f"https://api.unsplash.com/search/photos?query={query}&per_page=10"
-        search_res = requests.get(search_url, headers=headers)
+        search_url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx={GOOGLE_CX}&q={query}&searchType=image&num=10"
+        search_res = requests.get(search_url)
         if search_res.status_code != 200:
+            print("Google API failed:", search_res.text)
             return None, "", ""
             
-        results = search_res.json().get('results', [])
+        results = search_res.json().get('items', [])
         if not results:
+            print("No Google results")
             return None, "", ""
             
-        image_urls = [r['urls']['regular'] for r in results[:5]]
-        vision_prompt = "You are an editorial assistant. Review these image URLs. Select the most comical, satirical, or entertaining image that relates to the subject. Return ONLY the integer index (0-4) of the winning image."
+        image_urls = [r['link'] for r in results[:5]]
+        vision_prompt = "You are an editorial assistant. Review these image URLs. Select the most relevant, high-quality, or impactful image for a news story. Return ONLY the integer index (0-4) of the winning image."
         vision_contents = [vision_prompt] + image_urls
         vision_response = client.models.generate_content(model='gemini-3.6-flash', contents=vision_contents)
         try:
@@ -180,14 +183,15 @@ def get_unsplash_image(headline, category):
             winner_idx = 0
             
         winner = results[winner_idx]
-        download_location = winner.get('links', {}).get('download_location')
-        if download_location:
-            requests.get(download_location, headers=headers)
-            
-        raw_url = winner['urls']['raw']
-        hotlink_url = f"{raw_url}&w=1020&h=510&fit=crop"
-        credit_name = winner['user']['name']
-        credit_username = winner['user']['username']
+        hotlink_url = winner['link']
+        
+        # Try to extract a clean source/credit name
+        display_link = winner.get('displayLink', '')
+        credit_name = display_link.replace('www.', '').split('.')[0].title() if display_link else "Web"
+        
+        # Provide a link back to the page the image was found on
+        credit_username = winner.get('image', {}).get('contextLink', '')
+        
         return hotlink_url, credit_name, credit_username
     except Exception as e:
         print(f"Error fetching Unsplash image: {e}")
@@ -230,7 +234,7 @@ def telegram_webhook():
                 credit_username = draft.get('image_credit_username')
                 
                 if not unsplash_img:
-                    unsplash_img, credit_name, credit_username = get_unsplash_image(draft['headline'], draft['category'])
+                    unsplash_img, credit_name, credit_username = get_google_image(draft['headline'], draft['category'])
                     if unsplash_img:
                         db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
                 
