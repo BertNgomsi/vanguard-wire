@@ -5,7 +5,9 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "National Urban League"
 sourceUrl: "https://nul.org/news/remarcs-newsletter-september-13-2025"
 tipCta: "Help us keep exposing systemic injustice and defending Black democracy. Throw $5 in our tip jar."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://images.unsplash.com/photo-1607494629394-bcc30e45c7b2?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8NXx8TmF0aW9uYWwlMjBVcmJhbiUyMExlYWd1ZXxlbnwwfHx8fDE3ODcwNjkwNTd8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+imageCreditName: "Sagar Kulkarni"
+imageCreditUsername: "sagarkulkarni"
 ---
 
 While mainstream pundits wring their hands over polite political decorum, civil rights organizations are doing the heavy lifting on the frontlines. The National Urban League is driving voter registration, confronting epidemic gun violence, and equipping our communities to withstand systemic assaults on Black progress.
