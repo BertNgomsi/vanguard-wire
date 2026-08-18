@@ -95,6 +95,10 @@ def update_github_file(headline, unsplash_img, image_credit_name, image_credit_u
     content = re.sub(r"imageCreditName: .*?\n", "", content)
     content = re.sub(r"imageCreditUsername: .*?\n", "", content)
 
+    content = re.sub(r"unsplashImage: .*?\n", "", content)
+    content = re.sub(r"imageCreditName: .*?\n", "", content)
+    content = re.sub(r"imageCreditUsername: .*?\n", "", content)
+
     
     # Remove existing unsplashImage keys if any
     content = re.sub(r'unsplashImage: .*?\n', '', content)
