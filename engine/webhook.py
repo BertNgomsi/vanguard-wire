@@ -211,9 +211,12 @@ def telegram_webhook():
             draft_id = int(parts[1]) if len(parts) > 1 else None
             
             if action in ('approve_queue', 'approve_now') and draft_id:
+                if query_id:
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id, "text": "Processing... ⚙️"})
+                    
                 draft = db.get_draft(draft_id)
                 if not draft:
-                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id, "text": "Draft not found in DB."})
+                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={"chat_id": chat_id, "text": "❌ Error: Draft not found in DB."})
                     return jsonify({"ok": True})
                     
                 pub_date = None
@@ -233,9 +236,6 @@ def telegram_webhook():
                     draft['source_name'], draft['source_url'], draft['category'],
                     pub_date, draft['tip_cta'], unsplash_img, credit_name, credit_username
                 )
-                
-                if query_id:
-                    requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery", json={"callback_query_id": query_id})
                 
                 if chat_id and message_id:
                     new_text = f"{status_msg}\n\n"
