@@ -185,9 +185,15 @@ const posts = rawPosts.map((post) => {
 										<span class="date"><FormattedDate date={post.data.pubDate} /></span>
 									</div>
 									
-									{post.data.heroImage && (
+									{post.data.heroImage && !post.data.unsplashImage && (
 										<a href={`/blog/${post.id}/`} class="feed-image">
 											<Image width={1020} height={510} src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+										</a>
+									)}
+
+									{post.data.unsplashImage && (
+										<a href={`/blog/${post.id}/`} class="feed-image">
+											<img src={post.data.unsplashImage} alt={post.data.title} width="1020" height="510" loading="lazy" />
 										</a>
 									)}
 									
