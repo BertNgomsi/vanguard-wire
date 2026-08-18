@@ -92,6 +92,11 @@ def update_github_file(headline, unsplash_img, image_credit_name, image_credit_u
     # Replace placeholder heroImage if exists
     content = re.sub(r'heroImage: .*?\n', '', content)
     
+    # Remove existing unsplashImage keys if any
+    content = re.sub(r'unsplashImage: .*?\n', '', content)
+    content = re.sub(r'imageCreditName: .*?\n', '', content)
+    content = re.sub(r'imageCreditUsername: .*?\n', '', content)
+    
     unsplash_yaml = f'\nunsplashImage: "{unsplash_img}"\nimageCreditName: "{image_credit_name}"\nimageCreditUsername: "{image_credit_username}"\n---'
     new_content = content.replace('\n---', unsplash_yaml, 1)
     
