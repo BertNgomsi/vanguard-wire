@@ -150,9 +150,9 @@ def get_next_queue_slot():
 
 def get_google_image(headline, category):
     """Uses Gemini to generate a search query, searches Google Custom Search, and picks image."""
-    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+    CUSTOM_SEARCH_API_KEY = os.getenv("CUSTOM_SEARCH_API_KEY")
     GOOGLE_CX = os.getenv("GOOGLE_CX")
-    if not GOOGLE_API_KEY or not GOOGLE_CX or not client:
+    if not CUSTOM_SEARCH_API_KEY or not GOOGLE_CX or not client:
         return None, "", ""
     try:
         prompt = f"Extract the main subject, person, or event from this headline to search for a news photo. Return ONLY a 1-4 word search query (e.g., 'Jasmine Crockett' or 'Capitol Building').\nHeadline: {headline}\nCategory: {category}"
@@ -160,7 +160,7 @@ def get_google_image(headline, category):
         query = query_response.text.strip()
         print(f"Generated Google Search Query: {query}")
         
-        search_url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx={GOOGLE_CX}&q={query}&searchType=image&num=10"
+        search_url = f"https://www.googleapis.com/customsearch/v1?key={CUSTOM_SEARCH_API_KEY}&cx={GOOGLE_CX}&q={query}&searchType=image&num=10"
         search_res = requests.get(search_url)
         if search_res.status_code != 200:
             print("Google API failed:", search_res.text)
