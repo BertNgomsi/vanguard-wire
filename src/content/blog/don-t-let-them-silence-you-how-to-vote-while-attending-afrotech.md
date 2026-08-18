@@ -1,0 +1,17 @@
+---
+title: "DON'T LET THEM SILENCE YOU: How To Vote While Attending AFROTECH"
+pubDate: 2026-08-18T21:12:29.963545
+category: "Civil Rights, Voting & Legal Tracker"
+source: "Blavity (News & Politics)"
+sourceUrl: "https://blavity.com/early-voting-guide-for-afrotech-conference"
+tipCta: "Help us keep Black voters informed and empowered. Chip in $5 today."
+heroImage: "../../assets/blog-placeholder-4.jpg"
+---
+
+Mainstream political operatives love counting on young Black professionals being too busy networking to cast their ballots. Don't give voter suppressors the satisfaction. If you are heading to AFROTECH, here is your playbook to ensure your voice is heard at the polls.
+
+> AFROTECH™ Conference 2026 is fast approaching, with this year's event happening Nov.
+> 
+> — [Blavity (News & Politics)](https://blavity.com/early-voting-guide-for-afrotech-conference)
+
+Networking is essential, but protecting Black political power at the ballot box is the ultimate flex. Secure your vote before you pack your bags.
