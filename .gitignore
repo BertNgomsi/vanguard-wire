@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # Python virtual environment
 engine/venv/
+
+# Engine state & logs
+engine/*.db
+engine/*.log
+engine/queue_state.json
+engine/__pycache__/
