@@ -13,11 +13,15 @@ const posts = rawPosts.map((post) => {
 	let preview = post.data.description;
 	if (!preview && post.body) {
 		preview = post.body.replace(/^#+.*$/gm, '').replace(/[*_>`\[\]]/g, '').trim().split('\n').filter(line => line.trim().length > 0)[0];
-		if (preview && preview.length > 250) {
-			preview = preview.substring(0, 250) + '...';
-		}
 	}
-	return { ...post, preview };
+	
+	// Conditionally handle "The" in the source name
+	let sourcePrefix = 'The ';
+	if (post.data.source && post.data.source.toLowerCase().startsWith('the ')) {
+		sourcePrefix = '';
+	}
+	
+	return { ...post, preview, sourcePrefix };
 }).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
@@ -128,6 +132,11 @@ const posts = rawPosts.map((post) => {
 				color: var(--text-primary);
 				margin-bottom: 1rem;
 				font-family: 'Inter', sans-serif;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 			
 			.source-attribution {
@@ -199,7 +208,7 @@ const posts = rawPosts.map((post) => {
 									
 									<div class="feed-excerpt">
 										{post.data.source && post.data.sourceUrl && (
-											<span class="source-attribution">The <em>{post.data.source}</em> <a href={post.data.sourceUrl} target="_blank" rel="noopener noreferrer">reports</a>:</span>
+											<span class="source-attribution">{post.sourcePrefix}<em>{post.data.source}</em> <a href={post.data.sourceUrl} target="_blank" rel="noopener noreferrer">reports</a>: </span>
 										)}
 										{post.preview}
 									</div>

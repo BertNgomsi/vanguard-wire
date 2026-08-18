@@ -225,11 +225,16 @@ def telegram_webhook():
                     pub_date = get_next_queue_slot()
                     status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
                 
-                unsplash_img, credit_name, credit_username = get_unsplash_image(draft['headline'], draft['category'])
+                unsplash_img = draft.get('unsplash_img')
+                credit_name = draft.get('image_credit_name')
+                credit_username = draft.get('image_credit_username')
+                
+                if not unsplash_img:
+                    unsplash_img, credit_name, credit_username = get_unsplash_image(draft['headline'], draft['category'])
+                    if unsplash_img:
+                        db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
                 
                 db.update_draft_status(draft_id, 'published')
-                if unsplash_img:
-                    db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
                 
                 file_path = create_markdown_post(
                     draft['headline'], draft['framing_lead'], draft['blockquote'], draft.get('kicker', ''),

@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 import db
+from webhook import get_unsplash_image
 
 # Load environment variables
 load_dotenv()
@@ -251,7 +252,26 @@ def main():
         
         if draft and draft.get('relevance_score', 0) >= 65:
             print(f"-> Selected: Score {draft['relevance_score']}")
+            
+            # Fetch image and validate semantics
+            unsplash_img, credit_name, credit_username = get_unsplash_image(draft['headline'], draft['category'])
+            if unsplash_img and client:
+                print("Validating image semantics...")
+                prompt_text = f"Review the attached image. Does it semantically contradict the context of the article? For example, if the article is about an HBCU (Howard University) and the image shows a PWI (Michigan), or if the article is about a specific individual and the image clearly depicts someone else. Respond with ONLY 'WARNING' if there is a mismatch, or 'OK' if it is fine.\nHeadline: {draft['headline']}\nCategory: {draft['category']}\nExcerpt: {draft['framing_lead']}"
+                try:
+                    val_res = client.models.generate_content(model='gemini-3.6-flash', contents=[prompt_text, unsplash_img])
+                    if 'WARNING' in val_res.text:
+                        draft['category'] = "⚠️ IMAGE WARNING | " + draft.get('category', '')
+                        print("-> Image warning appended.")
+                except Exception as e:
+                    print(f"Image validation error: {e}")
+            
             draft_id = db.insert_draft(draft)
+            
+            # Save the pre-fetched image so webhook doesn't fetch it again
+            if unsplash_img:
+                db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
+                
             send_to_telegram(draft, draft_id)
             selected_count += 1
             # Sleep briefly to avoid rate limits
