@@ -1,0 +1,19 @@
+---
+title: "THE AUDACITY: Candace Owens Drops Ableist Slurs After Whining About Debate Prep"
+pubDate: 2026-08-18T15:17:16.590122
+category: "Anti-Black / Conservative Hypocrisy Tracker"
+source: "Candace Owens"
+sourceUrl: "https://x.com/RealCandaceO/status/2088741652169183550"
+tipCta: "Help us keep exposing right-wing grifters and toxic rhetoric. Chip in $5 today."
+unsplashImage: "https://images.unsplash.com/photo-1586027205524-fdabab651dcb?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8Q2FuZGFjZSUyME93ZW5zfGVufDB8fHx8MTc4NzA2NTk0MHww&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+imageCreditName: "Thelma Dike"
+imageCreditUsername: "dikethelmak"
+---
+
+Candace Owens is back at it again, proving that when her pseudo-intellectual veneer cracks, she resorts to bottom-of-the-barrel insults. Instead of offering anything resembling substance, the professional conservative grifter threw a full-blown tantrum and tossed around gross ableist slurs because someone dared challenge her narrative.
+
+> Andrew believes the evidence is overwhelming that Tyler Robinson should be put to death but did not bother to read even one of the court filings, including the most recent one. He clearly “debate prepped” by cutting what he thought would be “gotcha clips” of me from my own show. Like someone from his team thought it would be a brilliant strategy to try to surprise me with my own content— as though I was unfamiliar with it. Clinical retardation.
+> 
+> — [Candace Owens](https://x.com/RealCandaceO/status/2088741652169183550)
+
+When you lose the argument, break out the slurs. Classic right-wing play from a deeply exhausted playbook.
