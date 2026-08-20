@@ -5,7 +5,9 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "NewsOne"
 sourceUrl: "https://newsone.com/6869481/stephen-a-smith-nabj-beef-explained/"
 tipCta: "Help us keep calling out media personalities who disrespect Black women. Chip in $5."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/7/76/Stephen_A._Smith_in_January_2023_(3x4_cropped_c).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Stephen A. Smith is deeply offended that the National Association of Black Journalists held him accountable for his repeated public disrespect of Black women. Instead of self-reflection, he is throwing a televised temper tantrum because his fragile ego cannot handle receiving the 'Thumbs Down' award he thoroughly earned.
