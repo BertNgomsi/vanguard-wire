@@ -5,7 +5,9 @@ category: "Education & Historical Erasure Watchdog"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089799889286820282"
 tipCta: "Help us keep telling the complete truth about Black history and civil rights. Chip in today."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Photograph_of_Jimmy_Carter_Signing_Extension_of_Equal_Rights_Amendment_(ERA)_Ratification,_10-20-1978.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 While pushing for the Equal Rights Amendment is vital, praising the suffragette legacy without acknowledging how Black women were systematically excluded from the 19th Amendment is a tired erasure. White women got ballots in 1920, while Black women faced poll taxes and terrorism until 1965.
