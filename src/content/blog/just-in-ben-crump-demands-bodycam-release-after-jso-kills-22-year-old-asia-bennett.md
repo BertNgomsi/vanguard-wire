@@ -5,7 +5,9 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "Ben Crump"
 sourceUrl: "https://x.com/AttorneyCrump/status/2090455090666557576"
 tipCta: "Help us force police transparency and hold killer cops accountable. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Attorney_Ben_Crump_raises_a_fist_while_kneeling_for_8-46_seconds_during_a_news_conference_on_March_29,_2021_in_Minneapolis,_Minnesota_(51083540381).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Another Black life taken by law enforcement, and once again the department is playing games with basic transparency. Jacksonville Sheriff's Office officers shot and killed 22-year-old Asia Bennett, and civil rights attorney Ben Crump is stepping in to demand the footage they are desperately trying to stall.
