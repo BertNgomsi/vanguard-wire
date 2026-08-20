@@ -5,7 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/politics/2026/08/17/cornyn-staffer-joins-democrat-james-talarico-campaign/"
 tipCta: "Help us expose conservative hypocrisy and fight back in Texas. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-2.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Ken_Paxton_(54235056881).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 When your party's political circus becomes too toxic even for seasoned conservative operatives, the rats start leaping for the nearest exit. A veteran aide to John Cornyn has officially joined Democrat James Talarico's campaign to take down Ken Paxton, proving that even GOP insiders can only stomach so much corruption.
