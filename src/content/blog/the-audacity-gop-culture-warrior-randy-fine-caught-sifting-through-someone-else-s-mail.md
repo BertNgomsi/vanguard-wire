@@ -5,7 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Daily Caller"
 sourceUrl: "https://dailycaller.com/2026/08/18/rep-randy-fine-appears-to-commit-federal-crime-while-caught-on-doorbell-camera"
 tipCta: "Help us keep exposing hypocritical politicians who think they are above the law. Chip in $5."
-heroImage: "../../assets/blog-placeholder-3.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/3/38/Mike_Johnson_swears_in_Randy_Fine_(2025).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Florida's favorite right-wing crusader loves preaching about law and order whenever it suits his political agenda. But put him in front of a Ring camera, and suddenly federal mail tampering rules apparently don't apply to him.
