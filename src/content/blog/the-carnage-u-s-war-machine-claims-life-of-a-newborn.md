@@ -5,7 +5,7 @@ category: "Global Diaspora & International Solidarity"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-war-civilian-deaths-families-infant/"
 tipCta: "Help us expose state violence and war profiteering. Fuel independent journalism with $5."
-unsplashImage: "https://images.unsplash.com/photo-1540348696304-f12c599ebfbd?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8V2FyJTIwYWZ0ZXJtYXRofGVufDB8fHx8MTc4NzA2MzM1OXww&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/6/69/011007-N-6520M-052_Preparing_weapons_for_war.jpg
 imageCreditName: "Arisa Chattasa"
 imageCreditUsername: "golfarisa"
 ---

@@ -5,7 +5,7 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/ldf-president-urges-governor-of-missouri-to-stop-marcellus-khalifah-williams-execution/"
 tipCta: "Help us keep calling out systemic injustice in the legal system. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/b/bf/MarcellusShaleHill3.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/9d/Portrait_Marcellus_Louvre_Ma3547.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

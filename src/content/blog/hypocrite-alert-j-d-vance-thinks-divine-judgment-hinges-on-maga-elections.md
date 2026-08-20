@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Right Wing Watch"
 sourceUrl: "https://www.peoplefor.org/rightwingwatch/jd-vance-bares-his-soul-brandon-gill"
 tipCta: "Help us keep calling out political hypocrisy and religious pandering. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1727702872022-927491562edb?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8SkQlMjBWYW5jZXxlbnwwfHx8fDE3ODcwNjY2Mjl8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/57/JD_Vance_takes_Oath_of_Office_as_United_States_Senator_by_Vice_President_Kamala_Harris.jpg
 imageCreditName: "Joshua Wann"
 imageCreditUsername: "joshuawann"
 ---

@@ -5,7 +5,7 @@ category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-trump-deportation-flights-ice/"
 tipCta: "Help us keep exposing state violence and dangerous federal misconduct. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1749523514908-05cdc21a0270?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8SUNFJTIwZGVwb3J0YXRpb258ZW58MHx8fHwxNzg3MDY2NzY5fDA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/6/63/U.S._Immigration_and_Customs_Enforcement_(ICE)_(53831699221).jpg
 imageCreditName: "Jason Leung"
 imageCreditUsername: "ninjason"
 ---

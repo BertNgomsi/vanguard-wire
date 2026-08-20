@@ -5,7 +5,7 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "The Grio"
 sourceUrl: "https://thegrio.com/2026/08/18/serena-venus-williams-doubles-return-cincinnati/"
 tipCta: "Support independent Black journalism so we can keep celebrating real culture without the whitewashing."
-unsplashImage: "https://images.unsplash.com/photo-1639393455114-84df73f758cd?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8VmVudXMlMjBhbmQlMjBTZXJlbmF8ZW58MHx8fHwxNzg3MDY5MzMxfDA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/d/de/Serena_Williams_and_Venus_Williams.jpg
 imageCreditName: "SIMON LEE"
 imageCreditUsername: "simonppt"
 ---

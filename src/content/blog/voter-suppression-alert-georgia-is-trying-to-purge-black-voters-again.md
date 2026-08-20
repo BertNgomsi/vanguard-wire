@@ -5,7 +5,7 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/voting-rights-advocates-move-to-intervene-in-suit-to-protect-5000-georgia-voters-at-risk-of-removal-from-the-november-election-rolls/"
 tipCta: "Help us stay on the front lines against voter suppression. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1604065985083-86231f74c233?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8NXx8Vm90ZXIlMjBzdXBwcmVzc2lvbnxlbnwwfHx8fDE3ODcwNjkxODd8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/8/87/2022_Georgia_State_Senate_election_district_map.svg
 imageCreditName: "Glen Carrie"
 imageCreditUsername: "glencarrie"
 ---

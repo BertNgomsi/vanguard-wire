@@ -5,7 +5,7 @@ category: "Education & Historical Erasure Watchdog"
 source: "The Federalist"
 sourceUrl: "https://thefederalist.com/2026/08/18/scotus-asked-to-weigh-texas-law-requiring-ten-commandments-in-school-classrooms/?utm_source=rss&utm_medium=rss&utm_campaign=scotus-asked-to-weigh-texas-law-requiring-ten-commandments-in-school-classrooms"
 tipCta: "Help us keep calling out Christian nationalist attacks on public education. Pitch in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/4/42/U.S._Supreme_Court_Building_1a35454v.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/1/10/American_Christian_Nationalism_3_Flags_Symbol.svg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

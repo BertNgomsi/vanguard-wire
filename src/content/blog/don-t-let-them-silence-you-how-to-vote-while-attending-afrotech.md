@@ -5,7 +5,7 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/early-voting-guide-for-afrotech-conference"
 tipCta: "Help us keep Black voters informed and empowered. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/d/dc/HANEA_press_conference_Zeinabou_Mindaoudou_Souley.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/6/67/A_AfroCreatives_WikiProject_2024_event.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

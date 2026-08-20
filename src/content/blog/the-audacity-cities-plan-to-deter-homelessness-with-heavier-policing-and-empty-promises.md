@@ -5,7 +5,7 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "The Marshall Project"
 sourceUrl: "https://www.themarshallproject.org/2026/08/15/police-boston-arizona-homeless"
 tipCta: "Help us expose how cities criminalize poverty instead of fixing it. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1542367787-4baf35f3037d?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8M3x8cG9saWNlJTIwaG9tZWxlc3NuZXNzfGVufDB8fHx8MTc4NzAwMjI4OHww&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/92/Metro_Transit_Police_(3400912890).jpg
 imageCreditName: "King's Church International"
 imageCreditUsername: "kingschurchinternational"
 ---

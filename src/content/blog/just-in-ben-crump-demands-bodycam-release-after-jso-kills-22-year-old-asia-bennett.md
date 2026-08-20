@@ -5,7 +5,7 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "Ben Crump"
 sourceUrl: "https://x.com/AttorneyCrump/status/2090455090666557576"
 tipCta: "Help us force police transparency and hold killer cops accountable. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Attorney_Ben_Crump_raises_a_fist_while_kneeling_for_8-46_seconds_during_a_news_conference_on_March_29,_2021_in_Minneapolis,_Minnesota_(51083540381).jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/d/d4/Asia_Carrera_law_school_graduation_day_selfie.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

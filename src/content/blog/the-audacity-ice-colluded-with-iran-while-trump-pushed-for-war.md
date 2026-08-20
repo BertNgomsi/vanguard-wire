@@ -5,7 +5,7 @@ category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-trump-deportation-flights-ice/"
 tipCta: "Help us keep calling out federal cruelty and unhinged government overreach. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1583171297077-0a1ad5e6c8fb?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8Mnx8SUNFJTIwSXJhbnxlbnwwfHx8fDE3ODcwNjM0Nzh8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/7c/Iran_United_States_Locator.png
 imageCreditName: "Sepehr Aleagha"
 imageCreditUsername: "sepehr_algh"
 ---

@@ -5,7 +5,7 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "National Urban League"
 sourceUrl: "https://nul.org/news/remarcs-newsletter-september-13-2025"
 tipCta: "Help us keep exposing systemic injustice and defending Black democracy. Throw $5 in our tip jar."
-unsplashImage: "https://images.unsplash.com/photo-1607494629394-bcc30e45c7b2?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8NXx8TmF0aW9uYWwlMjBVcmJhbiUyMExlYWd1ZXxlbnwwfHx8fDE3ODcwNjkwNTd8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/59/National_Urban_League_Conference_7-24-7-27-2013_(9394811398).jpg
 imageCreditName: "Sagar Kulkarni"
 imageCreditUsername: "sagarkulkarni"
 ---

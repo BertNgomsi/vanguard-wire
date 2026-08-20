@@ -5,7 +5,7 @@ category: "Intersectional LGBTQ+ & Gender Watchdog"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/sports/2026/08/17/wnba-admits-security-atlanta-was-wrong-asking-mother-daughter-cover-xx-xy-athletics-shirt/"
 tipCta: "Help us keep calling out right-wing provocateurs and weak corporate responses. Chip in $5."
-unsplashImage: "https://images.unsplash.com/photo-1523142096306-cca37b5aa001?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8M3x8V05CQSUyMGJhc2tldGJhbGx8ZW58MHx8fHwxNzg3MDYzNzcyfDA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/a6/Map_of_US,_WNBA.svg
 imageCreditName: "Todd Greene"
 imageCreditUsername: "tarheeltodd"
 ---

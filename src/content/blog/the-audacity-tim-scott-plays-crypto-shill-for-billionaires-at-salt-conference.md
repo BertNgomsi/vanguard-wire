@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Sen. Tim Scott"
 sourceUrl: "https://x.com/SenatorTimScott/status/2089764906606420109"
 tipCta: "Help us keep exposing corporate puppets and political hypocrisy. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/6/66/ISS-46_Scott_Kelly_and_Tim_Kopra_in_the_Quest_airlock_before_spacewalk.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/1/14/Tim_Scott_and_Scott_Bessent_(cropped).jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

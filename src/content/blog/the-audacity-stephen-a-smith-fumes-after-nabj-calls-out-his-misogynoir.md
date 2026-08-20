@@ -5,7 +5,7 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "NewsOne"
 sourceUrl: "https://newsone.com/6869481/stephen-a-smith-nabj-beef-explained/"
 tipCta: "Help us keep calling out media personalities who disrespect Black women. Chip in $5."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/7/76/Stephen_A._Smith_in_January_2023_(3x4_cropped_c).jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/76/Stephen_A._Smith_in_January_2023_(3x4_cropped_c).jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

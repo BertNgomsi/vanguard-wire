@@ -5,7 +5,7 @@ category: "Intersectional LGBTQ+ & Gender Watchdog"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2089002242787483904"
 tipCta: "Help us keep calling out right-wing bigotry and political grifters. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1586027205524-fdabab651dcb?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8Q2FuZGFjZSUyME93ZW5zfGVufDB8fHx8MTc4NzA2NTk0MHww&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/5b/Candace_Owens_(53805331465)_(cropped).jpg
 imageCreditName: "Thelma Dike"
 imageCreditUsername: "dikethelmak"
 ---

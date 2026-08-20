@@ -5,7 +5,7 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/naacp-joins-legal-team-representing-the-family-of-nolan-wells-amid-death-investigation"
 tipCta: "Help us keep pushing for legal accountability and justice for our youth. Chip in $5."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/6/65/LP_Convention_David_Nolan_(3x4_cropped).JPG"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/c/c7/Pat_Nolan_&_Sheriff_John_Rovick_(cropped)_-_Pat_Nolan.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

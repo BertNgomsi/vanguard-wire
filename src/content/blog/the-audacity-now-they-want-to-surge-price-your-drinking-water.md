@@ -5,7 +5,7 @@ category: "Public Health & Environmental Justice"
 source: "Financial Times (Moral Money)"
 sourceUrl: "https://www.ft.com/content/8b4a32a0-f14b-4069-a2e5-5e4d55b0906d?syn-25a6b1a6=1"
 tipCta: "Help us keep exposing corporate gouging on essential human rights. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/d/d8/15th_MEU_Marines_provide_drinking_water_from_ocean_150307-M-JT438-245.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/d/d6/Groundwater-problem-supply-demand.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

@@ -5,7 +5,7 @@ category: "Education & Historical Erasure Watchdog"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089799889286820282"
 tipCta: "Help us keep telling the complete truth about Black history and civil rights. Chip in today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Photograph_of_Jimmy_Carter_Signing_Extension_of_Equal_Rights_Amendment_(ERA)_Ratification,_10-20-1978.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/a8/Woman_holding_Equal_Rights_Amendment_sign_in_Los_Angeles,_California,_with_two_men,_one_of_them_yawning.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

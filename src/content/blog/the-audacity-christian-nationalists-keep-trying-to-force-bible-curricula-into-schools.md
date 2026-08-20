@@ -5,7 +5,7 @@ category: "Education & Historical Erasure Watchdog"
 source: "Right Wing Watch"
 sourceUrl: "https://www.peoplefor.org/rightwingwatch/trumps-worst-war-crime"
 tipCta: "Help us expose Christian nationalist attacks on public education. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1497621122273-f5cfb6065c56?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8QmlibGUlMjBpbiUyMHNjaG9vbHxlbnwwfHx8fDE3ODcwNjMyNTd8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/3/30/Christian_Allegory_Southern_Netherlandish_School_Limburgs_Museum_L08973.jpg
 imageCreditName: "Aaron Burden"
 imageCreditUsername: "aaronburden"
 ---

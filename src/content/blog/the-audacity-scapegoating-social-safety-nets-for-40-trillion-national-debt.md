@@ -5,7 +5,7 @@ category: "Economic Justice & Corporate Accountability"
 source: "Mississippi Free Press"
 sourceUrl: "https://www.mississippifreepress.org/the-us-national-debt-now-stands-at-40-trillion/"
 tipCta: "Help us expose economic hypocrisy and protect vital safety nets. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/c/c4/US_National_Debt.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/c/cd/United_States_Federal_Government_debt.webp
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Federalist"
 sourceUrl: "https://thefederalist.com/2026/08/18/pollster-that-put-francesca-hong-karen-bass-in-lead-admits-its-a-fake-firm/?utm_source=rss&utm_medium=rss&utm_campaign=pollster-that-put-francesca-hong-karen-bass-in-lead-admits-its-a-fake-firm"
 tipCta: "Help us keep exposing conservative media disinformation and bad-faith smears. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Opinion_polls_around_the_partygate_scandal.svg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/96/Fake_News_Spelled_Out_In_Newspaper.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

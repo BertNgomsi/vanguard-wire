@@ -5,7 +5,7 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "Stephen A. Smith"
 sourceUrl: "https://x.com/stephenasmith/status/2087968523565883870"
 tipCta: "Support independent Black media that cuts through mainstream sports hot-take noise. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1585077136974-3688f0bd1ab1?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8U3RlcGhlbiUyMEEuJTIwU21pdGh8ZW58MHx8fHwxNzg3MDY2NDQzfDA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/76/Stephen_A._Smith_in_January_2023_(3x4_cropped_c).jpg
 imageCreditName: "Library of Congress"
 imageCreditUsername: "libraryofcongress"
 ---

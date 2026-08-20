@@ -5,7 +5,7 @@ category: "The Watercooler / The Front Porch"
 source: "Word in Black"
 sourceUrl: "https://wordinblack.com/2026/08/is-2819-church-about-jesus-or-philip-anthony-mitchell/"
 tipCta: "Help us keep calling out unchecked authority and spiritual hype. Toss $5 into our jar today."
-unsplashImage: "https://images.unsplash.com/photo-1591204154525-f7ae12d8572f?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8NHx8Q2h1cmNoJTIwcGFzdG9yfGVufDB8fHx8MTc4NzA2NzY3Nnww&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/0/08/The_Interior_of_the_Church_of_Saint_Bavo,_Haarlem_by_Pieter_Jansz._Saenredam,_Getty_Center.JPG
 imageCreditName: "hoch3fotografie"
 imageCreditUsername: "hoch3fotografie"
 ---

@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Daily Caller"
 sourceUrl: "https://dailycaller.com/2026/08/18/witkoff-trump-crypto-firm-world-liberty-financial-bank-hong-kong-restricted-chinese-ai"
 tipCta: "Help us expose right-wing hypocrisy and grift. Chip in $5 today to power our independent journalism."
-unsplashImage: "https://images.unsplash.com/photo-1577990843539-6fe38cd01c85?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8M3x8VHJ1bXAlMjBjcnlwdG98ZW58MHx8fHwxNzg3MDY3MTcwfDA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/6/6d/President_of_the_United_States_Donald_J._Trump_at_CPAC_2017_February_24th_2017_by,_Michael_Vadon_03.jpg
 imageCreditName: "Mason Hassoun"
 imageCreditUsername: "mason_hassoun"
 ---

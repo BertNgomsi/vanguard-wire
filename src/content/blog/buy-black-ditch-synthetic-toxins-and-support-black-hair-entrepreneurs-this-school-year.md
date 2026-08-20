@@ -5,7 +5,7 @@ category: "Economic Justice & Corporate Accountability"
 source: "Essence (News & Politics)"
 sourceUrl: "https://www.essence.com/hair/15-black-owned-protective-style-essentials-back-to-school-hair/"
 tipCta: "Help us keep empowering Black enterprise and exposing beauty industry inequality. Toss $5 in the jar."
-unsplashImage: "https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8M3x8QmxhY2slMjBoYWlyJTIwY2FyZXxlbnwwfHx8fDE3ODcwNjkxMjB8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/a4/Black_hair_detail.jpg
 imageCreditName: "Jessica Felicio"
 imageCreditUsername: "jekafe"
 ---

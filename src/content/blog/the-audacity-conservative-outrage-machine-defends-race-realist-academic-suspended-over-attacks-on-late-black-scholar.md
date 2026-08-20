@@ -5,7 +5,7 @@ category: "Education & Historical Erasure Watchdog"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/europe/2026/08/20/cambridge-scandal-american-academic-who-exposed-alleged-jason-arday-plagiarism-suspended-by-own-university-over-discrimination-probe/"
 tipCta: "Help us keep exposing bad-faith attacks on Black intellectuals. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Mill_Creek_Park_Suspension_Bridge.jpg"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/0/07/%22Senate_Investigation%22_and_%22Senate%22_caricature_and_Liliuokalani_racist_in_1894_art_detail,_His_Little_Hawaiian_Game_Checkmated_political_cartoon_1894_(retouched_-_HR)_(cropped).jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2088741652169183550"
 tipCta: "Help us keep exposing right-wing grifters and toxic rhetoric. Chip in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1586027205524-fdabab651dcb?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8MXx8Q2FuZGFjZSUyME93ZW5zfGVufDB8fHx8MTc4NzA2NTk0MHww&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/f/f7/Candace_Owens_(51331093124)_(cropped).jpg
 imageCreditName: "Thelma Dike"
 imageCreditUsername: "dikethelmak"
 ---

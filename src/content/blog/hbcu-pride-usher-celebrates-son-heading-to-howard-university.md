@@ -5,7 +5,7 @@ category: "The Watercooler / The Front Porch"
 source: "The Grio"
 sourceUrl: "https://thegrio.com/2026/08/18/usher-son-howard-university-cinco/"
 tipCta: "Help us keep celebrating Black excellence and HBCU pride. Pitch in $5 today."
-unsplashImage: "https://images.unsplash.com/photo-1508760215803-36f2ec2b7713?ixid=M3wxMDI4OTAyfDB8MXxzZWFyY2h8NHx8SG93YXJkJTIwVW5pdmVyc2l0eXxlbnwwfHx8fDE3ODcwNjc0NDB8MA&ixlib=rb-4.1.0&w=1020&h=510&fit=crop"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/3/3f/George_Reid_(1841-1913)_-_Sir_John_Usher_of_Norton_and_Wells_(1828%E2%80%931904)_-_EU0458_-_University_of_Edinburgh_Art_Collection.jpg
 imageCreditName: "Alex Mertz"
 imageCreditUsername: "alexmertz"
 ---
