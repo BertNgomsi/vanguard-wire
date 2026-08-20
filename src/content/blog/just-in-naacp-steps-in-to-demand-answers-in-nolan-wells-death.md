@@ -5,7 +5,9 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/naacp-joins-legal-team-representing-the-family-of-nolan-wells-amid-death-investigation"
 tipCta: "Help us keep pushing for legal accountability and justice for our youth. Chip in $5."
-heroImage: "../../assets/blog-placeholder-5.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/6/65/LP_Convention_David_Nolan_(3x4_cropped).JPG"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Because Mississippi law enforcement can rarely be trusted to properly investigate the suspicious death of a young Black man without relentless outside pressure, national civil rights leaders are stepping in. Eighteen-year-old Nolan Wells went on a boating trip and never came back alive.
