@@ -5,7 +5,9 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "Ben Crump"
 sourceUrl: "https://x.com/AttorneyCrump/status/2089763001952088349"
 tipCta: "Help us keep demanding accountability for stolen Black lives and buried truths. Chip in today."
-heroImage: "../../assets/blog-placeholder-2.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Memorial_to_Maryland_Soldiers_by_John_O'Brian_-_Mount_Hebron_Cemetery_-_Winchester,_Virginia_-_Sarah_Stierch_-_A.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 State-sanctioned violence against Black children isn't just a dark chapter in American history—it is the bedrock upon which these systems were built. The horrific discovery of hundreds of graves at a former Maryland reform school proves once again how completely this nation dehumanized Black youth while pretending to offer 'reform'.
