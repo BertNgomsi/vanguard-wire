@@ -5,7 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089769326936993913"
 tipCta: "Help us keep calling out MAGA voting hypocrisy. Throw $5 in our tip jar today."
-heroImage: "../../assets/blog-placeholder-4.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/0/08/Donald_Trump_-_Caricature_(20734761216).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Rules for thee, but absolutely none for the orange menace. Donald Trump has once again cast his ballot from the comfort of his private resort via mail, all while demanding the rest of the country line up for hours under disenfranchising voter suppression laws. It is not just rules for the privileged—it is a calculated assault on voting access.
