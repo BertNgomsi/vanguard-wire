@@ -5,7 +5,9 @@ category: "The Watercooler / The Front Porch"
 source: "Capital B News"
 sourceUrl: "https://capitalbnews.org/morehouse-class-2030-new-student-orientation/"
 tipCta: "Help us defend Black spaces and fund unapologetic Black journalism. Drop $5 in our tip jar."
-heroImage: "../../assets/blog-placeholder-2.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/1/12/Secretary_Blinken_Tours_the_Campus_of_Morehouse_College_and_Clark_Atlanta_University_and_Participates_in_a_Roundtable_discussion_on_HCBUs_-_52885168100.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 While conservative extremists continue their desperate attempts to erase Black history and dismantle DEI, Morehouse College is doing what it has always done best. Before these young men even step into a classroom, they are wrapped in a brotherhood that reminds them exactly who they are and whose shoulders they stand on.
