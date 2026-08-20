@@ -5,7 +5,9 @@ category: "Tech, AI & Algorithmic Bias Watchdog"
 source: "Black Enterprise"
 sourceUrl: "https://www.blackenterprise.com/creator-says-ai-generated-facebook-posts-bring-10k-plus-month/"
 tipCta: "Help us keep exposing tech industry nonsense and algorithmic manipulation. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-5.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Facebook_AI_slop,_%22Shrimp_Jesus%22_1.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 While Mark Zuckerberg turns Facebook into an AI-generated fever dream of synthetic bait, one Black creator is turning the platform's collapse into a personal payday. Kvontay Devon Pringle is gaming the algorithm for five figures a month, proving that if Meta is going to push digital garbage, someone might as well send them the bill.
