@@ -5,7 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/jasmine-crockett-says-gop-is-very-performative"
 tipCta: "Tired of performative politicians wasting your time? Chip in $5 to support real journalism."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/2/29/Jasmine_Crockett_(53875559654).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Congresswoman Jasmine Crockett remains undefeated in saying the absolute quiet part out loud while Capitol Hill conservatives play political theater. If the GOP thought they could parade around with empty gestures without getting called out, Crockett just reminded everyone who really runs the circus.
