@@ -5,7 +5,9 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/early-voting-guide-for-afrotech-conference"
 tipCta: "Help us keep Black voters informed and empowered. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-4.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/d/dc/HANEA_press_conference_Zeinabou_Mindaoudou_Souley.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Mainstream political operatives love counting on young Black professionals being too busy networking to cast their ballots. Don't give voter suppressors the satisfaction. If you are heading to AFROTECH, here is your playbook to ensure your voice is heard at the polls.
