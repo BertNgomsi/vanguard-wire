@@ -22,7 +22,7 @@ def get_brave_image(headline, category):
     if not BRAVE_API_KEY or not client:
         return None, "", ""
     try:
-        prompt = f"Extract the main subject, person, or event from this headline to search for a news photo. Return ONLY a 1-4 word search query (e.g., 'Jasmine Crockett' or 'Capitol Building').\nHeadline: {headline}\nCategory: {category}"
+        prompt = f"Extract the specific main subject or person from this headline to search for a news photo. Include their full name or specific context to avoid ambiguity (e.g. 'Venus Williams' instead of just 'Venus'). Return ONLY a 1-4 word search query.\nHeadline: {headline}\nCategory: {category}"
         query_response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
         query = query_response.text.strip()
         
@@ -50,7 +50,7 @@ def get_brave_image(headline, category):
         if not image_urls:
             return None, "", ""
 
-        vision_prompt = "You are an editorial assistant. Review these image URLs. Select the most relevant, high-quality, or impactful image for a news story. Return ONLY the integer index (0-4) of the winning image."
+        vision_prompt = f"You are an editorial assistant. Review these 5 image URLs for a news article titled '{headline}'. Select the most relevant and high-quality image. If possible, pick one that is slightly comical, humorous, or highly impactful. Critically, ensure the image actually depicts the specific subject (e.g. do not select an image of the planet Venus if the article is about Venus Williams). Return ONLY the integer index (0-4) of the winning image." 
         vision_contents = [vision_prompt] + image_urls
         vision_response = client.models.generate_content(model='gemini-3.6-flash', contents=vision_contents)
         try:
@@ -75,7 +75,7 @@ def get_brave_image(headline, category):
         print(f"Error fetching Brave image: {e}")
         return None, "", ""
     try:
-        prompt = f"Extract the main subject, person, or event from this headline to search for a news photo. Return ONLY a 1-4 word search query (e.g., 'Jasmine Crockett' or 'Capitol Building').\nHeadline: {headline}\nCategory: {category}"
+        prompt = f"Extract the specific main subject or person from this headline to search for a news photo. Include their full name or specific context to avoid ambiguity (e.g. 'Venus Williams' instead of just 'Venus'). Return ONLY a 1-4 word search query.\nHeadline: {headline}\nCategory: {category}"
         query_response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
         query = query_response.text.strip()
         print(f"Generated Google Search Query: {query}")
@@ -92,7 +92,7 @@ def get_brave_image(headline, category):
             return None, "", ""
             
         image_urls = [r['link'] for r in results[:5]]
-        vision_prompt = "You are an editorial assistant. Review these image URLs. Select the most relevant, high-quality, or impactful image for a news story. Return ONLY the integer index (0-4) of the winning image."
+        vision_prompt = f"You are an editorial assistant. Review these 5 image URLs for a news article titled '{headline}'. Select the most relevant and high-quality image. If possible, pick one that is slightly comical, humorous, or highly impactful. Critically, ensure the image actually depicts the specific subject (e.g. do not select an image of the planet Venus if the article is about Venus Williams). Return ONLY the integer index (0-4) of the winning image." 
         vision_contents = [vision_prompt] + image_urls
         vision_response = client.models.generate_content(model='gemini-3.6-flash', contents=vision_contents)
         try:
