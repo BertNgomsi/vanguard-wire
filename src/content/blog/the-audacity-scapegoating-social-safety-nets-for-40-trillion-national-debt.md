@@ -5,7 +5,9 @@ category: "Economic Justice & Corporate Accountability"
 source: "Mississippi Free Press"
 sourceUrl: "https://www.mississippifreepress.org/the-us-national-debt-now-stands-at-40-trillion/"
 tipCta: "Help us expose economic hypocrisy and protect vital safety nets. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-4.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/c/c4/US_National_Debt.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Mainstream media and beltway hawks love playing budget alarmist the second working-class folks need survival resources. Notice how earned benefits like Social Security get dragged alongside war-machine spending, while billionaire tax handouts escape all blame?
