@@ -5,7 +5,9 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "Atlanta Black Star"
 sourceUrl: "https://atlantablackstar.com/2026/08/18/chicago-cubs-white-sox-brawl-video-fans-fight/"
 tipCta: "Help us keep calling out media double standards and racial hypocrisy. Chip in $5."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Baltimore_Orioles,_Kansas_City_Royals_(26925656553).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Notice how when sports fans turn MLB stands into a bloody brawl, mainstream outlets treat it as hilarious viral entertainment? If Black folks displayed even a fraction of this public chaos, commentators would be calling for police crackdowns and martial law before the ninth inning.
