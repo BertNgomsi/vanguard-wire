@@ -5,7 +5,9 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "NewsOne"
 sourceUrl: "https://newsone.com/6869486/who-ran-the-wnba-this-week-12/"
 tipCta: "Support Black sports journalism that centers real excellence over media hype. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-5.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/3/3c/President_Reagan_Speaking_after_a_Concert_by_the_Beach_Boys_Brian_Wilson,_Mike_Love,_Carl_Wilson,_Dennis_Wilson,_Alan_Jardine_during_a_Reception_and_Picnic_in_Honor_of_the_15th_Anni_-_DPLA_-_fe92787bbfc0035291a11a4d1d7e6196.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 A'ja Wilson is out here completely shattering record books and proving once again why she reigns supreme over the WNBA, but corporate sports media remains determined to focus elsewhere. Let's give our double-MVP her rightful flowers while the mainstream press catches up.
