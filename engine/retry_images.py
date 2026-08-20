@@ -35,7 +35,7 @@ def get_brave_image(headline, category):
             "Accept-Encoding": "gzip",
             "X-Subscription-Token": BRAVE_API_KEY
         }
-        search_res = requests.get(search_url, headers=headers, params={"q": search_query, "safesearch": "moderate", "count": 10})
+        search_res = requests.get(search_url, headers=headers, params={"q": search_query, "safesearch": "strict", "count": 10})
         
         if search_res.status_code != 200:
             print("Brave API failed:", search_res.text)
