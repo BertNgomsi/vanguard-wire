@@ -74,48 +74,6 @@ def get_brave_image(headline, category):
     except Exception as e:
         print(f"Error fetching Brave image: {e}")
         return None, "", ""
-    try:
-        prompt = f"Extract the specific main subject or person from this headline to search for a news photo. Include their full name or specific context to avoid ambiguity (e.g. 'Venus Williams' instead of just 'Venus'). Return ONLY a 1-4 word search query.\nHeadline: {headline}\nCategory: {category}"
-        query_response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
-        query = query_response.text.strip()
-        print(f"Generated Google Search Query: {query}")
-        
-        search_url = f"https://www.googleapis.com/customsearch/v1?key={CUSTOM_SEARCH_API_KEY}&cx={GOOGLE_CX}&q={query}&searchType=image&num=10"
-        search_res = requests.get(search_url)
-        if search_res.status_code != 200:
-            print("Google API failed:", search_res.text)
-            return None, "", ""
-            
-        results = search_res.json().get('items', [])
-        if not results:
-            print("No Google results")
-            return None, "", ""
-            
-        image_urls = [r['link'] for r in results[:5]]
-        vision_prompt = f"You are an editorial assistant. Review these 5 image URLs for a news article titled '{headline}'. Select the most relevant and high-quality image. If possible, pick one that is slightly comical, humorous, or highly impactful. Critically, ensure the image actually depicts the specific subject (e.g. do not select an image of the planet Venus if the article is about Venus Williams). Return ONLY the integer index (0-4) of the winning image." 
-        vision_contents = [vision_prompt] + image_urls
-        vision_response = client.models.generate_content(model='gemini-3.6-flash', contents=vision_contents)
-        try:
-            winner_idx = int(re.search(r'\d+', vision_response.text).group())
-            if winner_idx < 0 or winner_idx >= len(results):
-                winner_idx = 0
-        except:
-            winner_idx = 0
-            
-        winner = results[winner_idx]
-        hotlink_url = winner['link']
-        
-        # Try to extract a clean source/credit name
-        display_link = winner.get('displayLink', '')
-        credit_name = display_link.replace('www.', '').split('.')[0].title() if display_link else "Web"
-        
-        # Provide a link back to the page the image was found on
-        credit_username = winner.get('image', {}).get('contextLink', '')
-        
-        return hotlink_url, credit_name, credit_username
-    except Exception as e:
-        print(f"Error fetching Unsplash image: {e}")
-        return None, "", ""
 
 def update_github_file(headline, unsplash_img, image_credit_name, image_credit_username):
     slug = re.sub(r'[^a-z0-9]+', '-', headline.lower()).strip('-')
