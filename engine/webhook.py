@@ -38,7 +38,12 @@ def create_markdown_post(headline, framing, quote, kicker, source_name, source_u
     
     unsplash_yaml = ""
     if unsplash_img:
-        unsplash_yaml = f'\nunsplashImage: "{unsplash_img}"\nimageCreditName: "{image_credit_name}"\nimageCreditUsername: "{image_credit_username}"'
+        if unsplash_img.startswith("../../assets/"):
+            unsplash_yaml = f'\nheroImage: "{unsplash_img}"'
+            if image_credit_name:
+                unsplash_yaml += f'\nimageCreditName: "{image_credit_name}"'
+        else:
+            unsplash_yaml = f'\nunsplashImage: "{unsplash_img}"\nimageCreditName: "{image_credit_name}"\nimageCreditUsername: "{image_credit_username}"'
     else:
         import random
         image_num = random.randint(1, 5)
@@ -249,7 +254,95 @@ def get_brave_image(headline, category):
         print(f"Error fetching Unsplash image: {e}")
         return None, "", ""
 
+
+def handle_photo_replacement(message, headline, chat_id):
+    try:
+        photo = message['photo'][-1]
+        file_id = photo['file_id']
+        file_info_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getFile?file_id={file_id}"
+        file_info = requests.get(file_info_url).json()
+        if not file_info.get('ok'):
+            return False
+            
+        file_path = file_info['result']['file_path']
+        img_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
+        img_data = requests.get(img_url).content
+        
+        slug = re.sub(r'[^a-z0-9]+', '-', headline.lower()).strip('-')
+        
+        repo_owner = "BertNgomsi"
+        repo_name = "vanguard-wire"
+        asset_path = f"src/assets/{slug}.jpg"
+        api_url_asset = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{asset_path}"
+        headers = {"Authorization": f"Bearer {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+        
+        encoded_image = base64.b64encode(img_data).decode('utf-8')
+        
+        res = requests.get(api_url_asset, headers=headers)
+        payload_asset = {
+            "message": f"Upload replaced image for {slug}",
+            "content": encoded_image
+        }
+        if res.status_code == 200:
+            payload_asset["sha"] = res.json()["sha"]
+            
+        res_asset = requests.put(api_url_asset, headers=headers, json=payload_asset)
+        if res_asset.status_code not in [200, 201]:
+            requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={
+                "chat_id": chat_id, "text": f"❌ Failed to upload image to GitHub for {headline}"
+            })
+            return False
+            
+        local_img_path = f"../../assets/{slug}.jpg"
+        
+        conn = db.get_connection()
+        c = conn.cursor()
+        c.execute('SELECT id, status FROM drafts WHERE headline = ? ORDER BY id DESC LIMIT 1', (headline,))
+        row = c.fetchone()
+        if row:
+            draft_id = row['id']
+            db.update_draft_image(draft_id, local_img_path, "Uploaded via Telegram", "")
+        conn.close()
+            
+        md_file_path = f"src/content/blog/{slug}.md"
+        api_url_md = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{md_file_path}"
+        res_md = requests.get(api_url_md, headers=headers)
+        if res_md.status_code == 200:
+            file_data = res_md.json()
+            sha = file_data['sha']
+            md_content = base64.b64decode(file_data['content']).decode('utf-8')
+            
+            md_content = re.sub(r'\nunsplashImage: ".*?"', '', md_content)
+            md_content = re.sub(r'\nimageCreditName: ".*?"', '', md_content)
+            md_content = re.sub(r'\nimageCreditUsername: ".*?"', '', md_content)
+            
+            if 'heroImage:' in md_content:
+                md_content = re.sub(r'heroImage: ".*?"', f'heroImage: "{local_img_path}"\nimageCreditName: "Uploaded via Telegram"', md_content)
+            else:
+                md_content = md_content.replace('\n---\n', f'\nheroImage: "{local_img_path}"\nimageCreditName: "Uploaded via Telegram"\n---\n', 1)
+                
+            new_encoded = base64.b64encode(md_content.encode('utf-8')).decode('utf-8')
+            put_res = requests.put(api_url_md, headers=headers, json={
+                "message": f"Update image for {slug}",
+                "content": new_encoded,
+                "sha": sha
+            })
+            if put_res.status_code in [200, 201]:
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={
+                    "chat_id": chat_id, "text": f"✅ Image successfully replaced for published post:\n{headline}"
+                })
+                return True
+                
+        requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={
+            "chat_id": chat_id, "text": f"✅ Image uploaded and attached to Draft:\n{headline}"
+        })
+        return True
+    except Exception as e:
+        print(f"Error handling photo replacement: {e}")
+        return False
+
 @app.route(f'/webhook/{TELEGRAM_BOT_TOKEN}', methods=['POST'])
+
 def telegram_webhook():
     update = request.json
     
@@ -339,7 +432,33 @@ def telegram_webhook():
         chat_id = message.get('chat', {}).get('id')
         text = message.get('text', '')
         
+
+        # Handle Photos (Reply or Caption)
+        if 'photo' in message:
+            headline = ""
+            if 'reply_to_message' in message:
+                reply_text = message['reply_to_message'].get('text', '')
+                headline_match = re.search(r'Headline: (.*?)\n', reply_text)
+                if headline_match:
+                    headline = headline_match.group(1).strip()
+            
+            if not headline and message.get('caption'):
+                caption = message['caption']
+                headline_match = re.search(r'Headline: (.*?)(?:\n|$)', caption)
+                if headline_match:
+                    headline = headline_match.group(1).strip()
+                else:
+                    headline = caption.strip()
+                    
+            if headline:
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={
+                    "chat_id": chat_id, "text": f"🔄 Processing image replacement for:\n{headline}"
+                })
+                handle_photo_replacement(message, headline, chat_id)
+                return jsonify({"ok": True})
+
         # Handle Forwarded messages for Historical Draft Recovery
+
         if 'forward_date' in message:
             try:
                 clean_text = re.sub(r'^[✅❌].*?\n\n', '', text, flags=re.DOTALL).strip()
