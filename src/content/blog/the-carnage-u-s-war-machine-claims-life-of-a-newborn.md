@@ -1,6 +1,6 @@
 ---
 title: "THE CARNAGE: U.S. War Machine Claims Life Of A Newborn"
-pubDate: 2026-08-18T14:29:59.628092
+pubDate: 2026-08-18T14:29:59.628092-04:00
 category: "Global Diaspora & International Solidarity"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-war-civilian-deaths-families-infant/"

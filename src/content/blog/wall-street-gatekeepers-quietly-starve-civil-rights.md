@@ -1,6 +1,6 @@
 ---
 title: "Wall Street Gatekeepers Quietly Starve Civil Rights"
-pubDate: 2026-08-17T08:30:00
+pubDate: 2026-08-17T08:30:00-04:00
 category: "Systemic Policy & Dogwhistle Watchdog"
 source: "ProPublica (Civil Rights)"
 sourceUrl: "https://www.propublica.org/article/donor-advised-funds-charity-contributions"

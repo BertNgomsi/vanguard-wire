@@ -1,6 +1,6 @@
 ---
 title: "LISTEN UP: Civil Rights Groups Order Lawmakers To Protect Black Voters Now"
-pubDate: 2026-08-17T21:44:16.839415
+pubDate: 2026-08-17T21:44:16.839415-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "Color Of Change"
 sourceUrl: "https://colorofchange.org/blog/civil-rights-and-democracy-organizations-joint-letter-on-redistricting/"

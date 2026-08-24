@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: SCOTUS Asked To Let Texas Drag Christian Nationalism Into Public Classrooms"
-pubDate: 2026-08-19T12:00:00
+pubDate: 2026-08-19T12:00:00-04:00
 category: "Education & Historical Erasure Watchdog"
 source: "The Federalist"
 sourceUrl: "https://thefederalist.com/2026/08/18/scotus-asked-to-weigh-texas-law-requiring-ten-commandments-in-school-classrooms/?utm_source=rss&utm_medium=rss&utm_campaign=scotus-asked-to-weigh-texas-law-requiring-ten-commandments-in-school-classrooms"

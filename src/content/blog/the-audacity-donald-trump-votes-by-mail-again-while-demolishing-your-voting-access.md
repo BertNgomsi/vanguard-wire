@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Donald Trump Votes By Mail Again While Demolishing Your Voting Access"
-pubDate: 2026-08-18T18:45:20.017327
+pubDate: 2026-08-18T18:45:20.017327-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089769326936993913"

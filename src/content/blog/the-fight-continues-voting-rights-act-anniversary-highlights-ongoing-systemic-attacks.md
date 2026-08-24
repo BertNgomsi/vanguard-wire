@@ -1,6 +1,6 @@
 ---
 title: "THE FIGHT CONTINUES: Voting Rights Act Anniversary Highlights Ongoing Systemic Attacks"
-pubDate: 2026-08-18T15:16:47.908969
+pubDate: 2026-08-18T15:16:47.908969-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "Lawyers' Committee for Civil Rights Under Law"
 sourceUrl: "https://www.lawyerscommittee.org/lawyers-committee-marks-voting-rights-anniversary-with-a-call-to-protect-black-voters-access-to-the-ballot-box/"

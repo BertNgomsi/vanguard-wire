@@ -1,6 +1,6 @@
 ---
 title: "Delaware Enacts Historic Voting Rights Protections"
-pubDate: 2026-08-11T01:09:18.668612
+pubDate: 2026-08-11T01:09:18.668612-04:00
 category: "Civil Rights & Legal Battles"
 source: "Capital B"
 sourceUrl: "https://capitalbnews.org/delaware-voting-rights-law/"

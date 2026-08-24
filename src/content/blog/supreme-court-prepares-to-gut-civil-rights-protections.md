@@ -1,6 +1,6 @@
 ---
 title: "Supreme Court Prepares To Gut Civil Rights Protections"
-pubDate: 2026-08-11T19:24:30.559476
+pubDate: 2026-08-11T19:24:30.559476-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "SCOTUSblog"
 sourceUrl: "https://www.scotusblog.com/2026/08/weakening-the-protection-against-sex-discrimination/"

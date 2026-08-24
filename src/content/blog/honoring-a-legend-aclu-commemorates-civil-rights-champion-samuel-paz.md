@@ -1,6 +1,6 @@
 ---
 title: "HONORING A LEGEND: ACLU COMMEMORATES CIVIL RIGHTS CHAMPION SAMUEL PAZ"
-pubDate: 2026-08-18T14:09:31.857053
+pubDate: 2026-08-18T14:09:31.857053-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "ACLU National News & Press"
 sourceUrl: "https://www.aclu.org/press-releases/aclu-commemorates-samuel-paz-former-board-member"

@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: NOW THEY WANT TO SURGE-PRICE YOUR DRINKING WATER"
-pubDate: 2026-08-19T16:30:00
+pubDate: 2026-08-19T16:30:00-04:00
 category: "Public Health & Environmental Justice"
 source: "Financial Times (Moral Money)"
 sourceUrl: "https://www.ft.com/content/8b4a32a0-f14b-4069-a2e5-5e4d55b0906d?syn-25a6b1a6=1"

@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Christian Nationalists Keep Trying to Force Bible Curricula Into Schools"
-pubDate: 2026-08-18T14:28:15.133406
+pubDate: 2026-08-18T14:28:15.133406-04:00
 category: "Education & Historical Erasure Watchdog"
 source: "Right Wing Watch"
 sourceUrl: "https://www.peoplefor.org/rightwingwatch/trumps-worst-war-crime"

@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Machine Money Tries to Stifle Progressive Fire in Florida"
-pubDate: 2026-08-18T15:27:30.280333
+pubDate: 2026-08-18T15:27:30.280333-04:00
 category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/17/florida-congress-oliver-larkin-jared-moskowitz-aipac/"

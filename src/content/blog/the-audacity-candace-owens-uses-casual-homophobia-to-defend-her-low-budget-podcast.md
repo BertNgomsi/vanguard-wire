@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Candace Owens Uses Casual Homophobia To Defend Her Low-Budget Podcast"
-pubDate: 2026-08-18T15:12:45.615911
+pubDate: 2026-08-18T15:12:45.615911-04:00
 category: "Intersectional LGBTQ+ & Gender Watchdog"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2089002242787483904"

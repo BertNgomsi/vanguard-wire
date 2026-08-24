@@ -1,6 +1,6 @@
 ---
 title: "THE FLEX: Black Celebrities Show Out For Their Kids' Back-To-School Moments"
-pubDate: 2026-08-19T15:00:00
+pubDate: 2026-08-19T15:00:00-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "Essence (News & Politics)"
 sourceUrl: "https://www.essence.com/education/celebrity-kids-back-to-school-2026/"

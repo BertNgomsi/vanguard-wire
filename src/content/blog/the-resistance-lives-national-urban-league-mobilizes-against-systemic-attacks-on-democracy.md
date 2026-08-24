@@ -1,6 +1,6 @@
 ---
 title: "THE RESISTANCE LIVES: National Urban League Mobilizes Against Systemic Attacks on Democracy"
-pubDate: 2026-08-17T21:44:31.420381
+pubDate: 2026-08-17T21:44:31.420381-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "National Urban League"
 sourceUrl: "https://nul.org/news/remarcs-newsletter-september-13-2025"

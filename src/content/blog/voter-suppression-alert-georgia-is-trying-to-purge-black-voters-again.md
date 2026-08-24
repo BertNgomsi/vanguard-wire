@@ -1,6 +1,6 @@
 ---
 title: "VOTER SUPPRESSION ALERT: Georgia Is Trying To Purge Black Voters Again"
-pubDate: 2026-08-18T14:09:22.750183
+pubDate: 2026-08-18T14:09:22.750183-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/voting-rights-advocates-move-to-intervene-in-suit-to-protect-5000-georgia-voters-at-risk-of-removal-from-the-november-election-rolls/"

@@ -1,0 +1,23 @@
+#!/usr/bin/expect -f
+set timeout 30
+set password "n22VHyYu@EHif6d"
+set host "api.thevanguardwire.com"
+set user "root"
+
+spawn scp -o StrictHostKeyChecking=no engine/webhook.py $user@$host:/root/vanguard-wire/engine/webhook.py
+expect {
+    "*assword:*" {
+        send "$password\r"
+        exp_continue
+    }
+    eof
+}
+
+spawn ssh -o StrictHostKeyChecking=no $user@$host "systemctl restart vanguard-webhook"
+expect {
+    "*assword:*" {
+        send "$password\r"
+        exp_continue
+    }
+    eof
+}

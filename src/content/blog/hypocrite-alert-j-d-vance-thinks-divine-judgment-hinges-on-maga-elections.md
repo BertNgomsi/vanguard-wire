@@ -1,6 +1,6 @@
 ---
 title: "HYPOCRITE ALERT: J.D. Vance Thinks Divine Judgment Hinges On MAGA Elections"
-pubDate: 2026-08-18T15:24:32.631231
+pubDate: 2026-08-18T15:24:32.631231-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Right Wing Watch"
 sourceUrl: "https://www.peoplefor.org/rightwingwatch/jd-vance-bares-his-soul-brandon-gill"

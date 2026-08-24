@@ -1,6 +1,6 @@
 ---
 title: "Chief Justice Roberts Erodes Black Civil Rights"
-pubDate: 2026-08-12T02:31:37.497701
+pubDate: 2026-08-12T02:31:37.497701-04:00
 category: "Civil Rights & Legal Battles"
 source: "SCOTUSblog"
 sourceUrl: "https://www.scotusblog.com/2026/08/a-reflection-on-john-roberts/"

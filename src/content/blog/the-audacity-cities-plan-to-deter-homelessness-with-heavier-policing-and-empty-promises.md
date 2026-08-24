@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Cities Plan to Deter Homelessness With Heavier Policing and Empty Promises"
-pubDate: 2026-08-17T21:16:39.996834
+pubDate: 2026-08-17T21:16:39.996834-04:00
 category: "Criminal Justice & Accountability Watchdog"
 source: "The Marshall Project"
 sourceUrl: "https://www.themarshallproject.org/2026/08/15/police-boston-arizona-homeless"

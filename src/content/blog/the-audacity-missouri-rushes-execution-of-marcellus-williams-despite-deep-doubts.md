@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Missouri Rushes Execution of Marcellus Williams Despite Deep Doubts"
-pubDate: 2026-08-18T15:10:37.061580
+pubDate: 2026-08-18T15:10:37.061580-04:00
 category: "Criminal Justice & Accountability Watchdog"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/ldf-president-urges-governor-of-missouri-to-stop-marcellus-khalifah-williams-execution/"

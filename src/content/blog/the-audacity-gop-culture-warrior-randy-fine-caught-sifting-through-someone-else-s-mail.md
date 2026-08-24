@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: GOP Culture Warrior Randy Fine Caught Sifting Through Someone Else's Mail"
-pubDate: 2026-08-18T19:07:20.068916
+pubDate: 2026-08-18T19:07:20.068916-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Daily Caller"
 sourceUrl: "https://dailycaller.com/2026/08/18/rep-randy-fine-appears-to-commit-federal-crime-while-caught-on-doorbell-camera"

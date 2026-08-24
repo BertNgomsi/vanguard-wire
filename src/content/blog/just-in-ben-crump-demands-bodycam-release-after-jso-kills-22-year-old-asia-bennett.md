@@ -1,6 +1,6 @@
 ---
 title: "JUST IN: Ben Crump Demands Bodycam Release After JSO Kills 22-Year-Old Asia Bennett"
-pubDate: 2026-08-20T17:07:33.097856
+pubDate: 2026-08-20T17:07:33.097856-04:00
 category: "Criminal Justice & Accountability Watchdog"
 source: "Ben Crump"
 sourceUrl: "https://x.com/AttorneyCrump/status/2090455090666557576"

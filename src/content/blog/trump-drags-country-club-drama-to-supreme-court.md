@@ -1,6 +1,6 @@
 ---
 title: "Trump Drags Country Club Drama To Supreme Court"
-pubDate: 2026-08-15T18:17:57.859853
+pubDate: 2026-08-15T18:17:57.859853-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "SCOTUSblog"
 sourceUrl: "https://www.scotusblog.com/2026/08/trump-brings-ballroom-dispute-to-the-supreme-court/"

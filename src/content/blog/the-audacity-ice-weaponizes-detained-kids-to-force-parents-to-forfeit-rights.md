@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: ICE Weaponizes Detained Kids To Force Parents To Forfeit Rights"
-pubDate: 2026-08-18T14:21:10.139574
+pubDate: 2026-08-18T14:21:10.139574-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "The Marshall Project"
 sourceUrl: "https://www.themarshallproject.org/2026/08/18/parents-immigrant-camps-children-deportation-flores"

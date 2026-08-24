@@ -1,6 +1,6 @@
 ---
 title: "SCOTUS Tees Up Next Civil Rights Rollback"
-pubDate: 2026-08-11T19:25:35.653936
+pubDate: 2026-08-11T19:25:35.653936-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "SCOTUSblog"
 sourceUrl: "https://www.scotusblog.com/2026/08/court-announces-cases-it-will-hear-in-november-including-religious-discrimination-dispute/"

@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Texas Republicans Scramble as Cornyn Insider Flees Paxton Circus"
-pubDate: 2026-08-18T14:37:19.948795
+pubDate: 2026-08-18T14:37:19.948795-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/politics/2026/08/17/cornyn-staffer-joins-democrat-james-talarico-campaign/"

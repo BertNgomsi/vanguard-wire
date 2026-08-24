@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Rep. Jasmine Crockett Drags Performative GOP And Senate Gerontocracy"
-pubDate: 2026-08-18T16:02:29.836608
+pubDate: 2026-08-18T16:02:29.836608-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/jasmine-crockett-says-gop-is-very-performative"

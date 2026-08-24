@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Right-Wing Rag Uses Fake Pollster Scam To Smear Black And Progressive Leaders"
-pubDate: 2026-08-19T10:30:00
+pubDate: 2026-08-19T10:30:00-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Federalist"
 sourceUrl: "https://thefederalist.com/2026/08/18/pollster-that-put-francesca-hong-karen-bass-in-lead-admits-its-a-fake-firm/?utm_source=rss&utm_medium=rss&utm_campaign=pollster-that-put-francesca-hong-karen-bass-in-lead-admits-its-a-fake-firm"

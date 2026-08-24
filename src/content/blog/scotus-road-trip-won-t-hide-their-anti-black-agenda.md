@@ -1,6 +1,6 @@
 ---
 title: "SCOTUS Road Trip Won't Hide Their Anti-Black Agenda"
-pubDate: 2026-08-11T19:25:02.693015
+pubDate: 2026-08-11T19:25:02.693015-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "SCOTUSblog"
 sourceUrl: "https://www.scotusblog.com/2026/08/the-court-should-hold-oral-argument-outside-of-the-capital/"

@@ -1,6 +1,6 @@
 ---
 title: "JUST IN: NAACP Steps In To Demand Answers In Nolan Wells Death"
-pubDate: 2026-08-18T16:03:37.851390
+pubDate: 2026-08-18T16:03:37.851390-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/naacp-joins-legal-team-representing-the-family-of-nolan-wells-amid-death-investigation"

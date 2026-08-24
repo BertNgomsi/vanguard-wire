@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Stephen A. Smith Fumes After NABJ Calls Out His Misogynoir"
-pubDate: 2026-08-17T21:37:02.535464
+pubDate: 2026-08-17T21:37:02.535464-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "NewsOne"
 sourceUrl: "https://newsone.com/6869481/stephen-a-smith-nabj-beef-explained/"

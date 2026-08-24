@@ -1,6 +1,6 @@
 ---
 title: "Food Safety Scares Drive Support for Black Farmers"
-pubDate: 2026-08-11T20:30:19.060191
+pubDate: 2026-08-11T20:30:19.060191-04:00
 category: "Economic Empowerment"
 source: "Capital B"
 sourceUrl: "https://capitalbnews.org/black-farmers-cyclospora-safety/"

@@ -1,6 +1,6 @@
 ---
 title: "BUY BLACK: Ditch Synthetic Toxins And Support Black Hair Entrepreneurs This School Year"
-pubDate: 2026-08-17T22:05:16.991327
+pubDate: 2026-08-17T22:05:16.991327-04:00
 category: "Economic Justice & Corporate Accountability"
 source: "Essence (News & Politics)"
 sourceUrl: "https://www.essence.com/hair/15-black-owned-protective-style-essentials-back-to-school-hair/"

@@ -1,6 +1,6 @@
 ---
 title: "EPA Fails East Omaha Over Toxic Lead"
-pubDate: 2026-08-12T02:31:24.491331
+pubDate: 2026-08-12T02:31:24.491331-04:00
 category: "Extremism & Systemic Racism"
 source: "ProPublica"
 sourceUrl: "https://www.propublica.org/article/lead-remediation-epa-standards-omaha-nebraska"

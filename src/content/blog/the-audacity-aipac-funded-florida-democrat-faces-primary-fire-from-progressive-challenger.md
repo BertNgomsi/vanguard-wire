@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: AIPAC-Funded Florida Democrat Faces Primary Fire From Progressive Challenger"
-pubDate: 2026-08-18T14:33:02.546818
+pubDate: 2026-08-18T14:33:02.546818-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/17/florida-congress-oliver-larkin-jared-moskowitz-aipac/"

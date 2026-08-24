@@ -1,6 +1,6 @@
 ---
 title: "Mississippi Authorities Identify Black Woman Found Hanging"
-pubDate: 2026-08-11T19:25:49.434795
+pubDate: 2026-08-11T19:25:49.434795-04:00
 category: "Extremism & Systemic Racism"
 source: "Capital B"
 sourceUrl: "https://capitalbnews.org/black-woman-found-hanging-tasia-fortune/"

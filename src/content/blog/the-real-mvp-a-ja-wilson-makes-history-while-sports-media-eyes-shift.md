@@ -1,6 +1,6 @@
 ---
 title: "THE REAL MVP: A'ja Wilson Makes History While Sports Media Eyes Shift"
-pubDate: 2026-08-18T15:39:48.126147
+pubDate: 2026-08-18T15:39:48.126147-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "NewsOne"
 sourceUrl: "https://newsone.com/6869486/who-ran-the-wnba-this-week-12/"

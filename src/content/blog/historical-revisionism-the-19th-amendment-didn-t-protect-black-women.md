@@ -1,6 +1,6 @@
 ---
 title: "HISTORICAL REVISIONISM: The 19th Amendment Didn't Protect Black Women"
-pubDate: 2026-08-18T20:39:28.945608
+pubDate: 2026-08-18T20:39:28.945608-04:00
 category: "Education & Historical Erasure Watchdog"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089799889286820282"

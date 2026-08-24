@@ -8,7 +8,8 @@ import Header from '../components/Header.astro';
 import SidebarAffiliate from '../components/SidebarAffiliate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const rawPosts = await getCollection('blog');
+const now = new Date();
+const rawPosts = (await getCollection('blog')).filter(post => post.data.pubDate <= now);
 const posts = rawPosts.map((post) => {
 	let preview = post.data.description;
 	if (!preview && post.body) {

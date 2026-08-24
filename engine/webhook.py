@@ -4,6 +4,7 @@ import re
 from datetime import datetime, timedelta
 import requests
 import time
+from zoneinfo import ZoneInfo
 from google import genai
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
@@ -33,7 +34,7 @@ def create_markdown_post(headline, framing, quote, kicker, source_name, source_u
         return None
         
     slug = re.sub(r'[^a-z0-9]+', '-', headline.lower()).strip('-')
-    timestamp = pub_date if pub_date else datetime.now().isoformat()
+    timestamp = pub_date if pub_date else datetime.now(ZoneInfo("America/New_York")).isoformat()
     filename = f"{slug}.md"
     
     unsplash_yaml = ""
@@ -117,10 +118,12 @@ def get_next_queue_slot():
         except:
             pass
             
-    now = datetime.now()
+    now = datetime.now(ZoneInfo("America/New_York"))
     if last_queued_str:
         try:
             last_queued = datetime.fromisoformat(last_queued_str)
+            if last_queued.tzinfo is None:
+                last_queued = last_queued.replace(tzinfo=ZoneInfo("America/New_York"))
         except ValueError:
             last_queued = now
     else:

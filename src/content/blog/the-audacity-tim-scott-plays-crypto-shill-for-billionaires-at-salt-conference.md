@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Tim Scott Plays Crypto Shill For Billionaires At SALT Conference"
-pubDate: 2026-08-18T18:45:33.714529
+pubDate: 2026-08-18T18:45:33.714529-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Sen. Tim Scott"
 sourceUrl: "https://x.com/SenatorTimScott/status/2089764906606420109"

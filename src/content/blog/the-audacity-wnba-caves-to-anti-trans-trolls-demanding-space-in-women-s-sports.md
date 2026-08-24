@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: WNBA Caves to Anti-Trans Trolls Demanding Space in Women's Sports"
-pubDate: 2026-08-18T14:36:44.238088
+pubDate: 2026-08-18T14:36:44.238088-04:00
 category: "Intersectional LGBTQ+ & Gender Watchdog"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/sports/2026/08/17/wnba-admits-security-atlanta-was-wrong-asking-mother-daughter-cover-xx-xy-athletics-shirt/"

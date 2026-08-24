@@ -1,6 +1,6 @@
 ---
 title: "Free Trade Program Drives Black Economic Mobility"
-pubDate: 2026-08-11T20:30:29.909705
+pubDate: 2026-08-11T20:30:29.909705-04:00
 category: "Economic Empowerment"
 source: "Capital B"
 sourceUrl: "https://capitalbnews.org/udc-trade-school-black-students/"

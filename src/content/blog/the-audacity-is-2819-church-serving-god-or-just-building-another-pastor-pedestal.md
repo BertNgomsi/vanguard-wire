@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Is 2819 Church Serving God or Just Building Another Pastor Pedestal?"
-pubDate: 2026-08-18T15:41:26.772945
+pubDate: 2026-08-18T15:41:26.772945-04:00
 category: "The Watercooler / The Front Porch"
 source: "Word in Black"
 sourceUrl: "https://wordinblack.com/2026/08/is-2819-church-about-jesus-or-philip-anthony-mitchell/"

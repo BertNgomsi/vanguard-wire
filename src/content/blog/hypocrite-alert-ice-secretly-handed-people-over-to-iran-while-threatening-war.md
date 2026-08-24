@@ -1,6 +1,6 @@
 ---
 title: "HYPOCRITE ALERT: ICE Secretly Handed People Over to Iran While Threatening War"
-pubDate: 2026-08-18T15:26:20.120946
+pubDate: 2026-08-18T15:26:20.120946-04:00
 category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-trump-deportation-flights-ice/"

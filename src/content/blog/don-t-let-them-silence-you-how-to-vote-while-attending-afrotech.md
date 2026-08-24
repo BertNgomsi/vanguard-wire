@@ -1,6 +1,6 @@
 ---
 title: "DON'T LET THEM SILENCE YOU: How To Vote While Attending AFROTECH"
-pubDate: 2026-08-18T21:12:29.963545
+pubDate: 2026-08-18T21:12:29.963545-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/early-voting-guide-for-afrotech-conference"

@@ -1,6 +1,6 @@
 ---
 title: "BAG SECURED: CREATOR DRAINS FACEBOOK FOR $10K MONTHLY WITH AI POSTS"
-pubDate: 2026-08-18T18:49:30.320229
+pubDate: 2026-08-18T18:49:30.320229-04:00
 category: "Tech, AI & Algorithmic Bias Watchdog"
 source: "Black Enterprise"
 sourceUrl: "https://www.blackenterprise.com/creator-says-ai-generated-facebook-posts-bring-10k-plus-month/"

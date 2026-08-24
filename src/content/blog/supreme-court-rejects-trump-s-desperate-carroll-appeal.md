@@ -1,6 +1,6 @@
 ---
 title: "Supreme Court Rejects Trump's Desperate Carroll Appeal"
-pubDate: 2026-08-17T20:06:05.493303
+pubDate: 2026-08-17T20:06:05.493303-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "SCOTUSblog"
 sourceUrl: "https://www.scotusblog.com/2026/08/court-turns-down-trumps-request-to-reconsider-its-refusal-to-hear-carroll-suit-against-him/"

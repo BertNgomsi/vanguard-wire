@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Stephen A. Smith Strikes Again With Loud Clickbait Punditry"
-pubDate: 2026-08-18T15:20:15.910120
+pubDate: 2026-08-18T15:20:15.910120-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "Stephen A. Smith"
 sourceUrl: "https://x.com/stephenasmith/status/2088370691682763060"

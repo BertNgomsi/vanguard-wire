@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Missouri Races to Execute Marcellus Williams Despite Agreed Life Sentence"
-pubDate: 2026-08-17T21:10:39.849178
+pubDate: 2026-08-17T21:10:39.849178-04:00
 category: "Criminal Justice & Accountability Watchdog"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/ldf-president-urges-governor-of-missouri-to-stop-marcellus-khalifah-williams-execution/"

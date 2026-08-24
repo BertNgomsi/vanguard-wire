@@ -1,6 +1,6 @@
 ---
 title: "HYPOCRITE ALERT: Trump Crypto Venture Backs Restricted Chinese AI Connections"
-pubDate: 2026-08-18T15:33:21.036789
+pubDate: 2026-08-18T15:33:21.036789-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Daily Caller"
 sourceUrl: "https://dailycaller.com/2026/08/18/witkoff-trump-crypto-firm-world-liberty-financial-bank-hong-kong-restricted-chinese-ai"

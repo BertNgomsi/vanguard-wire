@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Convicted Election Denier Tina Peters Eyed for Elections Job"
-pubDate: 2026-08-19T13:30:00
+pubDate: 2026-08-19T13:30:00-04:00
 category: "Civil Rights, Voting & Legal Tracker"
 source: "Marc Elias"
 sourceUrl: "https://x.com/marceelias/status/2090059950928118039"

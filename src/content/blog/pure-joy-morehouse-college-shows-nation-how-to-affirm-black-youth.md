@@ -1,6 +1,6 @@
 ---
 title: "PURE JOY: Morehouse College Shows Nation How To Affirm Black Youth"
-pubDate: 2026-08-18T14:38:00.672767
+pubDate: 2026-08-18T14:38:00.672767-04:00
 category: "The Watercooler / The Front Porch"
 source: "Capital B News"
 sourceUrl: "https://capitalbnews.org/morehouse-class-2030-new-student-orientation/"

@@ -1,6 +1,6 @@
 ---
 title: "SPORTS SLANT: Stephen A. Smith Is Hyperventilating Over Lakers Preseason Hype Again"
-pubDate: 2026-08-18T15:23:44.133395
+pubDate: 2026-08-18T15:23:44.133395-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "Stephen A. Smith"
 sourceUrl: "https://x.com/stephenasmith/status/2087968523565883870"

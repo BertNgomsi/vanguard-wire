@@ -1,6 +1,6 @@
 ---
 title: "BOTH-SIDESISM AT WORK: TEXAS FESTIVAL PLATFORMS EXTREMISTS ALONGSIDE CIVIL RIGHTS ICONS"
-pubDate: 2026-08-18T15:19:26.873439
+pubDate: 2026-08-18T15:19:26.873439-04:00
 category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Texas Tribune"
 sourceUrl: "https://feeds.texastribune.org/link/16799/17422153/texas-tribune-festival-2026-lineup"

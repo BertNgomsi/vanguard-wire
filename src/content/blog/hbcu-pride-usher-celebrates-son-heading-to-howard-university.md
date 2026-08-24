@@ -1,6 +1,6 @@
 ---
 title: "HBCU PRIDE: Usher Celebrates Son Heading To Howard University"
-pubDate: 2026-08-18T15:37:29.813126
+pubDate: 2026-08-18T15:37:29.813126-04:00
 category: "The Watercooler / The Front Porch"
 source: "The Grio"
 sourceUrl: "https://thegrio.com/2026/08/18/usher-son-howard-university-cinco/"

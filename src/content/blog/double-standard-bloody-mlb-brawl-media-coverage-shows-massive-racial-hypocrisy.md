@@ -1,6 +1,6 @@
 ---
 title: "DOUBLE STANDARD: Bloody MLB Brawl Media Coverage Shows Massive Racial Hypocrisy"
-pubDate: 2026-08-19T09:30:00
+pubDate: 2026-08-19T09:30:00-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "Atlanta Black Star"
 sourceUrl: "https://atlantablackstar.com/2026/08/18/chicago-cubs-white-sox-brawl-video-fans-fight/"

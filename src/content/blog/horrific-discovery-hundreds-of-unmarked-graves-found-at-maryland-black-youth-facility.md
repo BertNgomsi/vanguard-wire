@@ -1,6 +1,6 @@
 ---
 title: "HORRIFIC DISCOVERY: Hundreds of Unmarked Graves Found at Maryland Black Youth Facility"
-pubDate: 2026-08-19T08:30:00
+pubDate: 2026-08-19T08:30:00-04:00
 category: "Criminal Justice & Accountability Watchdog"
 source: "Ben Crump"
 sourceUrl: "https://x.com/AttorneyCrump/status/2089763001952088349"

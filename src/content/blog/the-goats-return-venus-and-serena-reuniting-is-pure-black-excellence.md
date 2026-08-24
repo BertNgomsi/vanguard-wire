@@ -1,6 +1,6 @@
 ---
 title: "THE GOATS RETURN: Venus and Serena reuniting is pure Black excellence"
-pubDate: 2026-08-18T15:36:49.885793
+pubDate: 2026-08-18T15:36:49.885793-04:00
 category: "Black Pop Culture & Sports Media Slant"
 source: "The Grio"
 sourceUrl: "https://thegrio.com/2026/08/18/serena-venus-williams-doubles-return-cincinnati/"

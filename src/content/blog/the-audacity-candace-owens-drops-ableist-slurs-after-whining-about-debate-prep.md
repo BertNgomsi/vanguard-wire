@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Candace Owens Drops Ableist Slurs After Whining About Debate Prep"
-pubDate: 2026-08-18T15:17:16.590122
+pubDate: 2026-08-18T15:17:16.590122-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2088741652169183550"

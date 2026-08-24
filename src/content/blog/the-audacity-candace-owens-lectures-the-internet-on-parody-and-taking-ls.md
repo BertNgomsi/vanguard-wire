@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Candace Owens Lectures the Internet on Parody and Taking Ls"
-pubDate: 2026-08-18T15:14:21.291934
+pubDate: 2026-08-18T15:14:21.291934-04:00
 category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2088993243652309073"

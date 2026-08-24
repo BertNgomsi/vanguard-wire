@@ -1,6 +1,6 @@
 ---
 title: "THE AUDACITY: Scapegoating Social Safety Nets For $40 Trillion National Debt"
-pubDate: 2026-08-20T17:06:26.838009
+pubDate: 2026-08-20T17:06:26.838009-04:00
 category: "Economic Justice & Corporate Accountability"
 source: "Mississippi Free Press"
 sourceUrl: "https://www.mississippifreepress.org/the-us-national-debt-now-stands-at-40-trillion/"
