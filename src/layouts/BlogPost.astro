@@ -114,7 +114,19 @@ const { title, description, category, source, sourceUrl, pubDate, updatedDate, h
 			}
 			@media (max-width: 960px) {
 				.content-wrapper {
-					grid-template-columns: 1fr;
+					display: flex;
+					flex-direction: column;
+				}
+				.content-wrapper > article {
+					order: 2;
+					width: 100%;
+				}
+				.content-wrapper > aside.sidebar {
+					order: 1;
+					width: 100%;
+					position: relative; /* Remove sticky on mobile */
+					top: 0;
+					margin-bottom: 2rem;
 				}
 			}
 			@media (max-width: 720px) {

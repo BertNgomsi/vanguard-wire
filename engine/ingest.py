@@ -152,6 +152,9 @@ def synthesize_cluster(cluster):
             )
         )
         data = json.loads(response.text)
+        if hasattr(response, 'usage_metadata') and response.usage_metadata:
+            print(f"Synthesis Token Usage - Input: {response.usage_metadata.prompt_token_count}, Output: {response.usage_metadata.candidates_token_count} (Model: gemini-3.1-pro-preview)")
+
         data['source_url'] = primary_url
         data['source_name'] = combined_sources
         return data
@@ -242,6 +245,8 @@ def cluster_articles(articles):
             )
         )
         data = json.loads(response.text)
+        if hasattr(response, 'usage_metadata') and response.usage_metadata:
+            print(f"Clustering Token Usage - Input: {response.usage_metadata.prompt_token_count}, Output: {response.usage_metadata.candidates_token_count} (Model: gemini-3.6-flash)")
         cluster_indices = data.get("clusters", [])
         
         clustered_articles = []
