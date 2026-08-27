@@ -63,7 +63,8 @@ Consult these guides before working on related tasks:
 The project features a highly automated editorial pipeline designed for rapid "newsjacking" and hybrid scheduling, managed entirely via a Telegram Bot. Future agents should understand this architecture before modifying backend scripts.
 
 ### 1. Ingestion & AI Synthesis (`engine/ingest.py`)
-- Curated RSS feeds and Apify scrapers are parsed and sent to Gemini Pro for synthesis.
+- Curated RSS feeds and Apify scrapers are parsed and clustered using `gemini-3.6-flash` (to save costs on large input token contexts).
+- Clustered arrays are then sent to `gemini-3.1-pro-preview` for synthesis.
 - Gemini scores relevance (rejects < 65) and generates an active-voice headline, framing lead, blockquote, kicker, category, and Tip CTA, conforming strictly to the JSON schema.
 - Drafts are saved to SQLite (`vanguard.db`) and pushed to a Telegram chat as an alert.
 
@@ -77,13 +78,18 @@ The project features a highly automated editorial pipeline designed for rapid "n
 - **[🟢 Approve & Queue]:** Calculates the *next available publishing window* (e.g., 08:30, 09:30, 10:30, 12:00, 13:30, 15:00, 16:30 Eastern) based on the `last_queued_timestamp` stored in `engine/queue_state.json`. It skips weekends and Friday afternoons.
 - This creates a completely hands-off scheduling system where editors are only the bottleneck for quality (approvals), while the Python backend handles deployment logistics.
 
-### 4. Production Note
+### 4. Image Sourcing & API Limits
+- The system previously relied on Unsplash for images but has been fully migrated to use the **Brave Image Search API** via `engine/retry_images.py`.
+- **CRITICAL:** Gemini should *only* be used for article synthesis and relevance scoring (using Gemini Pro). It should **never** be used for image validation or image selection, as this will result in immediate `429 RESOURCE_EXHAUSTED` quota limits.
+- Environment variables for all scripts must be stored in the root directory (`/root/vanguard-wire/.env`). Avoid maintaining separate `.env` files (like in `engine/`) to prevent synchronization issues with API keys.
+
+### 5. Production Note
 If `webhook.py` is modified, the production systemd service must be restarted (`systemctl restart vanguard-wire`) to pick up the new code. Do not attempt to run it manually (`python webhook.py`) in production, as systemd will lock the port.
 
 ## Backend Server & Webhook Architecture
 The project includes a Python backend (located in `engine/`) that acts as an RSS scraper and Telegram webhook server.
 - **Server:** Runs on an Ubuntu VPS.
-- **Ingestion:** `ingest.py` is executed hourly via a local crontab on the VPS. It scrapes RSS feeds, passes them to Gemini for summarization, stores them in SQLite, and sends draft alerts to a Telegram chat with inline Approve/Reject buttons.
+- **Ingestion:** `ingest.py` is executed via a dynamic local crontab on the VPS (Every 2 hours during the day from 8 AM - 6 PM EST, and every 6 hours overnight). It scrapes RSS feeds, passes them to Gemini for summarization, stores them in SQLite, and sends draft alerts to a Telegram chat with inline Approve/Reject buttons.
 - **Webhook Service:** `webhook.py` runs as a systemd background service (`vanguard-webhook.service`) on port `5001`. It receives callback queries from Telegram.
 - **Telegram UX Edge Cases:** Clicking Approve/Reject in Telegram sends an immediate `answerCallbackQuery` (to stop the button loading animation) and an `editMessageText` request to remove the buttons and mark the message as `✅ [APPROVED]` or `❌ [REJECTED]`. This prevents duplicate approvals.
 - **GitHub Integration:** Approved articles are pushed directly to the `BertNgomsi/vanguard-wire` GitHub repository under `src/content/blog/` via the GitHub API.
