@@ -12,7 +12,7 @@ if ! python ingest.py >> ingest.log 2>&1; then
     # The script crashed (exit code != 0)
     
     # Load environment variables (need TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID)
-    export $(grep -v '^#' .env | xargs)
+    export $(grep -v '^#' /root/vanguard-wire/.env | xargs)
     
     # Send alert to Telegram
     ERROR_MSG="🚨 *CRITICAL ALERT* 🚨%0A%0AThe hourly Vanguard Wire ingestion script (\`ingest.py\`) just crashed on the server!%0A%0ACheck the VPS \`engine/ingest.log\` for details."
