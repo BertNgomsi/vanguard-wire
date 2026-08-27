@@ -5,9 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/17/florida-congress-oliver-larkin-jared-moskowitz-aipac/"
 tipCta: "Help us expose big-money influence and keep independent progressive journalism alive. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/2/2b/Florida_Democratic_Presidential_Primary_Election_Results_by_County,_2016.svg
-imageCreditName: "R.D. Smith"
-imageCreditUsername: "rd421"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/f/fa/River-doubt-team.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Establishment Democrats love talking about protecting democracy until deep-pocketed lobbyist groups enter the chat. Representative Jared Moskowitz is swimming in AIPAC cash and AI super PAC dollars, but voters are tired of politicians beholden to billionaire interests.

@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089769326936993913"
 tipCta: "Help us keep calling out MAGA voting hypocrisy. Throw $5 in our tip jar today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/51/Donald_Trump_-_Caricature_(50073416982).jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/90/Donald_Trump_speaking_at_CPAC_2011_by_Mark_Taylor.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

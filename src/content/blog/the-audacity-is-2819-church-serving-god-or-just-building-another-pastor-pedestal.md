@@ -5,9 +5,9 @@ category: "The Watercooler / The Front Porch"
 source: "Word in Black"
 sourceUrl: "https://wordinblack.com/2026/08/is-2819-church-about-jesus-or-philip-anthony-mitchell/"
 tipCta: "Help us keep calling out unchecked authority and spiritual hype. Toss $5 into our jar today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/0/08/The_Interior_of_the_Church_of_Saint_Bavo,_Haarlem_by_Pieter_Jansz._Saenredam,_Getty_Center.JPG
-imageCreditName: "hoch3fotografie"
-imageCreditUsername: "hoch3fotografie"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/e/e0/Chancel_of_the_Church_of_St._Rombauld,_Tirlemont,_Flanders_2000_CKS_06307_0062_000(012548).jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 When thousands line up before dawn just to catch a glimpse of a charismatic pastor, you have to ask who is really being worshipped. Philip Anthony Mitchell claims he wants all the glory to go to Jesus, but the line between anointed leadership and full-blown personality cult is getting dangerously thin.

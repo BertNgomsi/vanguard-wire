@@ -28,7 +28,9 @@ def replace_all():
         if hotlink_url:
             print(f" -> Success: {hotlink_url}")
             content = re.sub(r'^unsplashImage:.*?\n', f'unsplashImage: {hotlink_url}\n', content, flags=re.MULTILINE)
-            content = re.sub(r'^imageCredit:.*?\n', f'imageCredit: {credit_name}\n', content, flags=re.MULTILINE)
+            content = re.sub(r'^imageCreditName:.*?\n', '', content, flags=re.MULTILINE)
+            content = re.sub(r'^imageCreditUsername:.*?\n', '', content, flags=re.MULTILINE)
+            content = re.sub(r'^unsplashImage: (.*?)\n', f'unsplashImage: \\1\nimageCreditName: "{credit_name}"\nimageCreditUsername: ""\n', content, flags=re.MULTILINE)
             
             with open(filepath, 'w') as f:
                 f.write(content)

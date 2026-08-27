@@ -5,9 +5,9 @@ category: "The Watercooler / The Front Porch"
 source: "The Grio"
 sourceUrl: "https://thegrio.com/2026/08/18/usher-son-howard-university-cinco/"
 tipCta: "Help us keep celebrating Black excellence and HBCU pride. Pitch in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/3/3f/George_Reid_(1841-1913)_-_Sir_John_Usher_of_Norton_and_Wells_(1828%E2%80%931904)_-_EU0458_-_University_of_Edinburgh_Art_Collection.jpg
-imageCreditName: "Alex Mertz"
-imageCreditUsername: "alexmertz"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/b/b4/President_Trump_Delivers_Remarks_from_Scott_Turner_to_the_HBCU_Conference_(48714388661)_(cropped).jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 While mainstream media constantly sleeps on the ultimate power of Historically Black Colleges, R&B royalty Usher Raymond is showing everyone how legacy is actually built. Seeing Black celebrity youth choose Mecca over PWIs is the exact cultural investment we love to see.

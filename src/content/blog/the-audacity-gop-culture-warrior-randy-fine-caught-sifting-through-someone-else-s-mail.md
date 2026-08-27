@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Daily Caller"
 sourceUrl: "https://dailycaller.com/2026/08/18/rep-randy-fine-appears-to-commit-federal-crime-while-caught-on-doorbell-camera"
 tipCta: "Help us keep exposing hypocritical politicians who think they are above the law. Chip in $5."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/3/38/Mike_Johnson_swears_in_Randy_Fine_(2025).jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/51/Sen._Randy_McNally.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

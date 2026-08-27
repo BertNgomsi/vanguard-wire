@@ -5,9 +5,9 @@ category: "Intersectional LGBTQ+ & Gender Watchdog"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/sports/2026/08/17/wnba-admits-security-atlanta-was-wrong-asking-mother-daughter-cover-xx-xy-athletics-shirt/"
 tipCta: "Help us keep calling out right-wing provocateurs and weak corporate responses. Chip in $5."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/a6/Map_of_US,_WNBA.svg
-imageCreditName: "Todd Greene"
-imageCreditUsername: "tarheeltodd"
+unsplashImage: https://diff.wikimedia.org/wp-content/themes/interconnection/assets/images/translate-post.jpg
+imageCreditName: "Diff.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Because right-wing agitators apparently have nothing better to do, conservative trolls brought their favorite anti-trans apparel to a WNBA game just to manufacture outrage. Instead of standing firm against anti-LGBTQ+ provocations, the league rushed to apologize for arena security doing their actual jobs.

@@ -5,9 +5,9 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/ldf-president-urges-governor-of-missouri-to-stop-marcellus-khalifah-williams-execution/"
 tipCta: "Help us keep shining a light on state-sanctioned injustice. Support our work with $5."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/9d/Portrait_Marcellus_Louvre_Ma3547.jpg
-imageCreditName: "Pankaj Patel"
-imageCreditUsername: "pankajpatel"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/51/Gardner_execution_protest_Utah_news_media.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Missouri is sprinting to execute Marcellus Williams despite overwhelming concerns and a consent judgment meant to spare his life. Governor Parson’s bloodthirsty refusal to halt this execution shows how cheap Black life remains to the state machinery.

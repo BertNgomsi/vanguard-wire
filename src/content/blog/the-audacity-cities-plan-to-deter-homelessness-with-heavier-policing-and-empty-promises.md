@@ -5,9 +5,9 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "The Marshall Project"
 sourceUrl: "https://www.themarshallproject.org/2026/08/15/police-boston-arizona-homeless"
 tipCta: "Help us expose how cities criminalize poverty instead of fixing it. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/92/Metro_Transit_Police_(3400912890).jpg
-imageCreditName: "King's Church International"
-imageCreditUsername: "kingschurchinternational"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/3/3c/Homeless_in_New_York_City..jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Because why solve a housing crisis with actual affordable housing when you can just threaten unhoused people with jail cells? Cities are slapping a shiny new label on old-school police coercion, calling it 'focused deterrence.' It is the same old stick disguised as a carrot.

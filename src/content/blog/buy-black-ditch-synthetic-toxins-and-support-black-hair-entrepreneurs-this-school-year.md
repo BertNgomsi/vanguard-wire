@@ -6,8 +6,8 @@ source: "Essence (News & Politics)"
 sourceUrl: "https://www.essence.com/hair/15-black-owned-protective-style-essentials-back-to-school-hair/"
 tipCta: "Help us keep empowering Black enterprise and exposing beauty industry inequality. Toss $5 in the jar."
 unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/a4/Black_hair_detail.jpg
-imageCreditName: "Jessica Felicio"
-imageCreditUsername: "jekafe"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Mainstream beauty supply stores have spent decades selling us toxic chemicals while shutting Black founders out of the aisle. As kids head back to school, supporting Black-owned hair care isn't just about looking good—it's an act of economic self-determination.

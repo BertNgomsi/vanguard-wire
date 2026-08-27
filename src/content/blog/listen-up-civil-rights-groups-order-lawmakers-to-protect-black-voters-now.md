@@ -6,8 +6,8 @@ source: "Color Of Change"
 sourceUrl: "https://colorofchange.org/blog/civil-rights-and-democracy-organizations-joint-letter-on-redistricting/"
 tipCta: "Help us keep calling out the politicians threatening Black voting rights. Pitch in $5 today."
 unsplashImage: https://upload.wikimedia.org/wikipedia/commons/f/f5/Lest_We_Forget_Images_of_the_Black_Civil_Rights_Movement.jpg
-imageCreditName: "Parker Johnson"
-imageCreditUsername: "pkripperprivate"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 As conservative gerrymandering continues to slice up Black political power across the nation, civil rights leaders are done asking politely. A major coalition is calling out lawmakers who pretend to care about democracy while actively enabling voter suppression. It is time to step up or get out of the way.

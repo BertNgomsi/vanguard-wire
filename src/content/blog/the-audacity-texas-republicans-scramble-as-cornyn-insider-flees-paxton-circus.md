@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Breitbart News"
 sourceUrl: "https://www.breitbart.com/politics/2026/08/17/cornyn-staffer-joins-democrat-james-talarico-campaign/"
 tipCta: "Help us expose conservative hypocrisy and fight back in Texas. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/b/b8/Ken_Paxton_(54235298139).jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/1/16/Texas_State_Capitol_building-front_left_front_oblique_view.JPG
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

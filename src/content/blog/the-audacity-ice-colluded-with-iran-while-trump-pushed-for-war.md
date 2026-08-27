@@ -5,9 +5,9 @@ category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-trump-deportation-flights-ice/"
 tipCta: "Help us keep calling out federal cruelty and unhinged government overreach. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/7c/Iran_United_States_Locator.png
-imageCreditName: "Sepehr Aleagha"
-imageCreditUsername: "sepehr_algh"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/b/b2/Photograph_of_the_President_and_Mrs._Truman_with_the_Shah_of_Iran,_in_formal_attire,_during_the_Shah's_visit_to_the..._-_NARA_-_200150.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Because consistency was never on the agenda, federal immigration agents were out here happily collaborating with the Iranian regime to hand over targeted nationals—and somehow managed to deport the completely wrong person. You literally cannot make up this level of dangerous, authoritarian incompetence.

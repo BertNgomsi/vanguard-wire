@@ -5,9 +5,9 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "Stephen A. Smith"
 sourceUrl: "https://x.com/stephenasmith/status/2087968523565883870"
 tipCta: "Support independent Black media that cuts through mainstream sports hot-take noise. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/76/Stephen_A._Smith_in_January_2023_(3x4_cropped_c).jpg
-imageCreditName: "Library of Congress"
-imageCreditUsername: "libraryofcongress"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/b/bb/Joe_Smith_Lakers_vs_Heat_2010.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Stephen A. Smith is back on his daily pulpit, screaming into the sports media void about the Los Angeles Lakers. Instead of substantive coverage on actual sports developments, mainstream sports networks would rather peddle empty hype cycles for clicks.

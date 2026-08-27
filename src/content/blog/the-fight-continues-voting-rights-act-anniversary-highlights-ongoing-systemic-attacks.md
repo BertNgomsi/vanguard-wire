@@ -5,9 +5,9 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "Lawyers' Committee for Civil Rights Under Law"
 sourceUrl: "https://www.lawyerscommittee.org/lawyers-committee-marks-voting-rights-anniversary-with-a-call-to-protect-black-voters-access-to-the-ballot-box/"
 tipCta: "Help us stay on the frontlines fighting voter suppression. Chip in $5 now."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/6/64/Lyndon_Johnson_and_Martin_Luther_King,_Jr._-_Voting_Rights_Act.jpg
-imageCreditName: "Parker Johnson"
-imageCreditUsername: "pkripperprivate"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/1/17/Citizenship_Amendment_Act_protests_in_Guwahati.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 As another Voting Rights Act anniversary passes, conservative politicians are still working overtime to roll back our access to the ballot. Mainstream media pretends democracy is fine, but civil rights advocates know the war on Black voters is escalating.

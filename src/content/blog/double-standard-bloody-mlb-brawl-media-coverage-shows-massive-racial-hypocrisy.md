@@ -5,7 +5,7 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "Atlanta Black Star"
 sourceUrl: "https://atlantablackstar.com/2026/08/18/chicago-cubs-white-sox-brawl-video-fans-fight/"
 tipCta: "Help us keep calling out media double standards and racial hypocrisy. Chip in $5."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/4/4d/Baltimore_Orioles,_Kansas_City_Royals_(26925656553).jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/e/ef/Brisbane_Anti-Racism_Protest_-_6_June_2020_-_AndrewMercer_-_DSC05236.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

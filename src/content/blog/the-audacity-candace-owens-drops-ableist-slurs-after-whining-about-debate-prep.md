@@ -5,9 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2088741652169183550"
 tipCta: "Help us keep exposing right-wing grifters and toxic rhetoric. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/f/f7/Candace_Owens_(51331093124)_(cropped).jpg
-imageCreditName: "Thelma Dike"
-imageCreditUsername: "dikethelmak"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/d/da/Ariana_Debose_during_an_interview,_March_2022.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Candace Owens is back at it again, proving that when her pseudo-intellectual veneer cracks, she resorts to bottom-of-the-barrel insults. Instead of offering anything resembling substance, the professional conservative grifter threw a full-blown tantrum and tossed around gross ableist slurs because someone dared challenge her narrative.

@@ -5,8 +5,8 @@ category: "Tech, AI & Algorithmic Bias Watchdog"
 source: "Black Enterprise"
 sourceUrl: "https://www.blackenterprise.com/creator-says-ai-generated-facebook-posts-bring-10k-plus-month/"
 tipCta: "Help us keep exposing tech industry nonsense and algorithmic manipulation. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/72/Meta_AI_screenshot.jpg
-imageCreditName: "Commons.Wikimedia.Org"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Appeal-email.png?utm_source=meta.wikimedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled
+imageCreditName: "Meta.Wikimedia.Org"
 imageCreditUsername: ""
 ---
 

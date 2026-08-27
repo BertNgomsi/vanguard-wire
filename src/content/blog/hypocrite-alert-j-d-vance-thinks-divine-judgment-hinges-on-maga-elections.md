@@ -5,9 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Right Wing Watch"
 sourceUrl: "https://www.peoplefor.org/rightwingwatch/jd-vance-bares-his-soul-brandon-gill"
 tipCta: "Help us keep calling out political hypocrisy and religious pandering. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/57/JD_Vance_takes_Oath_of_Office_as_United_States_Senator_by_Vice_President_Kamala_Harris.jpg
-imageCreditName: "Joshua Wann"
-imageCreditUsername: "joshuawann"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/8/80/President_Donald_Trump_and_Vice_President_JD_Vance_hold_a_cabinet_meeting_(54352151942).jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Just when you thought MAGA religious pandering couldn't get any more absurd, J.D. Vance claims his eternal salvation rests on campaign fundraising. Because apparently, the Almighty's biggest priority on Judgment Day is whether or not a far-right politician kept his seat in Congress.

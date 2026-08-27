@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "The Federalist"
 sourceUrl: "https://thefederalist.com/2026/08/18/pollster-that-put-francesca-hong-karen-bass-in-lead-admits-its-a-fake-firm/?utm_source=rss&utm_medium=rss&utm_campaign=pollster-that-put-francesca-hong-karen-bass-in-lead-admits-its-a-fake-firm"
 tipCta: "Help us keep exposing conservative media disinformation and bad-faith smears. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/96/Fake_News_Spelled_Out_In_Newspaper.jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/e/e0/Michael_Carbone,_Aaron_Marquez,_Steve_Kaiser,_Quang_Nguyen,_Nick_Kupper,_Walter_Blackman_&_John_Gillette_with_attendees_(54268914776).jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

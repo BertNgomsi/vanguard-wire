@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Sen. Tim Scott"
 sourceUrl: "https://x.com/SenatorTimScott/status/2089764906606420109"
 tipCta: "Help us keep exposing corporate puppets and political hypocrisy. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/1/14/Tim_Scott_and_Scott_Bessent_(cropped).jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/1/11/Monty_Metzger_(CEO_at_LCX)_Keynote_Speech_at_Crypto_Summit_Conference_Dubai_2024.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

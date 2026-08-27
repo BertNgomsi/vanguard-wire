@@ -7,7 +7,8 @@ import base64
 import db
 import time
 
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+load_dotenv(dotenv_path)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
@@ -17,16 +18,12 @@ if GEMINI_API_KEY:
     client = genai.Client(api_key=GEMINI_API_KEY)
 
 def get_brave_image(headline, category):
-    """Uses Gemini to generate a search query, searches Brave Image Search, and picks image."""
+    """Uses Brave Image Search to pick an image."""
     BRAVE_API_KEY = os.getenv("BRAVE_API_KEY")
-    if not BRAVE_API_KEY or not client:
+    if not BRAVE_API_KEY:
         return None, "", ""
     try:
-        prompt = f"Extract the specific main subject or person from this headline to search for a news photo. Include their full name or specific context to avoid ambiguity (e.g. 'Venus Williams' instead of just 'Venus'). Return ONLY a 1-4 word search query.\nHeadline: {headline}\nCategory: {category}"
-        query_response = client.models.generate_content(model='gemini-3.6-flash', contents=prompt)
-        query = query_response.text.strip()
-        
-        search_query = f"{query} site:wikimedia.org OR site:wikipedia.org OR site:flickr.com"
+        search_query = f"{headline} site:wikimedia.org OR site:wikipedia.org OR site:flickr.com"
         print(f"Generated Brave Search Query: {search_query}")
         
         search_url = "https://api.search.brave.com/res/v1/images/search"
@@ -46,28 +43,12 @@ def get_brave_image(headline, category):
             print("No Brave results")
             return None, "", ""
             
-        image_urls = [r.get('properties', {}).get('url', '') for r in results[:5] if r.get('properties', {}).get('url')]
-        if not image_urls:
+        hotlink_url = results[0].get('properties', {}).get('url', '')
+        if not hotlink_url:
             return None, "", ""
 
-        vision_prompt = f"You are an editorial assistant. Review these 5 image URLs for a news article titled '{headline}'. Select the most relevant and high-quality image. If possible, pick one that is slightly comical, humorous, or highly impactful. Critically, ensure the image actually depicts the specific subject (e.g. do not select an image of the planet Venus if the article is about Venus Williams). Return ONLY the integer index (0-4) of the winning image." 
-        vision_contents = [vision_prompt] + image_urls
-        vision_response = client.models.generate_content(model='gemini-3.6-flash', contents=vision_contents)
-        try:
-            import re
-            winner_idx = int(re.search(r'\d+', vision_response.text).group())
-            if winner_idx < 0 or winner_idx >= len(image_urls):
-                winner_idx = 0
-        except:
-            winner_idx = 0
-            
-        hotlink_url = image_urls[winner_idx]
-        credit_name = "Web"
-        for r in results:
-            if r.get('properties', {}).get('url') == hotlink_url:
-                source = r.get('source', '')
-                credit_name = source.title() if source else "Web"
-                break
+        source = results[0].get('source', '')
+        credit_name = source.title() if source else "Web"
         
         return hotlink_url, credit_name, ""
         

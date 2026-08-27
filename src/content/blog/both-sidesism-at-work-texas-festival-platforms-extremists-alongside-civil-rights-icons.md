@@ -5,9 +5,9 @@ category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Texas Tribune"
 sourceUrl: "https://feeds.texastribune.org/link/16799/17422153/texas-tribune-festival-2026-lineup"
 tipCta: "Help us keep calling out mainstream media both-sidesism. Chip in $5 to support real journalism."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/7/7c/FEMA_-_43081_-_Visitors_to_the_CommUnity_Resource_and_Information_Festival_in_Texas.jpg
-imageCreditName: "K. Mitch Hodge"
-imageCreditUsername: "kmitchhodge"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/5d/Left_Out_17_Robert_introduces_Pride_at_Work.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Leave it to mainstream media events to pretend that placing anti-civil rights politicians on the same stage as faith leaders and labor legends is harmless civic discourse. The Texas Tribune Festival is serving up its classic both-sides cocktail, treating attacks on voting rights and Black democracy as mere differences of opinion.

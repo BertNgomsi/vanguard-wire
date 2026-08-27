@@ -12,7 +12,8 @@ import db
 from webhook import get_brave_image
 
 # Load environment variables
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+load_dotenv(dotenv_path)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -57,34 +58,12 @@ class DraftResponse(BaseModel):
 def fetch_feeds():
     """Fetch and parse RSS feeds and Apify data."""
     entries = []
+    
+    # 1. Fetch Standard RSS Feeds
     for feed in RSS_FEEDS:
-        try:
-            print(f"Fetching {feed['name']}...")
-            if feed.get("type") == "Apify":
-                if not APIFY_API_TOKEN:
-                    print("Skipping Apify: APIFY_API_TOKEN not set.")
-                    continue
-                apify_url = f"https://api.apify.com/v2/acts/kaitoeasyapi~twitter-x-data-tweet-scraper-pay-per-result-cheapest/run-sync-get-dataset-items?token={APIFY_API_TOKEN}"
-                payload = {
-                    "maxItems": 3,
-                    "queryType": "Latest",
-                    "lang": "en",
-                    "from": feed["from"]
-                }
-                res = requests.post(apify_url, json=payload, headers={'Content-Type': 'application/json'})
-                res.raise_for_status()
-                tweets = res.json()
-                for tweet in tweets:
-                    link = tweet.get("url", "")
-                    if link and not db.is_url_processed(link):
-                        db.mark_url_processed(link)
-                        entries.append({
-                            "title": f"Tweet by {feed['name']}",
-                            "link": link,
-                            "description": tweet.get("text", ""),
-                            "source": feed["name"]
-                        })
-            else:
+        if feed.get("type") != "Apify":
+            try:
+                print(f"Fetching {feed['name']}...")
                 parsed = feedparser.parse(feed["url"])
                 for entry in parsed.entries[:5]: # Let's fetch 5 to give it more data for clustering
                     link = entry.link
@@ -96,8 +75,55 @@ def fetch_feeds():
                             "description": entry.get("description", ""),
                             "source": feed["name"]
                         })
+            except Exception as e:
+                print(f"Error fetching {feed['name']}: {e}")
+
+    # 2. Batch Fetch Apify Feeds
+    apify_feeds = [f for f in RSS_FEEDS if f.get("type") == "Apify"]
+    if apify_feeds and APIFY_API_TOKEN:
+        try:
+            print(f"Batch fetching {len(apify_feeds)} Apify targets...")
+            # Combine all handles into a single search query (e.g. from:user1 OR from:user2)
+            handles = [f"from:{f['from']}" for f in apify_feeds if f.get('from')]
+            search_query = " OR ".join(handles)
+            
+            apify_url = f"https://api.apify.com/v2/acts/kaitoeasyapi~twitter-x-data-tweet-scraper-pay-per-result-cheapest/run-sync-get-dataset-items?token={APIFY_API_TOKEN}"
+            payload = {
+                "searchTerms": [search_query],
+                "maxItems": len(apify_feeds), # roughly 1 per user (reduced from 3 per user)
+                "queryType": "Latest",
+                "lang": "en"
+            }
+            res = requests.post(apify_url, json=payload, headers={'Content-Type': 'application/json'})
+            res.raise_for_status()
+            tweets = res.json()
+            
+            for tweet in tweets:
+                link = tweet.get("url", "")
+                
+                # Match the tweet back to its original source name based on the handle in the URL
+                matched_feed = None
+                for f in apify_feeds:
+                    if f.get('from') and f.get('from').lower() in link.lower():
+                        matched_feed = f
+                        break
+                        
+                source_name = matched_feed['name'] if matched_feed else "Twitter Scraper"
+                
+                if link and not db.is_url_processed(link):
+                    db.mark_url_processed(link)
+                    entries.append({
+                        "title": f"Tweet by {source_name}",
+                        "link": link,
+                        "description": tweet.get("text", ""),
+                        "source": source_name
+                    })
         except Exception as e:
-            print(f"Error fetching {feed['name']}: {e}")
+            print(f"Error in batch Apify fetch: {e}")
+            print("Response text:", res.text if 'res' in locals() else "No response")
+    elif apify_feeds and not APIFY_API_TOKEN:
+        print("Skipping Apify: APIFY_API_TOKEN not set.")
+        
     return entries
 
 def synthesize_cluster(cluster):
@@ -118,7 +144,7 @@ def synthesize_cluster(cluster):
         
     try:
         response = client.models.generate_content(
-            model='gemini-3.6-flash', 
+            model='gemini-3.1-pro-preview', 
             contents=prompt,
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
@@ -256,15 +282,7 @@ def main():
             # Fetch image and validate semantics
             unsplash_img, credit_name, credit_username = get_brave_image(draft['headline'], draft['category'])
             if unsplash_img and client:
-                print("Validating image semantics...")
-                prompt_text = f"Review the attached image. Does it semantically contradict the context of the article? For example, if the article is about an HBCU (Howard University) and the image shows a PWI (Michigan), or if the article is about a specific individual and the image clearly depicts someone else. Respond with ONLY 'WARNING' if there is a mismatch, or 'OK' if it is fine.\nHeadline: {draft['headline']}\nCategory: {draft['category']}\nExcerpt: {draft['framing_lead']}"
-                try:
-                    val_res = client.models.generate_content(model='gemini-3.6-flash', contents=[prompt_text, unsplash_img])
-                    if 'WARNING' in val_res.text:
-                        draft['category'] = "⚠️ IMAGE WARNING | " + draft.get('category', '')
-                        print("-> Image warning appended.")
-                except Exception as e:
-                    print(f"Image validation error: {e}")
+                pass # Image validation removed to save quota and align with workflow
             
             draft_id = db.insert_draft(draft)
             

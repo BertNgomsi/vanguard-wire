@@ -5,9 +5,9 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "ACLU National News & Press"
 sourceUrl: "https://www.aclu.org/press-releases/aclu-commemorates-samuel-paz-former-board-member"
 tipCta: "Help us keep honoring true civil rights warriors fighting police brutality. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/4/4e/Samuel_Orr_in_1920.jpg
-imageCreditName: "Toomas Tartes"
-imageCreditUsername: "toomastartes"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/d/d1/The_Civil_Rights_Act_of_1965,_signed_by_President_Lyndon_B._Johnson_on_August_6,_1965_as_photographed_on_July_2,_2024.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 While mainstream media routinely ignores the legal warriors fighting police misconduct, we recognize those who dedicated their lives to defending Black and Brown communities against state violence. Samuel Paz was a relentless champion for civil rights.

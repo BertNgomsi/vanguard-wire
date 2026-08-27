@@ -5,7 +5,7 @@ category: "Education & Historical Erasure Watchdog"
 source: "Rep. Ayanna Pressley"
 sourceUrl: "https://x.com/RepPressley/status/2089799889286820282"
 tipCta: "Help us keep telling the complete truth about Black history and civil rights. Chip in today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/a8/Woman_holding_Equal_Rights_Amendment_sign_in_Los_Angeles,_California,_with_two_men,_one_of_them_yawning.jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/e/e8/Official_Meeting_of_the_U.S._Environmental_Protection_Agency_Historically_Black_Colleges_and_Universities_and_Minority_Serving_Institutions_(HBCU+MSI)_Advisory_Council_on_November_20,_2024_at_U.S._EPA_Headquarters,_Washington,_D.C._-_26.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

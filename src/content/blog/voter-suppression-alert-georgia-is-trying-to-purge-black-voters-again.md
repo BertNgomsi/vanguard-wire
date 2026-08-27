@@ -5,9 +5,9 @@ category: "Civil Rights, Voting & Legal Tracker"
 source: "NAACP Legal Defense and Educational Fund (LDF)"
 sourceUrl: "https://www.naacpldf.org/voting-rights-advocates-move-to-intervene-in-suit-to-protect-5000-georgia-voters-at-risk-of-removal-from-the-november-election-rolls/"
 tipCta: "Help us stay on the front lines against voter suppression. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/8/87/2022_Georgia_State_Senate_election_district_map.svg
-imageCreditName: "Glen Carrie"
-imageCreditUsername: "glencarrie"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/a/ae/United_States_presidential_election_raw_popular_vote_count_line_graph_(Expanded).png
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Because Georgia conservatives simply cannot win a fair fight, they are back at their favorite pastime: attempting to purge thousands of Black voters right before an election. Civil rights organizations are rushing into court to stop this shameless disenfranchisement scheme before 5,000 voters lose their fundamental rights.

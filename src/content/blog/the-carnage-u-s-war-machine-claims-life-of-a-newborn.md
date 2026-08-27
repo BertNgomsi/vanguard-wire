@@ -5,9 +5,9 @@ category: "Global Diaspora & International Solidarity"
 source: "The Intercept"
 sourceUrl: "https://theintercept.com/2026/08/18/iran-war-civilian-deaths-families-infant/"
 tipCta: "Help us expose state violence and war profiteering. Fuel independent journalism with $5."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/6/69/011007-N-6520M-052_Preparing_weapons_for_war.jpg
-imageCreditName: "Arisa Chattasa"
-imageCreditUsername: "golfarisa"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/97/Marines_carry_a_casualty_to_safety_under_heavy_sniper_fire_15-3001-0996_-_54167200952.jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 While beltway warmongers slap each other on the back and toast to endless defense budget hikes, innocent civilians pay the ultimate price. The devastating human cost of imperial aggression is stripped of its humanity until you are forced to look directly at the tragic fallout.

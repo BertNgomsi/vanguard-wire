@@ -5,8 +5,8 @@ category: "Black Pop Culture & Sports Media Slant"
 source: "NewsOne"
 sourceUrl: "https://newsone.com/6869486/who-ran-the-wnba-this-week-12/"
 tipCta: "Support Black sports journalism that centers real excellence over media hype. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/9/9c/Francis_Wilson_under_the_management_of_A.H._Canby_in_the_comic_opera,_Half_a_king_LCCN2014635738.jpg
-imageCreditName: "Commons.Wikimedia.Org"
+unsplashImage: https://diff.wikimedia.org/wp-content/uploads/2016/02/peyton_mannning_2015.jpg?w=580&resize=580,583
+imageCreditName: "Diff.Wikimedia.Org"
 imageCreditUsername: ""
 ---
 

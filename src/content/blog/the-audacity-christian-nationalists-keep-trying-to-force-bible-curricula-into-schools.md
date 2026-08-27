@@ -5,9 +5,9 @@ category: "Education & Historical Erasure Watchdog"
 source: "Right Wing Watch"
 sourceUrl: "https://www.peoplefor.org/rightwingwatch/trumps-worst-war-crime"
 tipCta: "Help us expose Christian nationalist attacks on public education. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/3/30/Christian_Allegory_Southern_Netherlandish_School_Limburgs_Museum_L08973.jpg
-imageCreditName: "Aaron Burden"
-imageCreditUsername: "aaronburden"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/8/81/Hey,_You_Got_Your_Church_In_My_State!_(3036363927).jpg
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 When conservative zealots aren't busy erasing Black history, they're trying to replace real education with evangelical dogma. Fortunately, sanity prevailed in Colorado as educators shut down Texas-style religious indoctrination.

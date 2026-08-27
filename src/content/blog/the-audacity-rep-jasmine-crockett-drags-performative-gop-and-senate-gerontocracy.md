@@ -5,7 +5,7 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Blavity (News & Politics)"
 sourceUrl: "https://blavity.com/jasmine-crockett-says-gop-is-very-performative"
 tipCta: "Tired of performative politicians wasting your time? Chip in $5 to support real journalism."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/51/Jasmine_Crockett_(53875624245).jpg
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/d/d1/Rep._Jasmine_Crockett_-_118th_Congress.jpg
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---

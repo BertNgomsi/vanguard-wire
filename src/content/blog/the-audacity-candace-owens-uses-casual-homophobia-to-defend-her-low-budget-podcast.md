@@ -5,9 +5,9 @@ category: "Intersectional LGBTQ+ & Gender Watchdog"
 source: "Candace Owens"
 sourceUrl: "https://x.com/RealCandaceO/status/2089002242787483904"
 tipCta: "Help us keep calling out right-wing bigotry and political grifters. Chip in $5 today."
-unsplashImage: https://upload.wikimedia.org/wikipedia/commons/5/5b/Candace_Owens_(53805331465)_(cropped).jpg
-imageCreditName: "Thelma Dike"
-imageCreditUsername: "dikethelmak"
+unsplashImage: https://upload.wikimedia.org/wikipedia/commons/f/f7/Candace_Owens_(51331093124)_(cropped).jpg
+imageCreditName: "Commons.M.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Candace Owens is back at it again, proving that no right-wing rant is complete without a little casual homophobia sprinkled on top. While attempting to prove she is just an unbothered DIY queen who doesn't need a professional glam squad, she managed to drag gay men into her podcast logistical drama. Because of course she did.
