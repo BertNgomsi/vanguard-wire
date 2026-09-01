@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 import db
-from webhook import get_brave_image
+
 
 # Load environment variables
 dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
@@ -284,16 +284,7 @@ def main():
         if draft and draft.get('relevance_score', 0) >= 65:
             print(f"-> Selected: Score {draft['relevance_score']}")
             
-            # Fetch image and validate semantics
-            unsplash_img, credit_name, credit_username = get_brave_image(draft['headline'], draft['category'])
-            if unsplash_img and client:
-                pass # Image validation removed to save quota and align with workflow
-            
             draft_id = db.insert_draft(draft)
-            
-            # Save the pre-fetched image so webhook doesn't fetch it again
-            if unsplash_img:
-                db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
                 
             send_to_telegram(draft, draft_id)
             selected_count += 1
