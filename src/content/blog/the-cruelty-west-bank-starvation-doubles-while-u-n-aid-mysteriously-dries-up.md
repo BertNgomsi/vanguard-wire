@@ -5,7 +5,7 @@ category: "Global Diaspora & International Solidarity"
 source: "Fortune (Race & Business)"
 sourceUrl: "https://fortune.com/2026/09/01/un-west-bank-food-shortage/"
 tipCta: "Help us keep exposing the deadly hypocrisy of Western imperialism. Chip in $5 today."
-unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Aid_for_Trade_Global_Review_2017_%E2%80%93_Day_2_(35085044703).jpg"
+unsplashImage: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/A_holiday_wreath_hangs_in_the_window_while_President_Joe_Biden_meets_with_staff,_Thursday,_November_30,_2023,_in_the_Oval_Office.jpg/120px-A_holiday_wreath_hangs_in_the_window_while_President_Joe_Biden_meets_with_staff,_Thursday,_November_30,_2023,_in_the_Oval_Office.jpg?utm_source=commons.wikimedia.org&utm_campaign=gallery&utm_content=thumbnail"
 imageCreditName: "Commons.Wikimedia.Org"
 imageCreditUsername: ""
 ---
