@@ -5,7 +5,9 @@ category: "Economic Justice & Corporate Accountability"
 source: "Fortune (Race & Business)"
 sourceUrl: "https://fortune.com/2026/08/25/newsom-wildfire-plan-survivors-unfair/"
 tipCta: "Help us keep calling out corporate bailouts masquerading as disaster relief. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-2.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Gavin_Newsom_talks_to_the_media_about_his_%22Care_Not_Cash%22_program_in_2003_(2).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 California Governor Gavin Newsom is back at it again, serving up corporate liability protections neatly wrapped as quick relief for disaster survivors. Under the guise of faster payouts, the state is asking everyday people to permanently surrender their constitutional right to take reckless actors to court.
