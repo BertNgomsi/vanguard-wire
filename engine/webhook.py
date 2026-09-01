@@ -3,6 +3,7 @@ import json
 import re
 from datetime import datetime, timedelta
 import requests
+import threading
 import time
 from zoneinfo import ZoneInfo
 from google import genai
@@ -106,6 +107,44 @@ tipCta: "{tip_cta}"{unsplash_yaml}
         "text": f"❌ Failed to publish to GitHub after retries: {headline}"
     })
     return None
+
+
+def process_approval_bg(action, draft, chat_id, message_id, query_id, draft_id):
+    pub_date = None
+    status_msg = "✅ [PUBLISHED NOW]"
+    if action == 'approve_queue':
+        pub_date = get_next_queue_slot()
+        status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
+    
+    unsplash_img = draft.get('unsplash_img')
+    credit_name = draft.get('image_credit_name')
+    credit_username = draft.get('image_credit_username')
+    
+    if not unsplash_img:
+        unsplash_img, credit_name, credit_username = get_brave_image(draft['headline'], draft['category'])
+        if unsplash_img:
+            db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
+    
+    db.update_draft_status(draft_id, 'published')
+    
+    file_path = create_markdown_post(
+        draft['headline'], draft['framing_lead'], draft['blockquote'], draft.get('kicker', ''),
+        draft['source_name'], draft['source_url'], draft['category'],
+        pub_date, draft['tip_cta'], unsplash_img, credit_name, credit_username
+    )
+    
+    if chat_id and message_id:
+        new_text = f"{status_msg}\n\n"
+        new_text += f"Category: [{draft['category']}]\n"
+        new_text += f"Headline: {draft['headline']}\n\n"
+        new_text += f"Framing: {draft['framing_lead']}\n\n"
+        new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
+        if draft.get('kicker'):
+            new_text += f"Kicker: {draft['kicker']}\n"
+        new_text += f"URL: {draft['source_url']}"
+        requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+            "chat_id": chat_id, "message_id": message_id, "text": new_text
+        })
 
 def get_next_queue_slot():
     """Calculates the next available publishing window."""
@@ -330,41 +369,15 @@ def telegram_webhook():
                     requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={"chat_id": chat_id, "text": "❌ Error: Draft not found in DB."})
                     return jsonify({"ok": True})
                     
-                pub_date = None
-                status_msg = "✅ [PUBLISHED NOW]"
-                if action == 'approve_queue':
-                    pub_date = get_next_queue_slot()
-                    status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
-                
-                unsplash_img = draft.get('unsplash_img')
-                credit_name = draft.get('image_credit_name')
-                credit_username = draft.get('image_credit_username')
-                
-                if not unsplash_img:
-                    unsplash_img, credit_name, credit_username = get_brave_image(draft['headline'], draft['category'])
-                    if unsplash_img:
-                        db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
-                
-                db.update_draft_status(draft_id, 'published')
-                
-                file_path = create_markdown_post(
-                    draft['headline'], draft['framing_lead'], draft['blockquote'], draft.get('kicker', ''),
-                    draft['source_name'], draft['source_url'], draft['category'],
-                    pub_date, draft['tip_cta'], unsplash_img, credit_name, credit_username
-                )
-                
                 if chat_id and message_id:
-                    new_text = f"{status_msg}\n\n"
+                    new_text = f"⏳ Processing and fetching image...\n\n"
                     new_text += f"Category: [{draft['category']}]\n"
-                    new_text += f"Headline: {draft['headline']}\n\n"
-                    new_text += f"Framing: {draft['framing_lead']}\n\n"
-                    new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
-                    if draft.get('kicker'):
-                        new_text += f"Kicker: {draft['kicker']}\n"
-                    new_text += f"URL: {draft['source_url']}"
+                    new_text += f"Headline: {draft['headline']}\n"
                     requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
                         "chat_id": chat_id, "message_id": message_id, "text": new_text
                     })
+                
+                threading.Thread(target=process_approval_bg, args=(action, draft, chat_id, message_id, query_id, draft_id)).start()
                 
             elif action == 'reject' and draft_id:
                 db.update_draft_status(draft_id, 'rejected')
