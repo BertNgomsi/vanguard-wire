@@ -5,7 +5,9 @@ category: "The Watercooler / The Front Porch"
 source: "Essence (News & Politics)"
 sourceUrl: "https://www.essence.com/entertainment/the-steve-harvey-show-30-then-and-now/"
 tipCta: "Help us keep celebrating Black media history and preserving real culture. Drop $5 in our tip jar!"
-heroImage: "../../assets/blog-placeholder-4.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/8/8c/The_Steve_Harvey_Show_logo.svg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Long before Steve Harvey was giving viral reaction faces on daytime game shows, he was delivering top-tier 90s comedy alongside Cedric the Entertainer. Thirty years after its premiere, it's time to put some respect on a classic sitcom that anchored Black TV culture.
