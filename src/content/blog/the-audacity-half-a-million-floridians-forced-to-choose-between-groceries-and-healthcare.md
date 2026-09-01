@@ -5,7 +5,9 @@ category: "Public Health & Environmental Justice"
 source: "Fortune (Race & Business)"
 sourceUrl: "https://fortune.com/2026/08/25/obamacare-midterms-florida/"
 tipCta: "Help us keep exposing systemic healthcare cruelty and political neglect. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-4.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/1/15/2016_Presidential_Election_by_Vote_Distribution_Among_States.svg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Leave it to Florida leadership to turn basic healthcare into an actual survival tournament. As conservative policy failures continue to sabotage affordable care, nearly half a million Floridians are now slashing their food budgets and education funds just to avoid going bankrupt over a doctor visit.
