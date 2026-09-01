@@ -5,7 +5,9 @@ category: "Anti-Black / Conservative Hypocrisy Tracker"
 source: "Fortune (Race & Business)"
 sourceUrl: "https://fortune.com/2026/08/25/karen-attiah-washington-post-arbitrator-reinstatement/"
 tipCta: "Help us keep holding billionaire-owned media outlets accountable. Chip in $5 to our independent wire today."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/6/60/Karen_Attiah_Resisting_Extremism_in_Africa-_Ordinary_Lives,_Extraordinary_Acts_-_37860453116_(cropped).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Jeff Bezos and his corporate lackeys thought they could quietly purge a prominent Black woman writer for refusing to bow down to right-wing fragile egos. An arbitrator just forced the Washington Post to eat its own bad faith claims, ordering Karen Attiah's reinstatement with full back pay.
