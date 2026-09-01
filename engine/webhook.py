@@ -145,6 +145,22 @@ def process_approval_bg(action, draft, chat_id, message_id, query_id, draft_id):
         requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
             "chat_id": chat_id, "message_id": message_id, "text": new_text
         })
+    
+    if file_path and action == 'approve_now':
+        slug = re.sub(r'[^a-z0-9]+', '-', draft['headline'].lower()).strip('-')
+        live_url = f"https://thevanguardwire.com/blog/{slug}/"
+        pub_notif = (
+            f"🚀 <b>Article Published Live!</b>\n\n"
+            f"📰 <b>{draft['headline']}</b>\n"
+            f"📁 <i>{draft['category']}</i>\n\n"
+            f"🔗 <a href=\"{live_url}\">Read on Vanguard Wire</a>"
+        )
+        requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage", json={
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": pub_notif,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": False
+        })
 
 def get_next_queue_slot():
     """Calculates the next available publishing window."""
