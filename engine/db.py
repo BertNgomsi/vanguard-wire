@@ -36,6 +36,11 @@ def init_db():
     except sqlite3.OperationalError:
         pass # Column already exists
         
+    try:
+        c.execute('ALTER TABLE drafts ADD COLUMN scheduled_slot TEXT')
+    except sqlite3.OperationalError:
+        pass # Column already exists
+        
     c.execute('''
         CREATE TABLE IF NOT EXISTS processed_urls (
             url TEXT PRIMARY KEY,
@@ -134,3 +139,41 @@ def get_published_drafts_without_images():
     rows = c.fetchall()
     conn.close()
     return [dict(row) for row in rows]
+
+def get_slot_count(slot_iso):
+    """Returns number of drafts currently scheduled or published for a specific slot."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute('''
+        SELECT COUNT(*) FROM drafts 
+        WHERE scheduled_slot = ? AND status IN ('queued', 'published')
+    ''', (slot_iso,))
+    count = c.fetchone()[0]
+    conn.close()
+    return count
+
+def queue_draft(draft_id, slot_iso):
+    """Marks a draft as queued and assigns its scheduled slot."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute('''
+        UPDATE drafts 
+        SET status = 'queued', scheduled_slot = ? 
+        WHERE id = ?
+    ''', (slot_iso, draft_id))
+    conn.commit()
+    conn.close()
+
+def get_due_queued_drafts(current_time_iso):
+    """Returns all queued drafts that are ready to be published, ordered FIFO by id."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute('''
+        SELECT * FROM drafts 
+        WHERE status = 'queued' AND scheduled_slot <= ? 
+        ORDER BY id ASC
+    ''', (current_time_iso,))
+    rows = c.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+

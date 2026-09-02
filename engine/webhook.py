@@ -109,13 +109,47 @@ tipCta: "{tip_cta}"{unsplash_yaml}
     return None
 
 
-def process_approval_bg(action, draft, chat_id, message_id, query_id, draft_id):
-    pub_date = None
-    status_msg = "✅ [PUBLISHED NOW]"
-    if action == 'approve_queue':
-        pub_date = get_next_queue_slot()
-        status_msg = f"✅ [QUEUED for {pub_date[:16].replace('T', ' ')}]"
+SLOTS_SCHEDULE = [
+    (8, 30), (9, 0), (9, 30), (10, 0), (10, 30), (11, 0), (11, 30),
+    (12, 0), (12, 30), (13, 0), (13, 30), (14, 0), (14, 30),
+    (15, 0), (15, 30), (16, 0), (16, 30), (17, 0), (17, 30), (18, 0)
+]
+MAX_ARTICLES_PER_SLOT = 9
+
+def allocate_queue_slot():
+    """
+    Finds the earliest 30-minute slot starting from now that has < 9 articles assigned.
+    Returns: (slot_datetime, slot_iso, current_count, is_immediate)
+    """
+    now = datetime.now(ZoneInfo("America/New_York"))
+    current_day = now.date()
     
+    for day_offset in range(14): # Search up to 14 days ahead
+        search_date = current_day + timedelta(days=day_offset)
+        
+        for hour, minute in SLOTS_SCHEDULE:
+            slot_dt = datetime(search_date.year, search_date.month, search_date.day, hour, minute, tzinfo=ZoneInfo("America/New_York"))
+            
+            # If search_date is today and slot is in the past:
+            if day_offset == 0 and slot_dt < now:
+                # Check if this slot window is still active (within 30 mins of its start)
+                slot_end = slot_dt + timedelta(minutes=30)
+                if now < slot_end:
+                    count = db.get_slot_count(slot_dt.isoformat())
+                    if count < MAX_ARTICLES_PER_SLOT:
+                        return slot_dt, slot_dt.isoformat(), count, True
+                continue
+                
+            slot_iso = slot_dt.isoformat()
+            count = db.get_slot_count(slot_iso)
+            if count < MAX_ARTICLES_PER_SLOT:
+                return slot_dt, slot_iso, count, False
+                
+    fallback_dt = (now + timedelta(days=1)).replace(hour=8, minute=30, second=0, microsecond=0)
+    return fallback_dt, fallback_dt.isoformat(), 0, False
+
+def publish_draft_now(draft, draft_id, chat_id=None, message_id=None):
+    """Fetches image, creates markdown post with pubDate=now, pushes to GitHub, updates DB, sends Telegram alert."""
     unsplash_img = draft.get('unsplash_img')
     credit_name = draft.get('image_credit_name')
     credit_username = draft.get('image_credit_username')
@@ -124,29 +158,16 @@ def process_approval_bg(action, draft, chat_id, message_id, query_id, draft_id):
         unsplash_img, credit_name, credit_username = get_brave_image(draft['headline'], draft['category'])
         if unsplash_img:
             db.update_draft_image(draft_id, unsplash_img, credit_name, credit_username)
-    
+            
     db.update_draft_status(draft_id, 'published')
     
     file_path = create_markdown_post(
         draft['headline'], draft['framing_lead'], draft['blockquote'], draft.get('kicker', ''),
         draft['source_name'], draft['source_url'], draft['category'],
-        pub_date, draft['tip_cta'], unsplash_img, credit_name, credit_username
+        None, draft['tip_cta'], unsplash_img, credit_name, credit_username
     )
     
-    if chat_id and message_id:
-        new_text = f"{status_msg}\n\n"
-        new_text += f"Category: [{draft['category']}]\n"
-        new_text += f"Headline: {draft['headline']}\n\n"
-        new_text += f"Framing: {draft['framing_lead']}\n\n"
-        new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
-        if draft.get('kicker'):
-            new_text += f"Kicker: {draft['kicker']}\n"
-        new_text += f"URL: {draft['source_url']}"
-        requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
-            "chat_id": chat_id, "message_id": message_id, "text": new_text
-        })
-    
-    if file_path and action == 'approve_now':
+    if file_path:
         slug = re.sub(r'[^a-z0-9]+', '-', draft['headline'].lower()).strip('-')
         live_url = f"https://thevanguardwire.com/blog/{slug}/"
         pub_notif = (
@@ -161,56 +182,63 @@ def process_approval_bg(action, draft, chat_id, message_id, query_id, draft_id):
             "parse_mode": "HTML",
             "disable_web_page_preview": False
         })
+    return file_path
 
-def get_next_queue_slot():
-    """Calculates the next available publishing window."""
-    state_file = 'queue_state.json'
-    last_queued_str = None
-    if os.path.exists(state_file):
-        try:
-            with open(state_file, 'r') as f:
-                state = json.load(f)
-                last_queued_str = state.get("last_queued_timestamp")
-        except:
-            pass
+def process_approval_bg(action, draft, chat_id, message_id, query_id, draft_id):
+    if action == 'approve_now':
+        file_path = publish_draft_now(draft, draft_id, chat_id, message_id)
+        if chat_id and message_id:
+            status_msg = "✅ [PUBLISHED NOW]"
+            new_text = f"{status_msg}\n\n"
+            new_text += f"Category: [{draft['category']}]\n"
+            new_text += f"Headline: {draft['headline']}\n\n"
+            new_text += f"Framing: {draft['framing_lead']}\n\n"
+            new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
+            if draft.get('kicker'):
+                new_text += f"Kicker: {draft['kicker']}\n"
+            new_text += f"URL: {draft['source_url']}"
+            requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+                "chat_id": chat_id, "message_id": message_id, "text": new_text
+            })
             
-    now = datetime.now(ZoneInfo("America/New_York"))
-    if last_queued_str:
-        try:
-            last_queued = datetime.fromisoformat(last_queued_str)
-            if last_queued.tzinfo is None:
-                last_queued = last_queued.replace(tzinfo=ZoneInfo("America/New_York"))
-        except ValueError:
-            last_queued = now
-    else:
-        last_queued = now
+    elif action == 'approve_queue':
+        slot_dt, slot_iso, current_count, is_immediate = allocate_queue_slot()
+        new_count = current_count + 1
+        slot_display = slot_dt.strftime("%b %d, %I:%M %p EDT")
         
-    base_time = max(now, last_queued)
-    slots = [(8, 30), (9, 30), (10, 30), (12, 0), (13, 30), (15, 0), (16, 30)]
-    next_slot = None
-    for hour, minute in slots:
-        candidate = base_time.replace(hour=hour, minute=minute, second=0, microsecond=0)
-        if candidate > base_time:
-            next_slot = candidate
-            break
-            
-    if not next_slot:
-        next_day = base_time + timedelta(days=1)
-        next_slot = next_day.replace(hour=slots[0][0], minute=slots[0][1], second=0, microsecond=0)
-
-    while next_slot.weekday() >= 5:
-        next_slot += timedelta(days=1)
-        next_slot = next_slot.replace(hour=slots[0][0], minute=slots[0][1], second=0, microsecond=0)
-
-    if next_slot.weekday() == 4 and next_slot.hour >= 14:
-        next_slot += timedelta(days=3)
-        next_slot = next_slot.replace(hour=slots[0][0], minute=slots[0][1], second=0, microsecond=0)
-        
-    next_slot_iso = next_slot.isoformat()
-    with open(state_file, 'w') as f:
-        json.dump({"last_queued_timestamp": next_slot_iso}, f)
-        
-    return next_slot_iso
+        if is_immediate:
+            # Current slot is active and under capacity -> publish immediately!
+            db.queue_draft(draft_id, slot_iso)
+            file_path = publish_draft_now(draft, draft_id, chat_id, message_id)
+            if chat_id and message_id:
+                status_msg = f"✅ [PUBLISHED in Active Slot: {slot_display} (Slot {new_count}/9)]"
+                new_text = f"{status_msg}\n\n"
+                new_text += f"Category: [{draft['category']}]\n"
+                new_text += f"Headline: {draft['headline']}\n\n"
+                new_text += f"Framing: {draft['framing_lead']}\n\n"
+                new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
+                if draft.get('kicker'):
+                    new_text += f"Kicker: {draft['kicker']}\n"
+                new_text += f"URL: {draft['source_url']}"
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+                    "chat_id": chat_id, "message_id": message_id, "text": new_text
+                })
+        else:
+            # Future slot -> store in SQLite with status='queued', do NOT push to GitHub yet
+            db.queue_draft(draft_id, slot_iso)
+            if chat_id and message_id:
+                status_msg = f"⏳ [QUEUED for {slot_display} (Slot {new_count}/9)]"
+                new_text = f"{status_msg}\n\n"
+                new_text += f"Category: [{draft['category']}]\n"
+                new_text += f"Headline: {draft['headline']}\n\n"
+                new_text += f"Framing: {draft['framing_lead']}\n\n"
+                new_text += f"Quote: \"{draft['blockquote']}\" — {draft['source_name']}\n"
+                if draft.get('kicker'):
+                    new_text += f"Kicker: {draft['kicker']}\n"
+                new_text += f"URL: {draft['source_url']}"
+                requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText", json={
+                    "chat_id": chat_id, "message_id": message_id, "text": new_text
+                })
 
 def get_brave_image(headline, category):
     """Uses Gemini to generate a search query, searches Brave Image Search, and picks image."""
