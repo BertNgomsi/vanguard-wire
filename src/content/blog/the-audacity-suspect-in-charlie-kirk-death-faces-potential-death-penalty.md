@@ -5,7 +5,9 @@ category: "Criminal Justice & Accountability Watchdog"
 source: "The Washington Post (Politics)"
 sourceUrl: "https://www.washingtonpost.com/nation/2026/09/01/tyler-robinson-accused-killing-charlie-kirk-faces-potential-death-penalty/"
 tipCta: "Help us call out the justice system's glaring double standards. Pitch in today."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Person_of_interest_sought_in_connection_with_the_killing_of_Charlie_Kirk_leaving_a_rooftop.png"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 The justice system suddenly remembers how to move swiftly when a right-wing provocateur meets a violent end. Tyler James Robinson just pleaded not guilty to ending Charlie Kirk's career of race-baiting, but prosecutors are already seeking capital punishment. Funny how the state's ultimate penalty is immediately on the table when conservatives are the victims.
