@@ -5,7 +5,9 @@ category: "Systemic Policy & Dogwhistle Watchdog"
 source: "The Washington Post (Politics)"
 sourceUrl: "https://www.washingtonpost.com/politics/2026/09/01/trump-picks-hung-cao-lead-navy/"
 tipCta: "Help us track Trump's extremist cabinet appointments. Chip in $5 to keep us fighting."
-heroImage: "../../assets/blog-placeholder-4.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/9/93/Hung_Cao_Commander_Duty_(cropped).jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 Donald Trump is making it official: Hung Cao, the failed Virginia GOP candidate who built his entire political identity on battling the imaginary 'woke military,' is his pick for Navy Secretary. Because why govern when you can just reward MAGA loyalists who treat diversity and inclusion like existential threats to the republic?
