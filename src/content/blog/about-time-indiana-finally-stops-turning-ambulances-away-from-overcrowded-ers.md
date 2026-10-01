@@ -5,7 +5,9 @@ category: "Public Health & Environmental Justice"
 source: "The Chicago Crusader"
 sourceUrl: "https://chicagocrusader.com/indiana-hospitals-end-routine-ambulance-diversion/"
 tipCta: "Help us keep exposing systemic medical disparities and healthcare injustice. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-1.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/4/49/Ambulance_car_being_lowered_from_flight_deck;_Suez_crisis_Wellcome_L0024925.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 For years, hospitals have played a deadly game of hot potato with marginalized patients, bouncing ambulances away from the nearest emergency room just because they were 'too full.' Now, Indiana is miraculously only the third state to realize that treating medical emergencies like a crowded nightclub VIP line is actually a terrible, dangerous idea.
