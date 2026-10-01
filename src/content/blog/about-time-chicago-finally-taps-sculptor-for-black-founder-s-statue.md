@@ -5,7 +5,9 @@ category: "Education & Historical Erasure Watchdog"
 source: "The Chicago Crusader"
 sourceUrl: "https://chicagocrusader.com/famed-sculptor-selected-to-create-dusable-park-statue/"
 tipCta: "Help us keep demanding our rightful place in history. Chip in $5 today."
-heroImage: "../../assets/blog-placeholder-3.jpg"
+unsplashImage: "https://upload.wikimedia.org/wikipedia/commons/b/b8/The_Founders,_sculpture.jpg"
+imageCreditName: "Commons.Wikimedia.Org"
+imageCreditUsername: ""
 ---
 
 It only took an eternity of bureaucratic foot-dragging, but Chicago is finally giving its Black founder, Jean Baptiste Point DuSable, some monumental respect. They have tapped renowned sculptor Branly Cadet for a statue at the perpetually delayed DuSable Park, proving that cities will take their sweet time before honoring Black history.
